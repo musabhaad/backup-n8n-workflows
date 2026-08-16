@@ -1,0 +1,1417 @@
+{
+  "name": "Auto Clean-up",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Jobs",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -720,
+        400
+      ],
+      "id": "3d686359-dab3-43e8-9075-efacbe84acfc",
+      "name": "Get row(s) in sheet",
+      "retryOnFail": true,
+      "maxTries": 6,
+      "waitBetweenTries": 23000,
+      "credentials": {
+        "googleApi": {
+          "id": "iVW66tYJNU5XE2WZ",
+          "name": "Google Service Account account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 30 13 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -928,
+        400
+      ],
+      "id": "12b2f029-ded8-464a-a2d9-4e1d41a9b122",
+      "name": "Schedule Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst rows=$input.all().map(i=>i.json);\nconst out=[]; const nowIso=DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss');\nfor(const r of rows){\n  const status=(r.emailStatus||'').toString().trim().toLowerCase();\n  const attempts=Number(r.attempts)||0;\n  if(status!=='pending') continue;\n  if(!r.companyWebsite) continue;\n  // age safety-net: a single errored daily CLN run used to stall expiry; expire by age too so the\n  // funnel always closes within ~4 days regardless of how many daily runs actually succeeded.\n  let ageDays=null;\n  if(r.createdAt){ const cdt=DateTime.fromFormat(String(r.createdAt).trim(),'yyyy-MM-dd HH:mm:ss',{zone:'Europe/Berlin'}); if(cdt.isValid) ageDays=DateTime.now().setZone('Europe/Berlin').diff(cdt,'days').days; }\n  const tooOld = ageDays!==null && ageDays>=4;\n  if(attempts>=3 || tooOld){ out.push({json:{...r, emailStatus:'not_found', _action:'expire'}}); }\n  else { out.push({json:{...r, attempts:attempts+1, lastAttemptAt:nowIso, _action:'retry'}}); }\n}\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -496,
+        400
+      ],
+      "id": "874858b6-3071-488c-af4d-7976777ca3b0",
+      "name": "Classify pending"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fe25b78f-d3a6-4602-b17f-fbe476721cf2",
+                    "leftValue": "={{ $json._action }}",
+                    "rightValue": "retry",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "retry"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4bcfc7f9-fac0-4149-8796-7cd45f61801b",
+                    "leftValue": "={{ $json._action }}",
+                    "rightValue": "expire",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "expire"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -272,
+        400
+      ],
+      "id": "ff825557-a722-47a8-adcd-bed21c600cdb",
+      "name": "Retry or expire"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc",
+          "mode": "list",
+          "cachedResultName": "Search Intent Scraping System",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Jobs",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "attempts": "={{ $json.attempts }}",
+            "lastAttemptAt": "={{ $json.lastAttemptAt }}",
+            "emailStatus": "={{ $json.emailStatus || 'pending' }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyLinkedinUrl",
+              "displayName": "companyLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyEmployeesCount",
+              "displayName": "companyEmployeesCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyDescription",
+              "displayName": "companyDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "icebreaker",
+              "displayName": "icebreaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personFullName",
+              "displayName": "personFullName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personLinkedinUrl",
+              "displayName": "personLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "addedToCampaign",
+              "displayName": "addedToCampaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "postedAt",
+              "displayName": "postedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "emailStatus",
+              "displayName": "emailStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastAttemptAt",
+              "displayName": "lastAttemptAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dmCategory",
+              "displayName": "dmCategory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "zerobounceStatus",
+              "displayName": "zerobounceStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        272
+      ],
+      "id": "d6845e31-38ae-4078-b877-6910b1f2b0a1",
+      "name": "Bump attempts",
+      "retryOnFail": true,
+      "maxTries": 6,
+      "waitBetweenTries": 23000,
+      "credentials": {
+        "googleApi": {
+          "id": "iVW66tYJNU5XE2WZ",
+          "name": "Google Service Account account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc",
+          "mode": "list",
+          "cachedResultName": "Search Intent Scraping System",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Jobs",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "attempts": "={{ $json.attempts }}",
+            "lastAttemptAt": "={{ $json.lastAttemptAt }}",
+            "emailStatus": "={{ $json.emailStatus || 'not_found' }}",
+            "row_number": 0
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyLinkedinUrl",
+              "displayName": "companyLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyEmployeesCount",
+              "displayName": "companyEmployeesCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyDescription",
+              "displayName": "companyDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "icebreaker",
+              "displayName": "icebreaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personFullName",
+              "displayName": "personFullName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personLinkedinUrl",
+              "displayName": "personLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "addedToCampaign",
+              "displayName": "addedToCampaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "postedAt",
+              "displayName": "postedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "emailStatus",
+              "displayName": "emailStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastAttemptAt",
+              "displayName": "lastAttemptAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dmCategory",
+              "displayName": "dmCategory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "zerobounceStatus",
+              "displayName": "zerobounceStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        560
+      ],
+      "id": "79d574d6-8d32-4a2c-828e-f0d717b80c72",
+      "name": "Mark not_found",
+      "retryOnFail": true,
+      "maxTries": 6,
+      "waitBetweenTries": 23000,
+      "credentials": {
+        "googleApi": {
+          "id": "iVW66tYJNU5XE2WZ",
+          "name": "Google Service Account account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "cbaf598b-0377-456b-84ce-be69bd685c97",
+                    "leftValue": "={{ $json.dmCategory }}",
+                    "rightValue": "ceo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ceo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "7afd3364-f34d-4455-8e0f-b11a736130ff",
+                    "leftValue": "={{ $json.dmCategory }}",
+                    "rightValue": "engineering",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "engineering"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4e48ee41-9517-466d-a538-14ec8eb6ba94",
+                    "leftValue": "={{ $json.dmCategory }}",
+                    "rightValue": "eng+hr",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "eng_hr"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        256
+      ],
+      "id": "f32d8b1f-9ac8-450a-b5c3-b8d91e633848",
+      "name": "Route by dmCategory"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anymailfinder.com/v5.0/search/decision-maker.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Webhook-Url",
+              "value": "https://n8n.10files.com/webhook/Anymailfinder_Callback"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"decision_maker_category\": \"ceo\",\n  \"domain\": \"{{ $json.companyWebsite }}\",\n  \"recordId\": \"{{ $json.id }}\",\n  \"companyName\": \"{{ $json.companyName }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        96
+      ],
+      "id": "f2ea1bba-2a2b-4695-add1-dc85c36792b8",
+      "name": "AMF ceo",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vVp07OBSGOKrvJkB",
+          "name": "Anymail Finder"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anymailfinder.com/v5.0/search/decision-maker.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Webhook-Url",
+              "value": "https://n8n.10files.com/webhook/Anymailfinder_Callback"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"decision_maker_category\": \"engineering\",\n  \"domain\": \"{{ $json.companyWebsite }}\",\n  \"recordId\": \"{{ $json.id }}\",\n  \"companyName\": \"{{ $json.companyName }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        272
+      ],
+      "id": "52fe1ca4-d9ee-4387-bf4d-636a291f876d",
+      "name": "AMF engineering",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vVp07OBSGOKrvJkB",
+          "name": "Anymail Finder"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anymailfinder.com/v5.0/search/decision-maker.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Webhook-Url",
+              "value": "https://n8n.10files.com/webhook/Anymailfinder_Callback"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"decision_maker_category\": \"engineering\",\n  \"domain\": \"{{ $json.companyWebsite }}\",\n  \"recordId\": \"{{ $json.id }}\",\n  \"companyName\": \"{{ $json.companyName }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        432
+      ],
+      "id": "f2e09ab0-48b6-48c5-b027-982f331ec25e",
+      "name": "AMF engineering (eng+hr)",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vVp07OBSGOKrvJkB",
+          "name": "Anymail Finder"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anymailfinder.com/v5.0/search/decision-maker.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Webhook-Url",
+              "value": "https://n8n.10files.com/webhook/Anymailfinder_Callback"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"decision_maker_category\": \"hr\",\n  \"domain\": \"{{ $json.companyWebsite }}\",\n  \"recordId\": \"{{ $json.id }}\",\n  \"companyName\": \"{{ $json.companyName }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        608
+      ],
+      "id": "a53bf20b-9aec-4226-bfa2-dd68bb72d981",
+      "name": "AMF hr",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vVp07OBSGOKrvJkB",
+          "name": "Anymail Finder"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const all=$('Classify pending').all();\nconst retried=all.filter(i=>i.json._action==='retry').length;\nconst expired=all.filter(i=>i.json._action==='expire').length;\n\n// --- Soft-failure aggregation from the full sheet read CLN already does (zero extra reads) ---\n// emailStatus vocabulary (verified live): found=verified+sent (good) | invalid=zbInvalid |\n// not_found=amfNoContact (pending expired) | pending | backup(-bk) | suppressed | exhausted(WF6)\nconst rows=$('Get row(s) in sheet').all().map(i=>i.json);\nconst norm=s=>(s||'').toString().trim().toLowerCase();\nlet found=0,invalid=0,notFoundT=0,pending=0,backup=0,suppressed=0,exhausted=0;\nfor(const r of rows){\n  const s=norm(r.emailStatus);\n  if(s==='found')found++;\n  else if(s==='invalid')invalid++;\n  else if(s==='not_found')notFoundT++;\n  else if(s==='pending')pending++;\n  else if(s==='backup')backup++;\n  else if(s==='suppressed')suppressed++;\n  else if(s==='exhausted')exhausted++;\n}\nconst verified=found+invalid;\nconst invalidRate=verified?Math.round(invalid/verified*100):0;       // bounce-quality (zbInvalid)\nconst resolved=found+invalid+notFoundT;\nconst noContactRate=resolved?Math.round(notFoundT/resolved*100):0;    // amfNoContact (not_found / resolved AMF lookups)\n\n// Thresholds — quiet default, loud only on spike (min sample guards against noise)\nconst THRESH_INVALID=30, THRESH_NOCONTACT=60;\nconst alerts=[];\nif(verified>=10 && invalidRate>THRESH_INVALID) alerts.push('⚠ ZeroBounce invalid rate '+invalidRate+'% ('+invalid+'/'+verified+')');\nif(resolved>=10 && noContactRate>THRESH_NOCONTACT) alerts.push('⚠ AMF no-contact rate '+noContactRate+'% ('+notFoundT+'/'+resolved+')');\nconst alertLine=alerts.length?'\\n'+alerts.join('\\n'):'';\n\n// Sheet row: IDENTICAL columns/semantics to before. _-prefixed fields are for the Discord digest only\n// (autoMapInputData drops keys with no matching header column).\nreturn [{json:{ runId:$execution.id, startedAt:'', finishedAt:DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss'),\n  workflow:'Auto Clean-up', scraped:'', ruleFiltered:'', duplicates:'', aiRejected:'', aiPassed:'', amfSent:'',\n  callbacks:'', valid:'', invalid:'', found:'', sentSmartlead:'', notFound:expired, pendingChecked:all.length, retried:retried, expired:expired,\n  _found:found, _invalid:invalid, _invalidRate:invalidRate, _notFoundTotal:notFoundT, _noContactRate:noContactRate,\n  _pending:pending, _backup:backup, _suppressed:suppressed, _exhausted:exhausted, _alertLine:alertLine }}];"
+      },
+      "id": "node-cln-buildsummary",
+      "name": "Build CLN Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -256,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc",
+          "cachedResultName": "Search Intent Scraping System"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 845242455,
+          "mode": "list",
+          "cachedResultName": "Run Summary"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "runId",
+              "displayName": "runId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "startedAt",
+              "displayName": "startedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "finishedAt",
+              "displayName": "finishedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "workflow",
+              "displayName": "workflow",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "scraped",
+              "displayName": "scraped",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ruleFiltered",
+              "displayName": "ruleFiltered",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duplicates",
+              "displayName": "duplicates",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "aiRejected",
+              "displayName": "aiRejected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "aiPassed",
+              "displayName": "aiPassed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "amfSent",
+              "displayName": "amfSent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "callbacks",
+              "displayName": "callbacks",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "valid",
+              "displayName": "valid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "invalid",
+              "displayName": "invalid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "found",
+              "displayName": "found",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sentSmartlead",
+              "displayName": "sentSmartlead",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notFound",
+              "displayName": "notFound",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pendingChecked",
+              "displayName": "pendingChecked",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "retried",
+              "displayName": "retried",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "expired",
+              "displayName": "expired",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "node-cln-appendsummary",
+      "name": "Append CLN Summary",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        720
+      ],
+      "retryOnFail": true,
+      "maxTries": 6,
+      "waitBetweenTries": 23000,
+      "executeOnce": true,
+      "credentials": {
+        "googleApi": {
+          "id": "iVW66tYJNU5XE2WZ",
+          "name": "Google Service Account account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## CLN — Auto Clean-up (daily 13:00)\nResolves stuck `pending` leads: **retry** the Anymailfinder lookup, or **expire** to `not_found` after N attempts/age. Logs a per-run summary.",
+        "height": 360,
+        "width": 1180,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -928,
+        -352
+      ],
+      "id": "d44df0de-999f-43ae-aa76-c33fe6075c30",
+      "name": "Note 1"
+    },
+    {
+      "parameters": {
+        "content": "## 1. TRIGGER & CLASSIFY\nDaily 13:00. Reads `Jobs`; classifies each pending row by `attempts` + age → action `retry` or `expire`.",
+        "height": 290,
+        "width": 936,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -976,
+        288
+      ],
+      "id": "15b00cc5-064d-445e-8dd9-faf613a787d2",
+      "name": "Note 2"
+    },
+    {
+      "parameters": {
+        "content": "## 2. RETRY PATH\nRe-fires AMF for the row's `dmCategory`. `appendOrUpdate` bumps `attempts` + `lastAttemptAt`. (AMF retry ≤30d is free.)",
+        "height": 802,
+        "width": 760,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -32
+      ],
+      "id": "80c51eda-d5b2-4b4b-9c2e-131ff9c0a424",
+      "name": "Note 3"
+    },
+    {
+      "parameters": {
+        "content": "## 3. EXPIRE PATH\nOver attempt/age limit → `emailStatus=not_found`, stop retrying.",
+        "height": 290,
+        "width": 280,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        448
+      ],
+      "id": "abe869f3-aff0-4751-b045-93315a992e3b",
+      "name": "Note 4"
+    },
+    {
+      "parameters": {
+        "content": "## RUN SUMMARY\nAppends `pendingChecked / retried / expired` to `Run Summary`.",
+        "height": 290,
+        "width": 504,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        608
+      ],
+      "id": "13e07261-2cb8-470b-a8b7-a9cf405b536b",
+      "name": "Note 5"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1224996891968929873",
+          "mode": "list",
+          "cachedResultName": "10Folders",
+          "cachedResultUrl": "https://discord.com/channels/1224996891968929873"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1516801014227927101",
+          "mode": "list",
+          "cachedResultName": "observability",
+          "cachedResultUrl": "https://discord.com/channels/1224996891968929873/1516801014227927101"
+        },
+        "content": "=🧹 **Clean-up daily** `{{ $json.runId }}`\nThis run — pending checked: {{ $json.pendingChecked }} | retried: {{ $json.retried }} | expired→not_found: {{ $json.expired }}\nSheet health — found: {{ $json._found }} | invalid: {{ $json._invalid }} ({{ $json._invalidRate }}%) | not_found: {{ $json._notFoundTotal }} ({{ $json._noContactRate }}%) | pending: {{ $json._pending }} | backup: {{ $json._backup }} | suppressed: {{ $json._suppressed }} | exhausted: {{ $json._exhausted }}\nFinished: {{ $json.finishedAt }}{{ $json._alertLine }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        192,
+        720
+      ],
+      "id": "cln-digest-0001-aaaa-bbbb-cccccccccccc",
+      "name": "Discord: CLN digest",
+      "webhookId": "eb20db75-9ed0-48fd-9ead-9ee2bfdc4bae",
+      "credentials": {
+        "discordBotApi": {
+          "id": "FFoMtAF82kEdl6wG",
+          "name": "Discord Bot account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Classify pending",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classify pending": {
+      "main": [
+        [
+          {
+            "node": "Retry or expire",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build CLN Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retry or expire": {
+      "main": [
+        [
+          {
+            "node": "Bump attempts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mark not_found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bump attempts": {
+      "main": [
+        [
+          {
+            "node": "Route by dmCategory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by dmCategory": {
+      "main": [
+        [
+          {
+            "node": "AMF ceo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AMF engineering",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AMF engineering (eng+hr)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AMF hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build CLN Summary": {
+      "main": [
+        [
+          {
+            "node": "Append CLN Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append CLN Summary": {
+      "main": [
+        [
+          {
+            "node": "Discord: CLN digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "eiJQkvawyXhKAEVX"
+  },
+  "versionId": "8d7865c2-67d4-4981-9361-8964e37171c8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ed0f83f04057898d428b08c5c50bd15444ebdac9bf23e34331d1c914e5749003"
+  },
+  "nodeGroups": [],
+  "id": "1ixfFcyc7LEmZie8",
+  "tags": []
+}
