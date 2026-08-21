@@ -1,0 +1,3723 @@
+{
+  "updatedAt": "2026-08-21T07:09:29.008Z",
+  "createdAt": "2026-08-15T05:53:05.916Z",
+  "id": "GKNc5jQ26qoKvwD5",
+  "name": "1. SISS",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "companyName",
+              "value": "={{ $json.companyName }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "companyWebsite",
+              "value": "={{ $json.companyWebsite }}",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "companyLinkedinUrl",
+              "value": "={{ $json.companyLinkedinUrl }}",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "companyEmployeesCount",
+              "value": "={{ $json.companyEmployeesCount }}",
+              "type": "number"
+            },
+            {
+              "id": "6",
+              "name": "companyDescription",
+              "value": "={{ $json.companyDescription }}",
+              "type": "string"
+            },
+            {
+              "id": "7",
+              "name": "location",
+              "value": "={{ $json.location }}",
+              "type": "string"
+            },
+            {
+              "id": "8",
+              "name": "jobOpeningTitle",
+              "value": "={{ $json.title }}",
+              "type": "string"
+            },
+            {
+              "id": "9",
+              "name": "link",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            },
+            {
+              "id": "10",
+              "name": "postedAt",
+              "value": "={{ $json.postedAt }}",
+              "type": "string"
+            },
+            {
+              "id": "11",
+              "name": "personFullName",
+              "value": "={{ $json.personFullName || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "12",
+              "name": "email",
+              "value": "=",
+              "type": "string"
+            },
+            {
+              "id": "15",
+              "name": "icebreaker",
+              "value": "=",
+              "type": "string"
+            },
+            {
+              "id": "7f647c2d-1d12-4f5c-ab1c-2688fc9e194c",
+              "name": "personLinkedinUrl",
+              "value": "={{ $json.jobPosterProfileUrl || '' }}",
+              "type": "string"
+            },
+            {
+              "id": "d99a7b4f-d3e1-4cde-a076-4c07ecae67a1",
+              "name": "country",
+              "value": "={{ $json.country }}",
+              "type": "string"
+            },
+            {
+              "id": "55774517-1219-4c49-aa0e-f062228edd9d",
+              "name": "dedupKey",
+              "value": "={{ $json.dedupKey }}",
+              "type": "string"
+            },
+            {
+              "id": "a3c4524e-1d92-49f4-b5ed-1a58b7b537d1",
+              "name": "emailStatus",
+              "value": "pending",
+              "type": "string"
+            },
+            {
+              "id": "409689dc-b1a3-4d4e-a093-403267262c9d",
+              "name": "attempts",
+              "value": 1,
+              "type": "number"
+            },
+            {
+              "id": "9abb5554-a060-435a-8da1-42d3d39e22f9",
+              "name": "lastAttemptAt",
+              "value": "={{ $now.setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss') }}",
+              "type": "string"
+            },
+            {
+              "id": "4a3ea86c-1689-413c-af38-426d5fec0a2d",
+              "name": "dmCategory",
+              "value": "={{ $json.companyEmployeesCount < 30 ? 'ceo' : ($json.companyEmployeesCount < 200 ? 'engineering' : 'eng+hr') }}",
+              "type": "string"
+            },
+            {
+              "id": "09cf48d8-4505-488f-9b23-70dc2bba220a",
+              "name": "addedToCampaign",
+              "value": "false",
+              "type": "string"
+            },
+            {
+              "id": "a-companyKey",
+              "name": "companyKey",
+              "value": "={{ $json.companyKey }}",
+              "type": "string"
+            },
+            {
+              "id": "a-contactRound",
+              "name": "contactRound",
+              "value": 1,
+              "type": "number"
+            },
+            {
+              "id": "a-createdAt",
+              "name": "createdAt",
+              "value": "={{ $now.setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss') }}",
+              "type": "string"
+            },
+            {
+              "id": "a-leadStage",
+              "name": "leadStage",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "a-personJobTitle",
+              "name": "personJobTitle",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "jd-1500-0001",
+              "name": "jobDescription",
+              "value": "={{ ($json.descriptionText || '').toString().slice(0, 1500) }}",
+              "type": "string"
+            },
+            {
+              "id": "7fc883ae-5c8d-4c55-abeb-cb7e9c383d2a",
+              "name": "signalStrength",
+              "value": "={{ $json.signalStrength }}",
+              "type": "string"
+            },
+            {
+              "id": "98f376e7-1742-49fe-b370-71f160545ea3",
+              "name": "functionalArea",
+              "value": "={{ $json.functionalArea }}",
+              "type": "string"
+            },
+            {
+              "id": "c78a4c74-1d87-418b-9d4b-2cdb75b72eb8",
+              "name": "whySignalMatters",
+              "value": "={{ $json.whySignalMatters }}",
+              "type": "string"
+            },
+            {
+              "id": "b73199c7-49f4-4d03-a96b-253cb9f31db7",
+              "name": "signalType",
+              "value": "Job_Post",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        8672,
+        1168
+      ],
+      "id": "3610d65a-527c-45ff-a9d6-98f008779b0a",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const aiItems = $input.all();\nconst jobItems = $('Sanitize AI Input').all();\n\nconst results = aiItems.map((item, index) => {\n  let rawText = null;\n\n  try {\n    // Extract raw text from OpenAI / OpenRouter response\n    rawText = item.json.output?.[0]?.content?.[0]?.text \n           || item.json.message?.content \n           || item.json.text \n           || (typeof item.json === 'string' ? item.json : null);\n\n    if (!rawText) {\n      throw new Error('Missing AI text output');\n    }\n\n    rawText = rawText\n      .replace(/```json\\n?/g, '')\n      .replace(/```\\n?/g, '')\n      .trim();\n\n    const parsed = JSON.parse(rawText);\n    const jobData = jobItems[index]?.json || {};\n\n    return {\n      json: {\n        ...jobData,\n        verdict: parsed.verdict === true || parsed.verdict === 'true',\n        signalStrength: parsed.signalStrength || '',\n        functionalArea: parsed.functionalArea || '',\n        whySignalMatters: parsed.whySignalMatters || '',\n        rejectionReason: parsed.rejectionReason || '',\n        error: false\n      }\n    };\n\n  } catch (error) {\n    const jobData = jobItems[index]?.json || {};\n    return {\n      json: {\n        ...jobData,\n        verdict: false,\n        error: true,\n        errorMessage: error.message,\n        rawText,\n        index\n      }\n    };\n  }\n});\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8224,
+        1264
+      ],
+      "id": "3b67531b-0abd-4355-a303-86a3cf9694b1",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You are a strict job-relevance classifier. You return only valid JSON and never explain your reasoning."
+            },
+            {
+              "content": "=You gate leads for MBI, a search firm serving US pharma and biotech companies\nunder 1500 employees. Valid functions: Medical Affairs, Clinical Operations,\nQuality, Regulatory Affairs. When unsure about function or seniority, reject.\nWhen unsure about company type, judge on the evidence in the post. Do not\nreject for lack of information.\n\nREJECT (verdict=false):\n1. Not a drug developer. Judge the EMPLOYER, not the duties of the role.\n   Reject only when the employer itself sells services or products to other\n   companies: CRO, CDMO, CMO, consultancy, trial site or site network, lab and\n   research tools vendor, medical device, diagnostics, software or eClinical,\n   hospital or provider, staffing or marketing agency.\n   Employer tells: the company describes \"our clients\", \"client programs\",\n   \"we serve N customers\", \"site capacity\", or sells its services to sponsors.\n   Do NOT reject on duty language. Managing CROs, vendor oversight, and\n   outsourcing are normal duties inside a drug developer. They say nothing\n   about who the employer is.\n   OVERRIDE: if the post says clinical-stage, biopharmaceutical, our pipeline,\n   our lead candidate, our programs, our therapies, or we are developing, the\n   employer is a drug developer and rule 1 cannot fire.\n2. Third party posting: \"our client\", \"on behalf of\", employer never named,\n   job board, aggregator, staffing or recruiting firm.\n3. Wrong function: Clinical Development, Translational, Clinical Science,\n   Biostatistics, Data Management, Medical Writing, CMC (unless CMC Regulatory)\n   or Process Development, Manufacturing, MSAT, Tech Ops, Discovery, Preclinical,\n   Project or Program or Portfolio or Alliance Management, BD, Commercial,\n   Marketing, Market Access, Pharmacovigilance, Safety, IT, HR, Finance, Legal.\n4. Contract, contractor, interim, temporary, fixed-term, part-time, intern,\n   fellow.\n5. Below Director. These titles are at or above Director and can NEVER be\n   rejected by this rule: Director, Senior Director, Executive Director,\n   Associate Director, Head, Vice President, VP, SVP, Chief.\n   Reject: Coordinator, Assistant, Specialist, Analyst, CRA, CTA, Scientist,\n   Supervisor, Associate Scientist, Associate Specialist.\n   Manager and Senior Manager are rejected BY DEFAULT unless the post names a scarce capability (cell or gene therapy,\n   ADC, radioligand, bispecific, rare disease, first-in-human, IND or BLA or\n   NDA ownership, or sole owner of the function at under roughly 75 staff).\n   If admitted on scarcity, set signalStrength \"low\".\n6. MSL and Senior MSL: pass ONLY when the therapeutic area is on the scarce\n   list (cell or gene therapy, ADC, radioligand, bispecific, rare disease,\n   first-in-human). Standard areas such as GI, virology, cardiovascular, and\n   general oncology without a novel modality are not scarce enough. Reject\n   non-specialized MSLs. If admitted on scarcity, set signalStrength \"low\".\n7. Routine backfill with no build, milestone, launch, or scarcity evidence.\n\nCLINICAL DEVELOPMENT vs CLINICAL OPERATIONS (most common error):\nExecution is Clinical Operations and is eligible: sites, CRO and vendor\noversight, study start-up, monitoring, enrollment, timelines, budgets, TMF,\noutsourcing.\nScience is Clinical Development and is REJECTED: protocol design, medical\nmonitoring, indication or endpoint or dose selection, clinical development plan,\ntarget product profile, data interpretation, scientific program leadership.\nIf both appear, decide by primary accountability. \"Executive Director, Clinical\nDevelopment\" and \"Program Lead, <disease area>\" are Clinical Development. Reject.\n\nFUNCTION (title beats description):\nMedical Director, Medical Affairs, MSL, Field Medical, Medical Science ->\n  Medical Affairs. Always. Never Clinical Operations, regardless of trial\n  language in the description.\nClinical Operations, Clinical Trial Management, Clinical Project Management,\n  Study Start-Up, Clinical Outsourcing, Vendor Management, CRO Oversight,\n  Site Operations, Clinical Program Lead -> Clinical Operations.\nQuality, QA, GxP, GMP, GCP, Quality Systems, Quality Management -> Quality.\nRegulatory Affairs, Regulatory Strategy, CMC Regulatory, Global Regulatory,\n  Labeling, Regulatory Operations -> Regulatory Affairs.\nDual title such as \"VP Quality and Regulatory\": use the function named first.\nNo clean fit: reject with functionalArea \"none\". Never force a near-miss.\nIgnore LinkedIn jobFunction, industries, and seniorityLevel. They are often wrong.\n\nSIGNAL STRENGTH:\nhigh   Head, VP, or Chief building or scaling a function, first owner of the\n       function, or explicitly tied to Phase 2/3, IND, BLA, NDA, or launch.\nmedium Director or Senior Director expanding an existing team.\nlow    Associate Director with narrow scope, or a Manager or MSL admitted\n       on scarcity.\n\nReturn raw JSON only. No markdown, no backticks, no fences.\n{\"verdict\":true|false,\"signalStrength\":\"high|medium|low\",\"functionalArea\":\"Medical Affairs|Clinical Operations|Quality|Regulatory Affairs|none\",\"whySignalMatters\":\"\",\"rejectionReason\":\"\"}\n\nwhySignalMatters is shown to the client. 1 to 2 sentences naming the specific\ncapability build, milestone, or scarce skill found in the post. No generic\npraise. No em dashes. No apostrophe contractions. Empty string if verdict false.\nrejectionReason format: \"<rule number> - <evidence>\". Empty string if true."
+            },
+            {
+              "role": "=user",
+              "content": "={{ $json.aiPromptText }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        7872,
+        1264
+      ],
+      "id": "de222c73-1482-4710-aa91-d5533795ad14",
+      "name": "Filter Job",
+      "retryOnFail": true,
+      "credentials": {
+        "openAiApi": {
+          "id": "hd50HVuRCMdy8YcF",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        3216,
+        1552
+      ],
+      "id": "5f0a57da-53db-4ad5-bdff-795dbd424b45",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bf0a0930-db40-4a12-97af-48fd8a24f3bb",
+              "name": "urls",
+              "value": "={{ $json['URL\\'s']}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5408,
+        1792
+      ],
+      "id": "d0b2738a-814b-4bfe-b0a8-899e2faa3ca5",
+      "name": "ALL JOB URLs"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5856,
+        1792
+      ],
+      "id": "b4a6f123-33d7-420a-92cb-2a938a15bd4c",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1351115330#gid=1351115330",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1351115330,
+          "mode": "list",
+          "cachedResultName": "Job search URL's",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1351115330"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        5040,
+        1792
+      ],
+      "id": "881d38e2-3663-46e1-9e34-bbd01702aec7",
+      "name": "Get Job Urls",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6191bed5-52f4-4444-8fc1-0e4297925a42",
+              "leftValue": "={{ $json.companyWebsite }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "05e29d08-8431-426c-afb0-ce82079681f4",
+              "leftValue": "={{ $json.companyWebsite }}",
+              "rightValue": "careers.linkedin.com",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "67133b63-b36b-4b15-a763-cd79d10d44be",
+              "leftValue": "={{ $json.postedAt }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "b58e118d-0742-45aa-bb69-f53dccbbbb74",
+              "leftValue": "={{ !['recruiting','recruitment','recruiter','staffing',\n  'executive search','search group','search partners','search firm',\n  'search associates','search consultants',\n  'talent group','talent solutions','talent partners',\n  'headhunting','headhunter','placement','placements',\n  'workforce solutions','human capital',\n  'biospace','ladders','jobgether'\n].some(kw => ($json.companyName ?? '').toLowerCase().includes(kw)) }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "9d05fcd3-5278-47cb-9229-3f79a7798b84",
+              "leftValue": "={{ !['recruiting','recruitment','staffing']\n.some(kw => ($json.industries ?? '').toLowerCase().includes(kw)) }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "d2037927-b5d3-48bb-ab5e-7347902de48f",
+              "leftValue": "={{ !['interim','freelance','contractor','pharmacovigilance','drug safety','medical writer'] .some(kw => ($json.title ?? '').toLowerCase().includes(kw)) }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "74d63f46-f884-450a-87a2-9244a37fed08",
+              "leftValue": "={{ ($json.companyAddress?.addressCountry ?? '') === 'US' }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "63f37981-cfc8-4231-ac1c-93147d5414ba",
+              "leftValue": "={{ !['cdmo','contract development and manufacturing','we serve','our clients','outsourcing partner']\n.some(kw => ($json.companySlogan ?? '').toLowerCase().includes(kw)) }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "9720e108-976f-458f-9406-4b40b313a0f1",
+              "leftValue": "={{ Number($json.companyEmployeesCount ?? 0) <= 1500 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        7408,
+        1456
+      ],
+      "id": "1e32fff0-c6ae-405d-9f84-e9fbd5d522f9",
+      "name": "Job OK?"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        7184,
+        1792
+      ],
+      "id": "c944ac1e-4a1d-4af8-9a0d-a2a2a235a820",
+      "name": "No Operation"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1344706833#gid=1344706833",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1344706833,
+          "mode": "list",
+          "cachedResultName": "JOB's",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1344706833"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyKey",
+              "displayName": "companyKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "contactRound",
+              "displayName": "contactRound",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyLinkedinUrl",
+              "displayName": "companyLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyEmployeesCount",
+              "displayName": "companyEmployeesCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyDescription",
+              "displayName": "companyDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "jobOpeningTitle",
+              "displayName": "jobOpeningTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "postedAt",
+              "displayName": "postedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "personFullName",
+              "displayName": "personFullName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "personJobTitle",
+              "displayName": "personJobTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "personLinkedinUrl",
+              "displayName": "personLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zerobounceStatus",
+              "displayName": "zerobounceStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "emailStatus",
+              "displayName": "emailStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "icebreaker",
+              "displayName": "icebreaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dmCategory",
+              "displayName": "dmCategory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lastAttemptAt",
+              "displayName": "lastAttemptAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "addedToCampaign",
+              "displayName": "addedToCampaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "leadStage",
+              "displayName": "leadStage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "leadStageUpdatedAt",
+              "displayName": "leadStageUpdatedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "leadNotes",
+              "displayName": "leadNotes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "triedCategories",
+              "displayName": "triedCategories",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "jobDescription",
+              "displayName": "jobDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        11408,
+        1168
+      ],
+      "id": "7c56a2eb-afc4-4cd0-bf71-9ba072b36133",
+      "name": "Append row in sheet1",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        11760,
+        1808
+      ],
+      "id": "ba99e949-d29f-408a-bb5e-04d48b63cbce",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "jsCode": "function normComp(s) {\n  if (!s) return '';\n  let x = String(s).toLowerCase().trim().replace(/\\s+/g, ' ');\n  x = x.replace(/[.,/\\\\&'\"`\\-()]/g, ' ');\n  x = x.replace(/\\b(inc|incorporated|corp|corporation|llc|llp|ltd|limited|co|company|holdings|holding|group|the|gmbh|mbh|ug|ag|kg|ohg|se|ev|plc|bv|nv|sarl|sas|sa|srl|spa|oy|ab|as|aps|pte)\\b/g, ' ');\n  return x.replace(/\\s+/g, ' ').trim();\n}\n\nfunction normDom(d) {\n  if (!d) return '';\n  let str = String(d).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return str.split('/')[0].split('?')[0].trim();\n}\n\nfunction normLinkedin(url) {\n  if (!url) return '';\n  let str = String(url).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return '';\n}\n\nreturn $input.all().map(item => {\n  const j = item.json || {};\n  const rawCompany = j.companyName || j.company || j.Company || j.company_name || j['Company Name'] || j.name || '';\n  const rawCountry = j.country || j.location || j.Country || j.Location || '';\n  const rawWebsite = j.companyWebsite || j.website || j.domain || j['Company Domain'] || j.company_domain || j.url || '';\n  const rawLinkedin = j.companyLinkedinUrl || j.company_linkedin || j.linkedin || j['LinkedIn URL'] || j.linkedinUrl || '';\n\n  const company = normComp(rawCompany);\n  const country = rawCountry.toString().toLowerCase().trim();\n  const domain = normDom(rawWebsite);\n  const compLinkedin = normLinkedin(rawLinkedin);\n\n  const dedupKey = company ? `${company}|${country || 'us'}` : '';\n  const companyKey = company;\n\n  return {\n    json: {\n      ...j,\n      companyName: j.companyName || rawCompany,\n      country: j.country || rawCountry,\n      companyWebsite: j.companyWebsite || rawWebsite,\n      companyLinkedinUrl: j.companyLinkedinUrl || rawLinkedin,\n      _normCompany: company,\n      _normDomain: domain,\n      _normLinkedin: compLinkedin,\n      dedupKey: j.dedupKey || dedupKey,\n      companyKey: j.companyKey || companyKey\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6944,
+        1328
+      ],
+      "id": "48d4d2b3-cfe6-4d14-83b4-d25d97c878bb",
+      "name": "Add Keys"
+    },
+    {
+      "parameters": {
+        "jsCode": "const safeAll = (nodeName) => {\n  try {\n    return $(nodeName).all();\n  } catch (e) {\n    return [];\n  }\n};\n\nfunction normComp(s) {\n  if (!s) return '';\n  let x = String(s).toLowerCase().trim().replace(/\\s+/g, ' ');\n  x = x.replace(/[.,/\\\\&'\"`\\-()]/g, ' ');\n  x = x.replace(/\\b(inc|incorporated|corp|corporation|llc|llp|ltd|limited|co|company|holdings|holding|group|the|gmbh|mbh|ug|ag|kg|ohg|se|ev|plc|bv|nv|sarl|sas|sa|srl|spa|oy|ab|as|aps|pte)\\b/g, ' ');\n  return x.replace(/\\s+/g, ' ').trim();\n}\n\nfunction normDom(d) {\n  if (!d) return '';\n  let str = String(d).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return str.split('/')[0].split('?')[0].trim();\n}\n\nfunction normLinkedin(url) {\n  if (!url) return '';\n  let str = String(url).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return '';\n}\n\nconst scraped = $('Add Keys').all();\nconst jobsRows = safeAll('Get Jobs rows');\nconst rejRows = safeAll('Get Rejected rows');\nconst supRows = safeAll('Get Suppression rows');\n\nconst TTL = 90 * 24 * 60 * 60 * 1000;\nconst now = Date.now();\n\n// 1. Existing Accepted Jobs / Signals\nconst existingDedupKeys = new Set();\nconst existingCompanies = new Set();\nconst existingDomains = new Set();\nconst existingLinkedin = new Set();\n\nfor (const r of jobsRows) {\n  const j = r.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  if (dk) existingDedupKeys.add(dk);\n\n  const rawComp = j.companyName || j.company || j.Company || j['Company Name'] || '';\n  const c = normComp(rawComp);\n  if (c) existingCompanies.add(c);\n\n  const dom = normDom(j.companyWebsite || j.domain || j['Company Domain'] || j.website || '');\n  if (dom && dom !== 'linkedin.com') existingDomains.add(dom);\n\n  const lk = normLinkedin(j.companyLinkedinUrl || j.linkedin || j['LinkedIn URL'] || '');\n  if (lk) existingLinkedin.add(lk);\n}\n\n// 2. Rejected Companies (within 90-day TTL)\nconst rejectedDedupKeys = new Set();\nconst rejectedCompanies = new Set();\n\nfor (const r of rejRows) {\n  const j = r.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const rawComp = j.companyName || j.company || j.Company || '';\n  const c = normComp(rawComp);\n  \n  if (!dk && !c) continue;\n\n  const ts = Date.parse(j.rejectedAt || '');\n  if (isNaN(ts) || (now - ts) < TTL) {\n    if (dk) rejectedDedupKeys.add(dk);\n    if (c) rejectedCompanies.add(c);\n  }\n}\n\n// 3. Suppression Contacts (Scott's Client / Relationship List)\nconst supCompanies = new Set();\nconst supDomains = new Set();\nconst supLinkedin = new Set();\n\nfor (const r of supRows) {\n  const j = r.json || {};\n  const dncRaw = String(j.doNotContact == null ? '' : j.doNotContact).trim().toLowerCase();\n  const hasDncFlag = dncRaw === 'true' || dncRaw === 'yes' || dncRaw === '1';\n  let hold = false;\n  if (j.contactAfterDate) {\n    const t = Date.parse(j.contactAfterDate);\n    if (!isNaN(t) && t > now) hold = true;\n  }\n  \n  const isSuppressed = (j.doNotContact === undefined && j.contactAfterDate === undefined) || hasDncFlag || hold;\n  \n  if (isSuppressed) {\n    const rawComp = j.Company || j.company || j.companyName || j['Company Name'] || '';\n    const c = normComp(rawComp);\n    if (c) supCompanies.add(c);\n\n    const rawDom = j['Company Domain'] || j.domain || j.companyWebsite || j.website || '';\n    const dom = normDom(rawDom);\n    if (dom && dom !== 'linkedin.com') supDomains.add(dom);\n\n    const rawLk = j['LinkedIn URL'] || j.linkedin || j.companyLinkedinUrl || '';\n    const lk = normLinkedin(rawLk);\n    if (lk) supLinkedin.add(lk);\n  }\n}\n\n// 4. Static Data for In-Run Loop Dedup\nconst _sd = $getWorkflowStaticData('global');\n_sd.runStats = _sd.runStats || {\n  scraped: 0,\n  duplicates: 0,\n  ruleFiltered: 0,\n  aiPassed: 0,\n  aiRejected: 0,\n  amfSent: 0,\n  aiParseErrors: 0,\n  ruleReasons: {}\n};\n_sd.seenKeys = _sd.seenKeys || {};\n_sd.seenCompanies = _sd.seenCompanies || {};\n_sd.seenDomains = _sd.seenDomains || {};\n_sd.seenLinkedin = _sd.seenLinkedin || {};\n\n// 5. Filter Scraped Items\nconst kept = scraped.filter(it => {\n  const j = it.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const c = j._normCompany || normComp(j.companyName || j.company || j.Company || '');\n  const dom = j._normDomain || normDom(j.companyWebsite || j.domain || j.website || '');\n  const lk = j._normLinkedin || normLinkedin(j.companyLinkedinUrl || j.linkedin || '');\n\n  if (!c && !dom && !dk) return false;\n\n  if (dk && existingDedupKeys.has(dk)) return false;\n  if (dk && rejectedDedupKeys.has(dk)) return false;\n\n  if (c && existingCompanies.has(c)) return false;\n  if (c && rejectedCompanies.has(c)) return false;\n  if (c && supCompanies.has(c)) return false;\n\n  if (dom && dom !== 'linkedin.com') {\n    if (existingDomains.has(dom)) return false;\n    if (supDomains.has(dom)) return false;\n  }\n\n  if (lk) {\n    if (existingLinkedin.has(lk)) return false;\n    if (supLinkedin.has(lk)) return false;\n  }\n\n  return true;\n});\n\n// 6. In-Run Loop Deduplication\nconst fresh = kept.filter(it => {\n  const j = it.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const c = j._normCompany || normComp(j.companyName || j.company || j.Company || '');\n  const dom = j._normDomain || normDom(j.companyWebsite || j.domain || j.website || '');\n  const lk = j._normLinkedin || normLinkedin(j.companyLinkedinUrl || j.linkedin || '');\n\n  if (dk && _sd.seenKeys[dk]) return false;\n  if (c && _sd.seenCompanies[c]) return false;\n  if (dom && dom !== 'linkedin.com' && _sd.seenDomains[dom]) return false;\n  if (lk && _sd.seenLinkedin[lk]) return false;\n\n  return true;\n});\n\nfor (const it of fresh) {\n  const j = it.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const c = j._normCompany || normComp(j.companyName || j.company || j.Company || '');\n  const dom = j._normDomain || normDom(j.companyWebsite || j.domain || j.website || '');\n  const lk = j._normLinkedin || normLinkedin(j.companyLinkedinUrl || j.linkedin || '');\n\n  if (dk) _sd.seenKeys[dk] = true;\n  if (c) _sd.seenCompanies[c] = true;\n  if (dom && dom !== 'linkedin.com') _sd.seenDomains[dom] = true;\n  if (lk) _sd.seenLinkedin[lk] = true;\n}\n\n_sd.runStats.scraped += scraped.length;\n_sd.runStats.duplicates += Math.max(0, scraped.length - fresh.length);\n\nif (fresh.length === 0) {\n  return [{ json: { _skip: true, companyName: '__skip__' } }];\n}\n\nreturn fresh;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7168,
+        1328
+      ],
+      "id": "b645fef4-50f0-4bc4-aa04-f6f08b2ab860",
+      "name": "Dedup New Companies"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().map(i => i.json).filter(j => j && !j.error);\nconst byCompany = {};\n\nfor (const j of items) {\n  // Use companyKey or normalized companyName so different cities merge together\n  const k = j.companyKey || j.companyName?.toLowerCase().trim();\n  if (!k) continue;\n  (byCompany[k] = byCompany[k] || []).push(j);\n}\n\nconst out = [];\nfor (const k of Object.keys(byCompany)) {\n  const roles = byCompany[k];\n  const yes = roles.filter(r => r.verdict === true || r.verdict === 'true');\n  if (yes.length === 0) continue;\n\n  // Pick the newest job posting for this company\n  yes.sort((a, b) => {\n    const ta = Number(a.postedAtTimestamp) || Date.parse(a.postedAt || '') || 0;\n    const tb = Number(b.postedAtTimestamp) || Date.parse(b.postedAt || '') || 0;\n    return tb - ta;\n  });\n\n  out.push({ json: yes[0] });\n}\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8480,
+        1168
+      ],
+      "id": "6dfbca48-4e82-4a89-8b3f-e2abbcfa1283",
+      "name": "Consolidate Companies"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().map(i => i.json);\nconst byKey = {};\n\nfor (const j of items) {\n  const k = j.dedupKey || j.companyName;\n  if (!k) continue;\n  (byKey[k] = byKey[k] || []).push(j);\n}\n\nconst out = [];\nconst nowIso = new Date().toISOString().replace('T', ' ').slice(0, 19);\n\nfor (const k of Object.keys(byKey)) {\n  const roles = byKey[k];\n  const anyYes = roles.some(r => r.verdict === true || r.verdict === 'true');\n  \n  // If at least one job was accepted for this company, do not mark company as rejected\n  if (anyYes) continue;\n\n  const r = roles[0];\n  out.push({\n    json: {\n      ...r,\n      dedupKey: k,\n      companyName: r.companyName || null,\n      country: r.country || null,\n      reason: r.rejectionReason || 'ai_rejected',\n      rejectedAt: nowIso\n    }\n  });\n}\n\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8448,
+        1456
+      ],
+      "id": "dc11c30d-5c00-4d72-b11b-6570edbf45aa",
+      "name": "Collect Rejected"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1344706833#gid=1344706833",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 778095495,
+          "mode": "list",
+          "cachedResultName": "Rejected",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=778095495"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reason",
+              "displayName": "reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "rejectedAt",
+              "displayName": "rejectedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        8672,
+        1456
+      ],
+      "id": "88be0d06-b425-4d6b-9456-dc32323e3358",
+      "name": "Append Rejected",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows=[];\nconst runId = $execution.id;\nconst nowIso = DateTime.now().setZone('America/New_York').toFormat('yyyy-MM-dd HH:mm:ss');\nconst _sd=$getWorkflowStaticData('global');\nif(_sd.runStats && !_sd.runStats.ruleReasons) _sd.runStats.ruleReasons={};\n\n// These lists must stay identical to the ones in the \"Job OK?\" IF node.\n// When they drift, a job dies at the IF but is logged here as 'unknown'.\nconst RECRUITER_NAME = ['recruiting','recruitment','recruiter','staffing',\n  'executive search','search group','search partners','search firm',\n  'search associates','search consultants',\n  'talent group','talent solutions','talent partners',\n  'headhunting','headhunter','placement','placements',\n  'workforce solutions','human capital',\n  'biospace','ladders','jobgether'];\nconst RECRUITER_IND = ['recruiting','recruitment','staffing'];\nconst BAD_TITLE = ['interim','freelance','contractor','pharmacovigilance','drug safety','medical writer'];\nconst OUTSOURCER = ['cdmo','contract development and manufacturing','we serve','our clients','outsourcing partner'];\n\nfor (const it of $input.all()) {\n  const j = it.json || {};\n  if (j._skip || j.companyName === '__skip__') continue;\n  const reasons = [];\n\n  const web = (j.companyWebsite || '').toString();\n  if (!web) reasons.push('no_website');\n  if (web.includes('careers.linkedin.com')) reasons.push('careers_linkedin');\n  if (!j.postedAt) reasons.push('no_postedAt');\n\n  const name = (j.companyName || '').toString().toLowerCase();\n  if (RECRUITER_NAME.some(kw => name.includes(kw))) reasons.push('recruiter_name');\n\n  const ind = (j.industries ?? '').toString().toLowerCase();\n  if (RECRUITER_IND.some(kw => ind.includes(kw))) reasons.push('recruiter_industry');\n\n  const title = (j.title ?? '').toString().toLowerCase();\n  if (BAD_TITLE.some(kw => title.includes(kw))) reasons.push('excluded_title');\n\n  const country = (j.companyAddress && j.companyAddress.addressCountry) || '';\n  if (country !== 'US') reasons.push(country ? 'country_not_US' : 'country_missing');\n\n  const slogan = (j.companySlogan ?? '').toString().toLowerCase();\n  if (OUTSOURCER.some(kw => slogan.includes(kw))) reasons.push('outsourcer_slogan');\n\n  const emp = Number(j.companyEmployeesCount ?? 0);\n  if (isNaN(emp)) reasons.push('headcount_not_numeric');\n  else if (emp > 1500) reasons.push('too_big_gte_1500');\n\n  if(_sd.runStats){ const primary=reasons[0]||'unknown'; _sd.runStats.ruleReasons[primary]=(_sd.runStats.ruleReasons[primary]||0)+1; }\n  rows.push({ json: {\n    timestamp: nowIso,\n    runId: runId,\n    dedupKey: j.dedupKey || '',\n    companyName: j.companyName || '',\n    country: j.country || '',\n    companyWebsite: web,\n    companyEmployeesCount: (j.companyEmployeesCount === undefined ? '' : j.companyEmployeesCount),\n    reason: reasons.join(',') || 'unknown'\n  }});\n}\nif(_sd.runStats) _sd.runStats.ruleFiltered += rows.length;\nreturn rows;\n"
+      },
+      "id": "2cccc57b-32bc-4c26-8be2-5eeb9522f397",
+      "name": "Tag Filter Reason",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7760,
+        1472
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "=https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1344706833#gid=1344706833",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1267309556,
+          "mode": "list",
+          "cachedResultName": "Filtered (pre-AI)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1267309556"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "timestamp",
+              "displayName": "timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "runId",
+              "displayName": "runId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyEmployeesCount",
+              "displayName": "companyEmployeesCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "reason",
+              "displayName": "reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "8f56b2f0-6919-4c6f-ada8-ae4605366d3a",
+      "name": "Append Filtered",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        8048,
+        1472
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const sd=$getWorkflowStaticData('global');\nsd.runStats={scraped:0,duplicates:0,ruleFiltered:0,aiPassed:0,aiRejected:0,amfSent:0,aiParseErrors:0,ruleReasons:{}};\nsd.seenKeys={};\nsd.runStartedAt=DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss');\nreturn $input.all();"
+      },
+      "id": "007bf7f1-1370-4441-acfa-10c0352c937d",
+      "name": "Init Run Stats",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5632,
+        1792
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const sd=$getWorkflowStaticData('global');\nif(!sd.runStats) return [];\nconst s=sd.runStats;\nconst row={ runId:$execution.id, startedAt:sd.runStartedAt||'', finishedAt:DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss'),\n  workflow:'WF1 SISS', scraped:s.scraped, ruleFiltered:s.ruleFiltered, duplicates:s.duplicates,\n  aiRejected:s.aiRejected, aiPassed:s.aiPassed, amfSent:s.amfSent,\n  callbacks:'', valid:'', invalid:'', found:'', sentSmartlead:'', notFound:'', pendingChecked:'', retried:'', expired:'' };\nrow._aiParseErrors = s.aiParseErrors||0;\nrow._toAI = (s.scraped||0)-(s.duplicates||0)-(s.ruleFiltered||0);   // job posts that reached the AI\nrow._companies = (s.aiPassed||0)+(s.aiRejected||0);                  // unique companies after dedup collapse\n// human-readable rule-filter breakdown (primary reason per job post -> sums to ruleFiltered)\nconst rr=s.ruleReasons||{};\nconst lbl={no_website:'no_website',careers_linkedin:'careers_linkedin',no_postedAt:'no_date',too_big_gte_2000:'too_big≥2000',recruiter_name:'recruiter',recruiter_industry:'recruiter',unknown:'other'};\nconst agg={}; for(const k of Object.keys(rr)){ const L=lbl[k]||k; agg[L]=(agg[L]||0)+rr[k]; }\nrow._ruleBreakdown = Object.keys(agg).sort((a,b)=>agg[b]-agg[a]).map(k=>k+' '+agg[k]).join(' · ') || '—';\ndelete sd.runStats; delete sd.runStartedAt;\nreturn [{json:row}];"
+      },
+      "id": "e54b8338-ce95-4f5c-ac50-fc77546a900d",
+      "name": "Build Run Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5648,
+        528
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 845242455,
+          "mode": "list",
+          "cachedResultName": "Run Summary",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=845242455"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "runId",
+              "displayName": "runId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "startedAt",
+              "displayName": "startedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "finishedAt",
+              "displayName": "finishedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "workflow",
+              "displayName": "workflow",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "scraped",
+              "displayName": "scraped",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ruleFiltered",
+              "displayName": "ruleFiltered",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "duplicates",
+              "displayName": "duplicates",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "aiRejected",
+              "displayName": "aiRejected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "aiPassed",
+              "displayName": "aiPassed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "amfSent",
+              "displayName": "amfSent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "callbacks",
+              "displayName": "callbacks",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "valid",
+              "displayName": "valid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "invalid",
+              "displayName": "invalid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "found",
+              "displayName": "found",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "sentSmartlead",
+              "displayName": "sentSmartlead",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notFound",
+              "displayName": "notFound",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pendingChecked",
+              "displayName": "pendingChecked",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "retried",
+              "displayName": "retried",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "expired",
+              "displayName": "expired",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "ded737b0-aab7-4233-83c3-d50cd4cdc3cf",
+      "name": "Append Run Summary",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        5872,
+        624
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1224996891968929873",
+          "mode": "list",
+          "cachedResultName": "10Folders",
+          "cachedResultUrl": "https://discord.com/channels/1224996891968929873"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1516801014227927101",
+          "mode": "list",
+          "cachedResultName": "observability",
+          "cachedResultUrl": "https://discord.com/channels/1224996891968929873/1516801014227927101"
+        },
+        "content": "=📊 **SISS run** `{{ $json.runId }}`\n**Job posts:** {{ $json.scraped }} scraped → −{{ $json.duplicates }} already seen → −{{ $json.ruleFiltered }} rule-filtered → **{{ $json._toAI }} sent to AI**\n  ↳ filtered by: {{ $json._ruleBreakdown }}\n**Companies** (those {{ $json._toAI }} job posts dedupe to unique companies): **{{ $json._companies }}** → ✓{{ $json.aiPassed }} kept · ✗{{ $json.aiRejected }} rejected\n→ **{{ $json.amfSent }}** sent to Anymailfinder · AI-parse errors {{ $json._aiParseErrors }}\nFinished {{ $json.finishedAt }}{{ ($json._aiParseErrors>0) ? ('\\n⚠ '+$json._aiParseErrors+' AI JSON parse failures (jobs dropped — check Filter Job output)') : '' }}",
+        "options": {}
+      },
+      "id": "665c28c8-92e8-4ee1-b94c-be7eff25405c",
+      "name": "Discord: run digest",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        5872,
+        432
+      ],
+      "webhookId": "c9810029-f4ad-4854-9bf3-12f85cfa836f",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=255725424#gid=255725424",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 255725424,
+          "mode": "list",
+          "cachedResultName": "Suppression Contacts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=255725424"
+        },
+        "options": {}
+      },
+      "id": "085642a5-a0a3-409f-8263-f39acad29883",
+      "name": "Get Suppression rows",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        4016,
+        1792
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function cleanString(value) {\n  if (value === undefined || value === null) return '';\n\n  let text = String(value);\n\n  // Remove broken UTF-16 surrogate characters\n  text = text.replace(/[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])/g, '');\n  text = text.replace(/(?<![\\uD800-\\uDBFF])[\\uDC00-\\uDFFF]/g, '');\n\n  // Force safe UTF-8 roundtrip\n  text = Buffer.from(text, 'utf8').toString('utf8');\n\n  return text;\n}\n\nfunction cleanValue(value) {\n  if (Array.isArray(value)) return value.map(cleanValue);\n\n  if (value && typeof value === 'object') {\n    return Object.fromEntries(\n      Object.entries(value).map(([key, val]) => [key, cleanValue(val)])\n    );\n  }\n\n  return cleanString(value);\n}\n\nreturn $input.all().map(item => {\n  const j = cleanValue(item.json);\n\n  const aiPromptText = cleanString(`\njobKey: ${j.link}\njobLink: ${j.link}\njobTitle: ${j.title}\nstandardizedTitle: ${j.standardizedTitle || ''}\ncompanyName: ${j.companyName}\ncompanyWebsite: ${j.companyWebsite}\ncompanyLinkedinUrl: ${j.companyLinkedinUrl}\ncompanyEmployeesCount: ${j.companyEmployeesCount}\ncompanySlogan: ${j.companySlogan || ''}\ncompanyIndustries: ${JSON.stringify(j.industries || [])}\ncompanyDescription: ${(j.companyDescription || '').substring(0, 1000)}\n\nlocation: ${j.location}\ncountry: ${j.country || ''}\nseniorityLevel: ${j.seniorityLevel}\nemploymentType: ${j.employmentType}\njobFunction: ${j.jobFunction}\nworkplaceTypes: ${JSON.stringify(j.workplaceTypes || [])}\n\njobDescription: ${(j.descriptionText || '').substring(0, 3000)}\n`);\n\n  return {\n    json: {\n      ...j,\n      aiPromptText,\n    },\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        7648,
+        1264
+      ],
+      "id": "4f57bfc8-6639-4fb0-85e4-08028e1610aa",
+      "name": "Sanitize AI Input"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a1b2c3d4-0000-4000-8000-000000000001",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        6720,
+        1456
+      ],
+      "id": "1a524f7a-e7c9-4902-8f13-d8fa48611830",
+      "name": "Has Jobs?"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1,
+                5,
+                3,
+                0
+              ],
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        3152,
+        2736
+      ],
+      "id": "160fb093-5773-49f4-9e78-76faa9e52524",
+      "name": "Schedule Funding",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "t5DsGiHzsBLhodmC6",
+          "mode": "id"
+        },
+        "customBody": "={\n    \"categories\": \"Technology, Information and Media\",\n    \"countries\": \"DE,AT,CH,GB,IE,FR,ES,NL,SE,DK,FI\",\n    \"date_preset\": \"last_7d\",\n    \"employee_count_max\": 1000,\n    \"limit\": 10,\n    \"round\": \"Pre-Seed,Seed,Series A,Series B\",\n    \"sort_by\": \"occurred_at\",\n    \"sort_order\": \"desc\"\n}"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        3360,
+        2736
+      ],
+      "id": "576198a5-f55b-4f08-92e9-aded4f4481ae",
+      "name": "Actor Funding",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "apifyApi": {
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}",
+        "offset": {},
+        "limit": {},
+        "options": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        3616,
+        2736
+      ],
+      "id": "81c6a3f4-a748-4d99-859b-935f32b74527",
+      "name": "Dataset Funding",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "apifyApi": {
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"signal_type\": \"funding\",\n}",
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4704,
+        2720
+      ],
+      "id": "526e0cfe-6183-4cf0-9fa5-f2347772f043",
+      "name": "Tag Funding"
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const j = item.json;\n  const st = j.signal_type || '';\n\n  // --- Company fields ---\n  let companyName = j.companyName || '';\n  let companyWebsite = j.companyWebsite || '';\n  let companyLinkedinUrl = j.companyLinkedin || j.companyLinkedinUrl || '';\n  const companyEmployeesCount = j.companyEmployeeCount || 0;\n  const companyDescription = j.companyDescription || j.descriptionText || '';\n  const country = j.companyCountry || j.country || '';\n  const location = j.location || j.companyCountry || '';\n\n  // --- Signal-specific mapping ---\n  let acquiringCompanyName = '';\n  let jobOpeningTitle = '';\n  let link = '';\n  let postedAt = '';\n  let personFullName = '';\n  let personJobTitle = '';\n  let personLinkedinUrl = '';\n\n  if (st === 'funding') {\n    // signalId, roundType, amount, currency, announcedDate, sources\n    jobOpeningTitle = (j.roundType || 'funding')\n      + (j.amount ? ' - $' + (j.amount / 1000000).toFixed(1) + 'M' : '');\n    postedAt = j.occurredAt || j.announcedDate || '';\n    link = (j.sources && j.sources[0]) ? j.sources[0].url : '';\n\n  } else if (st === 'job_change') {\n    // personName, personLinkedinUrl, newRole, postContent, companyLinkedinUrl, sources\n    personFullName = j.personName || '';\n    personJobTitle = j.newRole || '';\n    personLinkedinUrl = j.personLinkedinUrl || '';\n    jobOpeningTitle = j.newRole || '';\n    postedAt = j.occurredAt || j.discoveredAt || '';\n    link = (j.sources && j.sources[0]) ? j.sources[0].url : (j.personLinkedinUrl || '');\n\n  } else if (st === 'hiring') {\n    // id, jobId, jobUrl, title, location, datePosted, seniorityLevel,\n    // jobFunction, industries, numApplicants, descriptionText\n    jobOpeningTitle = j.title || '';\n    postedAt = j.datePosted || j.createdAt || '';\n    link = j.jobUrl || '';\n\n  } else if (st === 'acquisition') {\n    // acquiringCompanyId, acquiringCompanyName, acquiringCompanySlug,\n    // amount, currency, percentage, announcedDate, sources\n    acquiringCompanyName = j.acquiringCompanyName || '';\n    if (acquiringCompanyName) {\n      const acquiredName = companyName;\n      companyName = acquiringCompanyName;\n      acquiringCompanyName = acquiredName;\n    }\n    jobOpeningTitle = 'Acquisition'\n      + (j.amount ? ' - $' + (j.amount / 1000000).toFixed(1) + 'M' : '');\n    postedAt = j.occurredAt || j.announcedDate || '';\n    link = (j.sources && j.sources[0]) ? j.sources[0].url : '';\n  }\n\n  // Build unique id\n  const id = j.signalId || j.id || ($execution.id + '-' + out.length);\n\n  // Ensure LinkedIn URL is full\n  let liUrl = companyLinkedinUrl;\n  if (liUrl && !liUrl.startsWith('http')) {\n    liUrl = 'https://' + liUrl;\n  }\n\n  out.push({json: {\n    signal_type: st,\n    id: id,\n    companyName: companyName,\n    companyWebsite: companyWebsite,\n    companyLinkedinUrl: liUrl,\n    companyEmployeesCount: Number(companyEmployeesCount) || 0,\n    companyDescription: companyDescription,\n    location: location,\n    country: country,\n    jobOpeningTitle: jobOpeningTitle,\n    acquiringCompanyName: acquiringCompanyName,\n    link: link,\n    postedAt: postedAt,\n    personFullName: personFullName,\n    personJobTitle: personJobTitle,\n    personLinkedinUrl: personLinkedinUrl,\n    title: jobOpeningTitle,\n  }});\n}\nreturn out;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5008,
+        3392
+      ],
+      "id": "91b40523-150c-4f9e-8b4e-09873dacca3f",
+      "name": "Normalize Fields"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "documentId": {
+          "__rl": true,
+          "value": "1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc",
+          "mode": "list",
+          "cachedResultName": "Search Intent Scraping System",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 873402362,
+          "mode": "list",
+          "cachedResultName": "Signals",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=873402362"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        5264,
+        3392
+      ],
+      "id": "cbde911e-34d4-43f3-9d48-5bf1738ca865",
+      "name": "Get Signals",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "retryOnFail": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.signal_type }}",
+                    "rightValue": "acquisition",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3db9420e-90c3-4ff4-9d24-595104eb95f9"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "acquisition"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "321b2833-ccda-4221-9a9f-fc3f5f2e2a0f",
+                    "leftValue": "={{ $json.signal_type }}",
+                    "rightValue": "job_change",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "job_change"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8157ba9c-ea79-4c1a-884c-709328918407",
+                    "leftValue": "={{ $json.signal_type }}",
+                    "rightValue": "funding",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "funding"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "6651a693-f763-470c-ba68-579c60fa0168",
+                    "leftValue": "={{ $json.signal_type }}",
+                    "rightValue": "hiring",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "hiring"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        9296,
+        4192
+      ],
+      "id": "ea53351e-ad51-4562-b193-3e1047b27a4a",
+      "name": "Signal Router"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 873402362,
+          "mode": "list",
+          "cachedResultName": "Signals",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=873402362"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "signal_type",
+              "displayName": "signal_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "signalDate",
+              "displayName": "signalDate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyLinkedinUrl",
+              "displayName": "companyLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyEmployeesCount",
+              "displayName": "companyEmployeesCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyDescription",
+              "displayName": "companyDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "jobOpeningTitle",
+              "displayName": "jobOpeningTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "acquiringCompanyName",
+              "displayName": "acquiringCompanyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "postedAt",
+              "displayName": "postedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "icebreaker",
+              "displayName": "icebreaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "personFullName",
+              "displayName": "personFullName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "personJobTitle",
+              "displayName": "personJobTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "personLinkedinUrl",
+              "displayName": "personLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "companyKey",
+              "displayName": "companyKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "zerobounceStatus",
+              "displayName": "zerobounceStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "emailStatus",
+              "displayName": "emailStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dmCategory",
+              "displayName": "dmCategory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "addedToCampaign",
+              "displayName": "addedToCampaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lastAttemptAt",
+              "displayName": "lastAttemptAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "leadStage",
+              "displayName": "leadStage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "leadNotes",
+              "displayName": "leadNotes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        7184,
+        3408
+      ],
+      "id": "2804e8f7-8cb5-4ce7-917c-324655d6cc1c",
+      "name": "Append to Signals1",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Company Name: {{ $json.companyName }}\nIndustry: {{ $json.companyIndustry }}\nDescription: {{ $json.companyDescription }}\n\nCompany Categories : {{ $json.companyCategories }}\n\nNews Headline: {{ $json.sources && $json.sources[0] ? $json.sources[0].title : \"N/A\" }}",
+        "options": {
+          "systemMessage": "=You are a lead qualification assistant for a technical recruitment agency (10Folders). \nYour ONLY job is to determine if a company builds and sells software or digital technology products (meaning they hire software engineers).\n\nEVALUATION PRINCIPLE:\nAsk yourself: \"What is this company selling?\"\n\n- QUALIFIED (is_engineering_icp = true):\n  They build and sell software, SaaS, AI platforms, APIs, mobile apps, dev tools, or digital technology products. \n\n\n- UNQUALIFIED (is_engineering_icp = false):\n  They provide human services, physical goods, medical/clinical care, staffing/recruiting, or physical transport. \n\nOutput MUST be strict JSON:\n{\n  \"is_engineering_icp\": true or false,\n  \"icp_reason\": \"Brief 1-sentence explanation\"\n}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        3984,
+        2736
+      ],
+      "id": "3e865afe-9f1c-4ad6-a8ae-b13a4c3c0f60",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        3952,
+        2928
+      ],
+      "id": "12d59f0a-7795-4dab-82dc-673781df0c02",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "hd50HVuRCMdy8YcF",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5785bd6e-b0be-401c-a404-5b2da8963550",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4256,
+        2736
+      ],
+      "id": "24c2e1d9-9b14-48a9-8d62-50b6e98a97d9",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop through all items processed by the OpenAI node\nreturn $input.all().map((item, index) => {\n  \n  // 1. Get the original full SignalBase item from your Dataset/Apify node\n  // CHANGE \"Dataset Funding\" to match your exact Apify/Dataset node name in n8n!\n  const originalSignal = $items(\"Dataset Funding\")[index].json;\n\n  // 2. Extract AI classification output\n  let aiOutput = item.json;\n\n  // If OpenAI returned stringified markdown like ```json ... ```, clean and parse it\n  if (typeof aiOutput === 'string') {\n    try {\n      const cleanJson = aiOutput.replace(/```json/g, '').replace(/```/g, '').trim();\n      aiOutput = JSON.parse(cleanJson);\n    } catch (e) {\n      aiOutput = { is_engineering_icp: false, icp_reason: \"Error parsing AI output\" };\n    }\n  } else if (aiOutput.output && typeof aiOutput.output === 'string') {\n    try {\n      const cleanJson = aiOutput.output.replace(/```json/g, '').replace(/```/g, '').trim();\n      aiOutput = JSON.parse(cleanJson);\n    } catch (e) {\n      aiOutput = { is_engineering_icp: false, icp_reason: \"Error parsing AI output\" };\n    }\n  }\n\n  // 3. Return the full original item merged with the AI ICP fields\n  return {\n    json: {\n      ...originalSignal,\n      is_engineering_icp: aiOutput.is_engineering_icp ?? false,\n      icp_reason: aiOutput.icp_reason ?? \"\"\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4496,
+        2720
+      ],
+      "id": "4c29ac05-504e-44af-be5e-d6df9a00f772",
+      "name": "ICP PASS"
+    },
+    {
+      "parameters": {
+        "jsCode": "function normComp(s) {\n  if (!s) return '';\n  let x = String(s).toLowerCase().trim().replace(/\\s+/g, ' ');\n  x = x.replace(/[.,/\\\\&'\"`\\-()]/g, ' ');\n  x = x.replace(/\\b(inc|incorporated|corp|corporation|llc|llp|ltd|limited|co|company|holdings|holding|group|the|gmbh|mbh|ug|ag|kg|ohg|se|ev|plc|bv|nv|sarl|sas|sa|srl|spa|oy|ab|as|aps|pte)\\b/g, ' ');\n  return x.replace(/\\s+/g, ' ').trim();\n}\n\nfunction normDom(d) {\n  if (!d) return '';\n  let str = String(d).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return str.split('/')[0].split('?')[0].trim();\n}\n\nfunction normLinkedin(url) {\n  if (!url) return '';\n  let str = String(url).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return '';\n}\n\nreturn $input.all().map(item => {\n  const j = item.json || {};\n  const rawCompany = j.companyName || j.company || j.Company || j.company_name || j['Company Name'] || j.name || '';\n  const rawCountry = j.country || j.location || j.Country || j.Location || '';\n  const rawWebsite = j.companyWebsite || j.website || j.domain || j['Company Domain'] || j.company_domain || j.url || '';\n  const rawLinkedin = j.companyLinkedinUrl || j.company_linkedin || j.linkedin || j['LinkedIn URL'] || j.linkedinUrl || '';\n\n  const company = normComp(rawCompany);\n  const country = rawCountry.toString().toLowerCase().trim();\n  const domain = normDom(rawWebsite);\n  const compLinkedin = normLinkedin(rawLinkedin);\n\n  const dedupKey = company ? `${company}|${country || 'us'}` : '';\n  const companyKey = company;\n\n  return {\n    json: {\n      ...j,\n      companyName: j.companyName || rawCompany,\n      country: j.country || rawCountry,\n      companyWebsite: j.companyWebsite || rawWebsite,\n      companyLinkedinUrl: j.companyLinkedinUrl || rawLinkedin,\n      _normCompany: company,\n      _normDomain: domain,\n      _normLinkedin: compLinkedin,\n      dedupKey: j.dedupKey || dedupKey,\n      companyKey: j.companyKey || companyKey\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6256,
+        3392
+      ],
+      "id": "9714b793-7636-4224-a3c8-67ca60b8d477",
+      "name": "Add Keys1"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 553284451,
+          "mode": "list",
+          "cachedResultName": "Rejected",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=553284451"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        5568,
+        3392
+      ],
+      "id": "e25f4917-9f33-47c5-9304-843a671bc2c0",
+      "name": "Get Rejected rows1",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const safeAll = (nodeName) => {\n  try {\n    return $(nodeName).all();\n  } catch (e) {\n    return [];\n  }\n};\n\nfunction normComp(s) {\n  if (!s) return '';\n  let x = String(s).toLowerCase().trim().replace(/\\s+/g, ' ');\n  x = x.replace(/[.,/\\\\&'\"`\\-()]/g, ' ');\n  x = x.replace(/\\b(inc|incorporated|corp|corporation|llc|llp|ltd|limited|co|company|holdings|holding|group|the|gmbh|mbh|ug|ag|kg|ohg|se|ev|plc|bv|nv|sarl|sas|sa|srl|spa|oy|ab|as|aps|pte)\\b/g, ' ');\n  return x.replace(/\\s+/g, ' ').trim();\n}\n\nfunction normDom(d) {\n  if (!d) return '';\n  let str = String(d).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return str.split('/')[0].split('?')[0].trim();\n}\n\nfunction normLinkedin(url) {\n  if (!url) return '';\n  let str = String(url).toLowerCase().trim().replace(/^https?:\\/\\//, '').replace(/^www\\./, '');\n  if (str.includes('linkedin.com/company/')) {\n    const match = str.match(/linkedin\\.com\\/company\\/([^/?#]+)/);\n    return match ? `linkedin.com/company/${match[1]}` : '';\n  }\n  return '';\n}\n\nconst scraped = $('Add Keys1').all();\nconst jobsRows = safeAll('Get Signals');\nconst rejRows = safeAll('Get Rejected rows');\nconst supRows = safeAll('Get Suppression rows');\n\nconst TTL = 90 * 24 * 60 * 60 * 1000;\nconst now = Date.now();\n\n// 1. Existing Accepted Jobs / Signals\nconst existingDedupKeys = new Set();\nconst existingCompanies = new Set();\nconst existingDomains = new Set();\nconst existingLinkedin = new Set();\n\nfor (const r of jobsRows) {\n  const j = r.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  if (dk) existingDedupKeys.add(dk);\n\n  const rawComp = j.companyName || j.company || j.Company || j['Company Name'] || '';\n  const c = normComp(rawComp);\n  if (c) existingCompanies.add(c);\n\n  const dom = normDom(j.companyWebsite || j.domain || j['Company Domain'] || j.website || '');\n  if (dom && dom !== 'linkedin.com') existingDomains.add(dom);\n\n  const lk = normLinkedin(j.companyLinkedinUrl || j.linkedin || j['LinkedIn URL'] || '');\n  if (lk) existingLinkedin.add(lk);\n}\n\n// 2. Rejected Companies (within 90-day TTL)\nconst rejectedDedupKeys = new Set();\nconst rejectedCompanies = new Set();\n\nfor (const r of rejRows) {\n  const j = r.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const rawComp = j.companyName || j.company || j.Company || '';\n  const c = normComp(rawComp);\n  \n  if (!dk && !c) continue;\n\n  const ts = Date.parse(j.rejectedAt || '');\n  if (isNaN(ts) || (now - ts) < TTL) {\n    if (dk) rejectedDedupKeys.add(dk);\n    if (c) rejectedCompanies.add(c);\n  }\n}\n\n// 3. Suppression Contacts (Scott's Client / Relationship List)\nconst supCompanies = new Set();\nconst supDomains = new Set();\nconst supLinkedin = new Set();\n\nfor (const r of supRows) {\n  const j = r.json || {};\n  const dncRaw = String(j.doNotContact == null ? '' : j.doNotContact).trim().toLowerCase();\n  const hasDncFlag = dncRaw === 'true' || dncRaw === 'yes' || dncRaw === '1';\n  let hold = false;\n  if (j.contactAfterDate) {\n    const t = Date.parse(j.contactAfterDate);\n    if (!isNaN(t) && t > now) hold = true;\n  }\n  \n  const isSuppressed = (j.doNotContact === undefined && j.contactAfterDate === undefined) || hasDncFlag || hold;\n  \n  if (isSuppressed) {\n    const rawComp = j.Company || j.company || j.companyName || j['Company Name'] || '';\n    const c = normComp(rawComp);\n    if (c) supCompanies.add(c);\n\n    const rawDom = j['Company Domain'] || j.domain || j.companyWebsite || j.website || '';\n    const dom = normDom(rawDom);\n    if (dom && dom !== 'linkedin.com') supDomains.add(dom);\n\n    const rawLk = j['LinkedIn URL'] || j.linkedin || j.companyLinkedinUrl || '';\n    const lk = normLinkedin(rawLk);\n    if (lk) supLinkedin.add(lk);\n  }\n}\n\n// 4. Static Data for In-Run Loop Dedup\nconst _sd = $getWorkflowStaticData('global');\n_sd.runStats = _sd.runStats || {\n  scraped: 0,\n  duplicates: 0,\n  ruleFiltered: 0,\n  aiPassed: 0,\n  aiRejected: 0,\n  amfSent: 0,\n  aiParseErrors: 0,\n  ruleReasons: {}\n};\n_sd.seenKeys = _sd.seenKeys || {};\n_sd.seenCompanies = _sd.seenCompanies || {};\n_sd.seenDomains = _sd.seenDomains || {};\n_sd.seenLinkedin = _sd.seenLinkedin || {};\n\n// 5. Filter Scraped Items\nconst kept = scraped.filter(it => {\n  const j = it.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const c = j._normCompany || normComp(j.companyName || j.company || j.Company || '');\n  const dom = j._normDomain || normDom(j.companyWebsite || j.domain || j.website || '');\n  const lk = j._normLinkedin || normLinkedin(j.companyLinkedinUrl || j.linkedin || '');\n\n  if (!c && !dom && !dk) return false;\n\n  if (dk && existingDedupKeys.has(dk)) return false;\n  if (dk && rejectedDedupKeys.has(dk)) return false;\n\n  if (c && existingCompanies.has(c)) return false;\n  if (c && rejectedCompanies.has(c)) return false;\n  if (c && supCompanies.has(c)) return false;\n\n  if (dom && dom !== 'linkedin.com') {\n    if (existingDomains.has(dom)) return false;\n    if (supDomains.has(dom)) return false;\n  }\n\n  if (lk) {\n    if (existingLinkedin.has(lk)) return false;\n    if (supLinkedin.has(lk)) return false;\n  }\n\n  return true;\n});\n\n// 6. In-Run Loop Deduplication\nconst fresh = kept.filter(it => {\n  const j = it.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const c = j._normCompany || normComp(j.companyName || j.company || j.Company || '');\n  const dom = j._normDomain || normDom(j.companyWebsite || j.domain || j.website || '');\n  const lk = j._normLinkedin || normLinkedin(j.companyLinkedinUrl || j.linkedin || '');\n\n  if (dk && _sd.seenKeys[dk]) return false;\n  if (c && _sd.seenCompanies[c]) return false;\n  if (dom && dom !== 'linkedin.com' && _sd.seenDomains[dom]) return false;\n  if (lk && _sd.seenLinkedin[lk]) return false;\n\n  return true;\n});\n\nfor (const it of fresh) {\n  const j = it.json || {};\n  const dk = (j.dedupKey || '').toString().trim();\n  const c = j._normCompany || normComp(j.companyName || j.company || j.Company || '');\n  const dom = j._normDomain || normDom(j.companyWebsite || j.domain || j.website || '');\n  const lk = j._normLinkedin || normLinkedin(j.companyLinkedinUrl || j.linkedin || '');\n\n  if (dk) _sd.seenKeys[dk] = true;\n  if (c) _sd.seenCompanies[c] = true;\n  if (dom && dom !== 'linkedin.com') _sd.seenDomains[dom] = true;\n  if (lk) _sd.seenLinkedin[lk] = true;\n}\n\n_sd.runStats.scraped += scraped.length;\n_sd.runStats.duplicates += Math.max(0, scraped.length - fresh.length);\n\nif (fresh.length === 0) {\n  return [{ json: { _skip: true, companyName: '__skip__' } }];\n}\n\nreturn fresh;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6448,
+        3392
+      ],
+      "id": "defb28b7-7ed4-4500-8210-df9cf2ccf6dd",
+      "name": "Dedup New Companies1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const sd=$getWorkflowStaticData('global');\nsd.runStats={scraped:0,duplicates:0,ruleFiltered:0,aiPassed:0,aiRejected:0,amfSent:0,aiParseErrors:0,ruleReasons:{}};\nsd.seenKeys={};\nsd.runStartedAt=DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss');\nreturn $('Normalize Fields').all();"
+      },
+      "id": "90414370-bd85-4eb8-993c-87af3db0d365",
+      "name": "Init Run Stats1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6064,
+        3392
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 301301496,
+          "mode": "list",
+          "cachedResultName": "Suppression",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YhkScylewaPSD8zBbqmNT9eUU8quYxmduVLzjm5-Rhc/edit#gid=301301496"
+        },
+        "options": {}
+      },
+      "id": "60071d90-5a44-49dc-ade8-b57f54328166",
+      "name": "Get Suppression rows1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        5904,
+        3392
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5424,
+        3392
+      ],
+      "id": "8cfd4559-eae4-4484-9d9e-6069f18ece8e",
+      "name": "Wait2",
+      "webhookId": "8eb7bb42-a4d2-4161-ace9-1b4c8a534c02",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5744,
+        3392
+      ],
+      "id": "cbdb9a7e-15b5-436f-9040-919f8f7b9655",
+      "name": "Wait3",
+      "webhookId": "8eb7bb42-a4d2-4161-ace9-1b4c8a534c02",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"id\": \"{{ $json.id }}\",\n  \"signal_type\": \"{{ $json.signal_type }}\",\n  \"signalDate\": \"{{ $json.postedAt }}\",\n  \"companyName\": \"{{ $json.companyName }}\",\n  \"companyWebsite\": \"{{ $json.companyWebsite }}\",\n  \"companyLinkedinUrl\": \"{{ $json.companyLinkedinUrl }}\",\n  \"companyEmployeesCount\": \"{{ $json.companyEmployeesCount }}\",\n  \"companyDescription\": \"{{ $json.companyDescription }}\",\n  \"location\": \"{{ $json.location }}\",\n  \"country\": \"{{ $json.country }}\",\n  \"jobOpeningTitle\": \"{{ $json.jobOpeningTitle }}\",\n  \"acquiringCompanyName\": \"{{ $json.acquiringCompanyName }}\",\n  \"link\": \"{{ $json.link }}\",\n  \"postedAt\": \"{{ $json.postedAt }}\",\n  \"email\": \"\",\n  \"icebreaker\": \"\",\n  \"personFullName\": \"{{ $json.personFullName }}\",\n  \"personJobTitle\": \"{{ $json.personJobTitle }}\",\n  \"personLinkedinUrl\": \"{{ $json.personLinkedinUrl }}\",\n  \"dedupKey\": \"{{ $json.dedupKey }}\",\n  \"companyKey\": \"{{ $json.companyKey }}\",\n  \"zerobounceStatus\": \"\",\n  \"emailStatus\": \"pending\",\n  \"dmCategory\": \"{{ $json.companyEmployeesCount < 30 ? 'ceo' : ($json.companyEmployeesCount < 200 ? 'engineering' : 'eng+hr') }}\",\n  \"addedToCampaign\": \"false\",\n  \"attempts\": 1,\n  \"lastAttemptAt\": \"{{ $now.setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss') }}\",\n  \"createdAt\": \"{{ $now.setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss') }}\",\n  \"leadStage\": \"new\",\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6928,
+        3408
+      ],
+      "id": "beddb4d7-1e07-4170-9c6c-1d31d63c20f7",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4848,
+        1792
+      ],
+      "id": "6ae4a805-70d2-4e6a-ad3e-fb01e53b29d8",
+      "name": "Wait",
+      "webhookId": "9fe7f4f3-36cc-4115-803f-f2603a300b4b"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1344706833#gid=1344706833",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1344706833,
+          "mode": "list",
+          "cachedResultName": "JOB's",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1344706833"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3552,
+        1792
+      ],
+      "id": "9286583d-33f1-4ed3-99b6-3372e273bef3",
+      "name": "Get Jobs rows",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1344706833#gid=1344706833",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 778095495,
+          "mode": "list",
+          "cachedResultName": "Rejected",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=778095495"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        4496,
+        1792
+      ],
+      "id": "981b4ea8-c4ee-4a5f-bda5-9ba6b1e7772c",
+      "name": "Get Rejected rows",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3776,
+        1792
+      ],
+      "id": "bac7dd34-51e7-4b71-aabf-96c01f3e75c3",
+      "name": "Wait1",
+      "webhookId": "fd51c8e2-67f3-49de-8a18-bffc380df19c"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4240,
+        1792
+      ],
+      "id": "447c7a49-b88c-4541-a7e9-3c99cfdd1269",
+      "name": "Wait4",
+      "webhookId": "c1d88da4-d0c1-435a-8f73-4dbf722928b2"
+    },
+    {
+      "parameters": {
+        "content": "## Latest change - 2026-08-21\n\n**Filter Job prompt: rule 1 and rule 5 rewritten.**\n\nRun 3908 rejected 20 jobs. 8 were wrong. Rule 1 fired on 17 of the 20\nand killed CRISPR Therapeutics, Cytokinetics, Alector, Bicara, Enliven,\nKardigan and BBOT. All real drug developers.\n\nWhat changed:\n\n1. Opening line no longer says reject when unsure about company type.\n   Unsure now only rejects on function and seniority.\n\n2. Rule 1 now judges the EMPLOYER, not the duties in the post.\n   The old tell \"services and outsourcing language\" fired on normal\n   Clinical Operations duties, which the prompt elsewhere calls eligible.\n   Added an override: clinical-stage, our pipeline, our lead candidate,\n   our programs, we are developing means rule 1 cannot fire.\n\n3. Dropped the US subsidiary paragraph. The prefilter already caps\n   headcount at 1500 from LinkedIn data. The model guessing global\n   headcount a second time killed Zai Lab and SERB.\n\n4. Rule 5 now lists titles that can never be rejected as below Director,\n   including Associate Director and Senior Director. The bare word\n   \"Associate\" was killing Allogene, and SIGNAL STRENGTH already said\n   Associate Director should pass at low strength.\n\nExpected effect: about 9 more leads per run at run 3908 volumes.\n\nNot changed: the Job OK? prefilter.",
+        "height": 308,
+        "width": 560,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        6944,
+        928
+      ],
+      "id": "336a9feb-100b-41fd-ae9c-f22089ed2bd6",
+      "name": "Latest Changes Note"
+    },
+    {
+      "parameters": {
+        "resource": "crawl",
+        "url": "https://www.calcalistech.com/ctechnews/article/bkbxd0yuge",
+        "options": {}
+      },
+      "type": "@tavily/n8n-nodes-tavily.tavily",
+      "typeVersion": 1,
+      "position": [
+        3808,
+        2736
+      ],
+      "id": "fff346d3-d8ce-4a3c-9af5-e6059490df26",
+      "name": "Crawl",
+      "credentials": {
+        "tavilyApi": {
+          "id": "65CVVu9emC6OjUv4",
+          "name": "Tavily account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const norm = (u) => (u || '').replace(/^=/, '').split('?')[0].replace(/\\/+$/, '').toLowerCase();\n\nconst leadByUrl = {};\nfor (const lead of $('Edit Fields1').all()) {\n  const key = norm(lead.json.companyLinkedinUrl);\n  if (key) leadByUrl[key] = lead.json;\n}\n\nconst byCompany = {};\nfor (const item of $input.all()) {\n  const p = item.json;\n  if (!p.linkedinUrl) continue;\n  const key = norm(p._meta && p._meta.query && p._meta.query.currentCompanies && p._meta.query.currentCompanies[0]);\n  if (!key) continue;\n  if (!byCompany[key]) byCompany[key] = [];\n  byCompany[key].push({\n    fullName: [p.firstName, p.lastName].filter(Boolean).join(' '),\n    title: (p.currentPositions && p.currentPositions[0] && p.currentPositions[0].title) || '',\n    linkedinUrl: p.linkedinUrl,\n    location: (p.location && p.location.linkedinText) || '',\n    summary: (p.summary || '').slice(0, 400),\n  });\n}\n\n// Emit one row per lead, INCLUDING companies where the search returned\n// nobody. A company with no candidates must still reach the dashboard\n// flagged, rather than silently disappearing from the run.\nreturn Object.keys(leadByUrl).map((key) => {\n  const candidates = byCompany[key] || [];\n  return {\n    json: Object.assign({}, leadByUrl[key], {\n      candidateCount: candidates.length,\n      candidates: candidates,\n    }),\n  };\n});"
+      },
+      "id": "8eeef136-4c9b-4010-a246-0b1927fdcb35",
+      "name": "Group by Company",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9920,
+        1168
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You route B2B outreach targets. You return only valid JSON. No markdown, no backticks, no fences, no explanation."
+            },
+            {
+              "content": "=You route outreach for SISS, which sells quality and compliance systems to pharma and biotech.\n\nA hiring signal was detected. Pick the ONE person who most likely OWNS this hire.\n\nSIGNAL\nCompany: {{ $json.companyName }}\nEmployees: {{ $json.companyEmployeesCount }}\nFunctional area: {{ $json.functionalArea }}\nJob opening: {{ $json.jobOpeningTitle }}\nDescription: {{ ($json.jobDescription || '').slice(0, 1500) }}\n\nCANDIDATES\n{{ JSON.stringify($json.candidates) }}\n\nSENIORITY LADDER, lowest to highest:\nAssociate Director < Director < Senior Director < Executive Director < Vice President < Senior VP < Chief Officer < Founder or CEO\n\nRULE 0 EMPTY LIST\nIf CANDIDATES is an empty array, the search returned nobody. Return personFullName, personJobTitle, personLinkedinUrl, and alternativeBuyers as empty strings, set whyPersonSelected to No candidates returned by the profile search, and set confidence to low. Do not invent a person. Stop here.\n\nAPPLY IN ORDER. Rule 1 beats Rule 2 beats Rule 3.\n\nRULE 1 REPORTING LINE, STRONGEST SIGNAL\nScan the Description for Reports To, this role reports to, reporting to, or partner to. If it names a title, pick the candidate whose title matches. This is ground truth from the posting. Set confidence high.\n\nRULE 2 SENIORITY FLOOR, NEVER VIOLATE\nThe pick MUST rank strictly ABOVE the Job opening on the ladder. Nobody hires their own peer or their own boss.\nJob opening Director, pick Senior Director or higher.\nJob opening Senior Director, pick Executive Director or VP or higher.\nJob opening VP, pick Chief Officer or Founder or CEO.\nEliminate every candidate at or below the Job opening level BEFORE choosing. If that empties the list, pick the most senior remaining and set confidence low.\n\nRULE 3 FUNCTIONAL OWNERSHIP\nAmong survivors of Rule 2, pick whoever owns the functional area above. Prefer functional match over raw seniority: a VP of Quality beats a CFO for a Quality signal. Under 50 employees the CEO or Founder is usually correct.\n\nNEVER pick CFO, VP Finance, VP Marketing, VP Sales, or CRO unless no functional owner survives Rule 2.\n\nCopy personFullName, personJobTitle, and personLinkedinUrl EXACTLY from the chosen candidate. Never invent a person.\nPut EVERY other candidate in alternativeBuyers, INCLUDING ones eliminated by Rule 2, most senior first. Scott needs to see the full bench.\n\nReturn raw JSON only:\n{\"personFullName\":\"\",\"personJobTitle\":\"\",\"personLinkedinUrl\":\"\",\"whyPersonSelected\":\"\",\"alternativeBuyers\":\"\",\"confidence\":\"high|medium|low\"}\n\nwhyPersonSelected is one sentence. State which rule decided it: cite the reporting line if Rule 1, or state that this person outranks the open role if Rule 2.\nalternativeBuyers format, semicolon separated: \"Name - Title - LinkedIn URL; Name - Title - LinkedIn URL\". Empty string if no others."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "ae3fa45f-7d27-4650-a160-a2a03389e36d",
+      "name": "Pick Decision Maker",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        10128,
+        1168
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "hd50HVuRCMdy8YcF",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const groups = $('Group by Company').all();\n\n// Walk the whole item and return the first string that looks like our AI JSON.\n// Shape-agnostic on purpose: avoids Array.isArray() failing on n8n proxies\n// and avoids guessing where the OpenAI node nested the content block.\nfunction findAiText(node, depth) {\n  if (node == null || depth > 8) return '';\n  if (typeof node === 'string') {\n    return node.indexOf('personFullName') !== -1 ? node : '';\n  }\n  if (typeof node === 'object') {\n    for (const key of Object.keys(node)) {\n      let child;\n      try { child = node[key]; } catch (e) { continue; }\n      const found = findAiText(child, depth + 1);\n      if (found) return found;\n    }\n  }\n  return '';\n}\n\nreturn $input.all().map((item, i) => {\n  const idx = (item.pairedItem && typeof item.pairedItem.item === 'number')\n    ? item.pairedItem.item\n    : i;\n  const lead = (groups[idx] && groups[idx].json) || {};\n\n  const text = findAiText(item.json, 0);\n\n  let ai;\n  try {\n    const cleaned = text.replace(/^```(?:json)?/, '').replace(/```$/, '').trim();\n    const parsed = JSON.parse(cleaned);\n    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {\n      throw new Error('not an object');\n    }\n    ai = parsed;\n  } catch (e) {\n    ai = {\n      personFullName: '',\n      personJobTitle: '',\n      personLinkedinUrl: '',\n      whyPersonSelected: 'AI parse failed. keys=' + Object.keys(item.json).join(',') + ' textLen=' + String(text).length,\n      alternativeBuyers: '',\n      confidence: 'low',\n    };\n  }\n\n  const out = Object.assign({}, lead, ai);\n  delete out.candidates;\n  delete out['0'];\n  return { json: out };\n});"
+      },
+      "id": "4c4c89ea-b95d-47a6-8759-e6de401e84cb",
+      "name": "Parse AI Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10496,
+        1168
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const fa = $json.functionalArea || '';\nconst url = ($json.companyLinkedinUrl || '').split('?')[0];\nconst size = Number($json.companyEmployeesCount) || 0;\nconst opening = ($json.jobOpeningTitle || '').toLowerCase();\n\n// Broadened: the person who owns the hire often does not carry the\n// function word, so include adjacent ownership titles.\nconst titleMap = {\n  'Quality': ['Quality', 'Compliance'],\n  'Regulatory Affairs': ['Regulatory', 'Quality'],\n  'Clinical Operations': ['Clinical Operations', 'Clinical Development', 'Clinical Trial'],\n  'Medical Affairs': ['Medical Affairs', 'Medical Director', 'Chief Medical']\n};\n\n// When the opening is itself senior, the company is usually hiring the head\n// of that function because no one holds it yet. Filtering on the function\n// word then returns nobody, and the actual buyer is a general executive.\nconst seniorOpening = /executive director|vice president|\\bvp\\b|chief|head of|president/.test(opening);\n\nconst payload = {\n  companies: [url],\n  profileScraperMode: 'Short ($4 per 1k)',\n  companyBatchMode: 'all_at_once',\n  maxItems: 25,\n  seniorityLevelIds: (size < 50 || seniorOpening)\n    ? ['320', '310', '300', '220']\n    : ['310', '300', '220']\n};\n\nif (size >= 50 && titleMap[fa] && !seniorOpening) {\n  payload.jobTitles = titleMap[fa];\n}\n\nconst out = {};\nfor (const k of Object.keys($json)) { out[k] = $json[k]; }\nout.apifyInput = payload;\nreturn { json: out };"
+      },
+      "id": "bd0f9437-619d-4980-a832-6901b2d35b43",
+      "name": "Build Apify Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9104,
+        1168
+      ]
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "Vb6LZkh4EqRlR0Ka9",
+          "mode": "id"
+        },
+        "customBody": "={{ JSON.stringify($json.apifyInput) }}"
+      },
+      "id": "61fa0917-f9b7-4c1d-b475-80272d0443cc",
+      "name": "Decision-maker",
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        9328,
+        1168
+      ],
+      "credentials": {
+        "apifyApi": {
+          "id": "NWjdWWjfCNkyZxX6",
+          "name": "hiremomentum"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.storageIds.datasets.default }}",
+        "limit": null,
+        "options": {}
+      },
+      "id": "8c3f2b4f-a1a5-49c1-a8b3-21338130df16",
+      "name": "DM Dataset",
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        9600,
+        1168
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "apifyApi": {
+          "id": "NWjdWWjfCNkyZxX6",
+          "name": "hiremomentum"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "responses": {
+          "values": [
+            {
+              "role": "system",
+              "content": "You draft first-touch outreach copy. You return only valid JSON. No markdown, no backticks, no fences, no explanation."
+            },
+            {
+              "content": "=You draft first-touch LinkedIn messages for Scott at MBI Talent Group, a Talent Intelligence partner to pharma and biotech. These are drafts for Scott to review. Nothing is sent automatically.\n\nCONTEXT\nFirst name: {{ (($json.personFullName || '').replace(/,.*$/, '').trim().split(' ').filter(w => !['dr','dr.','prof','prof.','mr','mr.','mrs','mrs.','ms','ms.','miss','sir'].includes(w.toLowerCase()))[0] || '') }}\nCompany: {{ $json.companyName }}\nRecipient title: {{ $json.personJobTitle }}\nJob opening: {{ $json.jobOpeningTitle }}\nFunctional area: {{ $json.functionalArea }}\nWhy the signal matters: {{ $json.whySignalMatters }}\nJob description: {{ ($json.jobDescription || '').slice(0, 800) }}\n\nChoose the template matching Functional area. Reproduce the template body EXACTLY. Every other word, comma, and line break stays verbatim. Do not add a subject line, do not add anything after Scott.\n\nEvery bracketed slot MUST be replaced with real text from the CONTEXT above. Filling the slots is mandatory, not optional. A response that still contains [FIRST], [COMPANY], [ROLE], [SIGNAL], or [AREA] is invalid.\n\nThe first line is always the recipient first name followed by a comma. Never drop it, never leave it blank, never start the message with the second line.\n\nTEMPLATE for Quality or Regulatory Affairs\n[FIRST],\nI noticed [COMPANY] is hiring for [ROLE].\nFor specialized Quality and Regulatory mandates, the market often changes quickly once specific GxP, modality, submission, or operating-model requirements are layered together.\nAt MBI Talent Group, we use Talent Intelligence to distinguish genuine capability scarcity from requirements that may be unnecessarily narrowing the market.\nIf the role is still being calibrated, I would be glad to compare notes.\nScott\n\nTEMPLATE for Clinical Operations\n[FIRST],\nThe Clinical Operations hiring underway at [COMPANY] caught my attention, particularly [SIGNAL].\nWe are seeing development teams run into a recurring issue: a role can look reasonable on paper while the combination of trial experience, therapeutic depth, vendor oversight, and leadership scope materially reduces the available market.\nAt MBI Talent Group, we map those constraints through Talent Density and scarcity indicators before the mandate is pushed fully into market.\nI would be interested in comparing perspectives if this is something your team is working through.\nScott\n\nTEMPLATE for Medical Affairs\n[FIRST],\nI noticed [COMPANY] is building in Medical Affairs around [AREA].\nIn specialized life-sciences markets, the difficulty is often not simply finding qualified people. It is determining where the requirement stack begins to compress the actual candidate market.\nAt MBI Talent Group, we use Talent Intelligence to map that scarcity before the search becomes urgent.\nIf useful, I would be glad to compare notes on what the market is likely to support for this mandate.\nScott\n\nSLOT RULES\n[FIRST] recipient first name only. Strip titles and suffixes such as Dr, MD, PhD, JD.\n[COMPANY] company name with legal suffixes such as Inc and Ltd removed.\n[ROLE] the job opening rendered as natural English with a leading article. Fix messy punctuation and duplicated commas. Example: Director, Quality , External Manufacturing becomes a Director of Quality for External Manufacturing. Example: Senior Director, Quality Systems and Compliance becomes a Senior Director of Quality Systems and Compliance.\n[SIGNAL] a short specific phrase naming what stood out, taken from the job opening or description. Lowercase, no leading article. Example: the vendor oversight scope across the trial programs.\n[AREA] the therapeutic area or functional focus, taken from the description. Lowercase. Example: oncology field medical.\n\nHARD RULES\nNo em dashes anywhere.\nDo not offer candidates, resumes, or a call.\nNo flattery, no fake familiarity, no exaggerated claims, no generic recruiter language.\nNever invent facts about the company. Use only the context above.\nThe characters [ and ] must never appear in the icebreaker value. Not one.\nBefore returning, reread your icebreaker. If it contains a bracket, or the first line is not a first name followed by a comma, fix it.\nIf First name, Company, or Job opening is empty or missing in the CONTEXT, do not guess and do not leave a placeholder. Return icebreaker as an empty string and needsReview true.\nIf Functional area is not Quality, Regulatory Affairs, Clinical Operations, or Medical Affairs, return icebreaker as an empty string and needsReview true.\n\nReturn raw JSON only:\n{\"icebreaker\":\"\",\"needsReview\":false}\nUse \\n for line breaks inside the icebreaker value."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "b4e2accc-99f1-4604-835e-e0b63575b41f",
+      "name": "Write Icebreaker",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.1,
+      "position": [
+        10800,
+        1168
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "hd50HVuRCMdy8YcF",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const upstream = $('Parse AI Output').all();\n\n// Shape-agnostic walk: find the string carrying our JSON, wherever\n// the OpenAI node nested it.\nfunction findAiText(node, depth) {\n  if (node == null || depth > 8) return '';\n  if (typeof node === 'string') {\n    return node.indexOf('icebreaker') !== -1 ? node : '';\n  }\n  if (typeof node === 'object') {\n    for (const key of Object.keys(node)) {\n      let child;\n      try { child = node[key]; } catch (e) { continue; }\n      const found = findAiText(child, depth + 1);\n      if (found) return found;\n    }\n  }\n  return '';\n}\n\n// Blank-safe read: never emit undefined/null into the sheet.\nconst S = (v) => (v === undefined || v === null) ? '' : v;\n\n// Edit Fields1's $now.setZone().toFormat() yields \"Invalid DateTime\" on\n// this n8n version, so stamp the timestamps here instead.\nconst nowStamp = new Date().toISOString().slice(0, 19).replace('T', ' ');\nconst fixDate = (v) => (!v || v === 'Invalid DateTime') ? nowStamp : v;\n\nreturn $input.all().map((item, i) => {\n  const idx = (item.pairedItem && typeof item.pairedItem.item === 'number')\n    ? item.pairedItem.item\n    : i;\n  const lead = (upstream[idx] && upstream[idx].json) || {};\n  const text = findAiText(item.json, 0);\n\n  let ai;\n  try {\n    const cleaned = text.replace(/^```(?:json)?/, '').replace(/```$/, '').trim();\n    ai = JSON.parse(cleaned);\n  } catch (e) {\n    ai = { icebreaker: '', needsReview: true };\n  }\n\n  let icebreaker = ai.icebreaker || '';\n\n  // Deterministic backstop for the prompt fix in Write Icebreaker.\n  // In execution 174 the model returned the Quality template with its\n  // slots unfilled and it reached the sheet as [FIRST], [COMPANY], [ROLE].\n  // A prompt rule cannot guarantee this, so blank any message that still\n  // carries a placeholder and let needsReview flag the row.\n  if (/\\[(FIRST|COMPANY|ROLE|SIGNAL|AREA)\\]/.test(icebreaker)) icebreaker = '';\n\n  const needsReview = (ai.needsReview === true) || !icebreaker;\n\n  // Emit every sheet column explicitly so auto-map never drops or\n  // misaligns a field. Key order matches the sheet header row.\n  return { json: {\n    id: S(lead.id),\n    signalType: S(lead.signalType) || 'Job_Post',\n    LeadStatus :S(lead.LeadStatus ) || 'New',\n    dedupKey: S(lead.dedupKey),\n    companyKey: S(lead.companyKey),\n    contactRound: lead.contactRound || 1,\n    companyName: S(lead.companyName),\n    country: S(lead.country),\n    companyWebsite: S(lead.companyWebsite),\n    companyLinkedinUrl: S(lead.companyLinkedinUrl),\n    companyEmployeesCount: S(lead.companyEmployeesCount),\n    companyDescription: S(lead.companyDescription),\n    location: S(lead.location),\n    jobOpeningTitle: S(lead.jobOpeningTitle),\n    link: S(lead.link),\n    postedAt: S(lead.postedAt),\n    personFullName: S(lead.personFullName),\n    personJobTitle: S(lead.personJobTitle),\n    personLinkedinUrl: S(lead.personLinkedinUrl),\n    fundingRound: '',\n    fundingAmount: '',\n    investors: '',\n    email: S(lead.email),\n    leadNotes: '',\n    zerobounceStatus: '',\n    emailStatus: S(lead.emailStatus) || 'pending',\n    icebreaker: icebreaker,\n    dmCategory: S(lead.dmCategory),\n    attempts: lead.attempts || 1,\n    lastAttemptAt: fixDate(lead.lastAttemptAt),\n    addedToCampaign: S(lead.addedToCampaign) || 'false',\n    createdAt: fixDate(lead.createdAt),\n    leadStage: S(lead.leadStage),\n    leadStageUpdatedAt: '',\n    triedCategories: '',\n    jobDescription: S(lead.jobDescription),\n    functionalArea: S(lead.functionalArea),\n    confidence: S(lead.confidence),\n    'LeadStatus ': '',\n    needsReview: needsReview,\n    alternativeBuyers: S(lead.alternativeBuyers),\n    whySignalMatters: S(lead.whySignalMatters),\n    whyPersonSelected: S(lead.whyPersonSelected),\n    signalStrength: S(lead.signalStrength),\n    candidateCount: S(lead.candidateCount),\n  }};\n});"
+      },
+      "id": "d18abdc7-7073-48e2-8cb3-8c7ac00a30b7",
+      "name": "Parse Icebreaker",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        11104,
+        1168
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd6cc943-bb5b-4dd2-a8d4-b4fe25dc72a9",
+              "name": "Search_URL",
+              "value": "={{ (() => {\n  try {\n    const u = new URL($json.urls.replace('search-results', 'search'));\n    ['currentJobId', 'origin', 'refresh', 'spellCorrectionEnabled'].forEach(p => u.searchParams.delete(p));\n    return u.toString();\n  } catch(e) {\n    return $json.urls;\n  }\n})() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        6032,
+        1456
+      ],
+      "id": "e41ea713-5080-4a99-a048-e303d202ce3f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.storageIds.datasets.default }}",
+        "limit": null,
+        "options": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        6368,
+        1456
+      ],
+      "id": "a7766266-d306-45a0-8c73-e31b73f6b47d",
+      "name": "Get dataset items",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "alwaysOutputData": true,
+      "credentials": {
+        "apifyApi": {
+          "id": "SitzKECJj5V9CCes",
+          "name": "Victor"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "hKByXkMQaC5Qt9UMN"
+        },
+        "customBody": "={\n    \"count\": 20,\n    \"scrapeCompany\": true,\n    \"splitByLocation\": false,\n    \"urls\": [\n        \"{{ $json.Search_URL }}\"\n    ],\n    \"useIncognitoMode\": false\n}"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        6208,
+        1456
+      ],
+      "id": "84367213-0c57-4de5-9bbf-c4426a2cca3b",
+      "name": "Run an Actor",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "credentials": {
+        "apifyApi": {
+          "id": "SitzKECJj5V9CCes",
+          "name": "Victor"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ Number($json.companyEmployeesCount) < 50 }}",
+                    "rightValue": 50,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "66783776-fb3f-4366-a2ce-d4fb3fe6ec1d"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Fewer than 50 employees "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8f70e738-755e-44d8-8794-7287d15b3ae1",
+                    "leftValue": "={{ Number($json.companyEmployeesCount) >= 50 && Number($json.companyEmployeesCount) < 200 }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "50–199 employees"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "78959d12-a3d9-4d03-bb86-d513b78c9f16",
+                    "leftValue": "={{ Number($json.companyEmployeesCount) >= 200 && Number($json.companyEmployeesCount) < 1000 }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "200–999 employees "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "a62eca2d-e9f3-46ac-803d-36589072e939",
+                    "leftValue": "={{ Number($json.companyEmployeesCount) >= 1000 }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1,000+ employees"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        9696,
+        3984
+      ],
+      "id": "3c2a2faa-92b5-4ca5-aad5-522b00f8fa30",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "Vb6LZkh4EqRlR0Ka9",
+          "mode": "id"
+        },
+        "customBody": "={\"companies\":[\"{{ $json.companyLinkedinUrl }}\"],\"companyBatchMode\":\"one_by_one\",\n \"maxItems\":8,\"maxItemsPerCompany\":8,\"locations\":[\"United States\"],\n \"seniorityLevelIds\":[\"220\",\"300\",\"310\",\"320\"],\n \"profileScraperMode\":\"Full + email search ($12 per 1k)\"}",
+        "timeout": {},
+        "maxTotalChargeUsd": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        10192,
+        3712
+      ],
+      "id": "49e18469-e14f-4e9d-b0c9-c46269480486",
+      "name": "Decision-maker4",
+      "credentials": {
+        "apifyApi": {
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        10400,
+        3712
+      ],
+      "id": "8694de27-6425-4647-ae08-f93a5bc2c3b2",
+      "name": "Send data to webhook4",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "Vb6LZkh4EqRlR0Ka9",
+          "mode": "id"
+        },
+        "timeout": {},
+        "maxTotalChargeUsd": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        10176,
+        3872
+      ],
+      "id": "25868d9f-b265-40c2-8ae5-0f1c9a76ab55",
+      "name": "Decision-maker5",
+      "credentials": {
+        "apifyApi": {
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        10400,
+        3872
+      ],
+      "id": "3645b3e0-8122-457f-a400-10224f4c8505",
+      "name": "Send data to webhook5",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "Vb6LZkh4EqRlR0Ka9",
+          "mode": "id"
+        },
+        "timeout": {},
+        "maxTotalChargeUsd": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        10160,
+        4032
+      ],
+      "id": "92f47724-223f-42b8-bba7-4b23ebf74b44",
+      "name": "Decision-maker6",
+      "credentials": {
+        "apifyApi": {
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        10384,
+        4032
+      ],
+      "id": "562b967d-ab6f-4198-ae17-25bb62a59684",
+      "name": "Send data to webhook6",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "Vb6LZkh4EqRlR0Ka9",
+          "mode": "id"
+        },
+        "timeout": {},
+        "maxTotalChargeUsd": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        10160,
+        4240
+      ],
+      "id": "7b596de5-e157-4f7f-9392-3627fb29bcba",
+      "name": "Decision-maker7",
+      "credentials": {
+        "apifyApi": {
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        10384,
+        4240
+      ],
+      "id": "3762c48e-5b90-4c3c-8f95-e483f3c93eb7",
+      "name": "Send data to webhook7",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 22
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        3216,
+        1984
+      ],
+      "id": "18711abf-c59f-484f-85f3-093e62a2f9e4",
+      "name": "Schedule Trigger1"
+    }
+  ],
+  "connections": {
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Build Apify Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Job": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Jobs rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ALL JOB URLs": {
+      "main": [
+        [
+          {
+            "node": "Init Run Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Job Urls": {
+      "main": [
+        [
+          {
+            "node": "ALL JOB URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Job OK?": {
+      "main": [
+        [
+          {
+            "node": "Sanitize AI Input",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tag Filter Reason",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "No Operation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Keys": {
+      "main": [
+        [
+          {
+            "node": "Dedup New Companies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dedup New Companies": {
+      "main": [
+        [
+          {
+            "node": "Job OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Consolidate Companies",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Collect Rejected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consolidate Companies": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Rejected": {
+      "main": [
+        [
+          {
+            "node": "Append Rejected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Filter Reason": {
+      "main": [
+        [
+          {
+            "node": "Append Filtered",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Init Run Stats": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Run Summary": {
+      "main": [
+        [
+          {
+            "node": "Append Run Summary",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Discord: run digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Suppression rows": {
+      "main": [
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sanitize AI Input": {
+      "main": [
+        [
+          {
+            "node": "Filter Job",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Jobs?": {
+      "main": [
+        [
+          {
+            "node": "Add Keys",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Funding": {
+      "main": [
+        [
+          {
+            "node": "Actor Funding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actor Funding": {
+      "main": [
+        [
+          {
+            "node": "Dataset Funding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tag Funding": {
+      "main": [
+        [
+          {
+            "node": "Normalize Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Fields": {
+      "main": [
+        [
+          {
+            "node": "Get Signals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Signals": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Signal Router": {
+      "main": [
+        [],
+        [],
+        []
+      ]
+    },
+    "Append to Signals1": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "ICP PASS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ICP PASS": {
+      "main": [
+        [
+          {
+            "node": "Tag Funding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Keys1": {
+      "main": [
+        [
+          {
+            "node": "Dedup New Companies1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Rejected rows1": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dedup New Companies1": {
+      "main": [
+        []
+      ]
+    },
+    "Init Run Stats1": {
+      "main": [
+        [
+          {
+            "node": "Add Keys1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Suppression rows1": {
+      "main": [
+        [
+          {
+            "node": "Init Run Stats1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Get Rejected rows1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Get Suppression rows1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Append to Signals1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get Job Urls",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Jobs rows": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Rejected rows": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Get Suppression rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Get Rejected rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crawl": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Group by Company": {
+      "main": [
+        [
+          {
+            "node": "Pick Decision Maker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick Decision Maker": {
+      "main": [
+        [
+          {
+            "node": "Parse AI Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Apify Payload": {
+      "main": [
+        [
+          {
+            "node": "Decision-maker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision-maker": {
+      "main": [
+        [
+          {
+            "node": "DM Dataset",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DM Dataset": {
+      "main": [
+        [
+          {
+            "node": "Group by Company",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI Output": {
+      "main": [
+        [
+          {
+            "node": "Write Icebreaker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Icebreaker": {
+      "main": [
+        [
+          {
+            "node": "Parse Icebreaker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Icebreaker": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dataset Funding": {
+      "main": [
+        [
+          {
+            "node": "Crawl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append Rejected": {
+      "main": [
+        [
+          {
+            "node": "No Operation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "No Operation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Run an Actor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get dataset items": {
+      "main": [
+        [
+          {
+            "node": "Has Jobs?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run an Actor": {
+      "main": [
+        [
+          {
+            "node": "Get dataset items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Decision-maker4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Decision-maker5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Decision-maker6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Decision-maker7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision-maker4": {
+      "main": [
+        [
+          {
+            "node": "Send data to webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision-maker5": {
+      "main": [
+        [
+          {
+            "node": "Send data to webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision-maker6": {
+      "main": [
+        [
+          {
+            "node": "Send data to webhook6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision-maker7": {
+      "main": [
+        [
+          {
+            "node": "Send data to webhook7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Get Jobs rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "b6873fba-32c1-4de2-9771-a37d5e236ffb",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-08-15T05:53:05.920Z",
+      "createdAt": "2026-08-15T05:53:05.920Z",
+      "role": "workflow:owner",
+      "workflowId": "GKNc5jQ26qoKvwD5",
+      "projectId": "SKYOo3a7MACwAQNE"
+    }
+  ],
+  "activeVersion": null,
+  "tags": []
+}
