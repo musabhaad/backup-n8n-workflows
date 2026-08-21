@@ -1,0 +1,85 @@
+{
+  "updatedAt": "2026-08-21T05:39:12.180Z",
+  "createdAt": "2026-08-21T05:33:10.874Z",
+  "id": "vj6bvfwvpipwT7b7",
+  "name": "Error Workflow",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3c1fd3bc-b77d-476f-a8c2-afbaf45e48ba",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "sendTo": "musabbhad@gmail.com",
+        "subject": "N8N - Error",
+        "emailType": "text",
+        "message": "=🚨 n8n error — {{ $json.workflow.name }}\nNode: `{{ $json.execution.lastNodeExecuted }}`\nError: {{ $json.execution.error.message }}\nMode: {{ $json.execution.mode }}\nExecution: {{ $json.execution.url }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "667dda1d-bf96-41d2-be4f-1b446d0e9eee",
+      "name": "Send a message",
+      "webhookId": "c990ca23-32fa-4427-80f3-ee1fa40a05a1",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "6wLeAb5r37Fiuy9q",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "b5bc78cb-cd12-48ec-9750-779fcfb492f5",
+  "activeVersionId": null,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-08-21T05:33:10.875Z",
+      "createdAt": "2026-08-21T05:33:10.875Z",
+      "role": "workflow:owner",
+      "workflowId": "vj6bvfwvpipwT7b7",
+      "projectId": "SKYOo3a7MACwAQNE"
+    }
+  ],
+  "activeVersion": null,
+  "tags": []
+}
