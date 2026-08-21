@@ -1,0 +1,749 @@
+{
+  "updatedAt": "2026-08-21T10:04:22.647Z",
+  "createdAt": "2026-08-20T06:42:37.867Z",
+  "id": "MSkbd9NapvZXHI7d",
+  "name": "2. SISS Funding Drip",
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 2. SISS Funding Drip\n\nPilot only. Releases ONE curated funding lead per day into the JOB's tab so the dashboard has a steady feed.\n\n**Flow**\nDaily 08:00 -> read Funding_Signal -> pick oldest row where addedToJobs is false -> map to JOB's columns -> append to JOB's -> flip addedToJobs to TRUE.\n\n**Queue order** is oldest postedAt first, so June rounds go out before August ones and nothing sits until it is stale.\n\n**If the queue is empty** Pick One Signal returns zero items and the run ends quietly. No error, no empty row.\n\n**Two column facts this depends on**\n1. The JOB's header is `LeadStatus ` WITH A TRAILING SPACE. Map Funding to JOBs writes that exact key. Do not tidy it unless you also fix the sheet.\n2. JOB's has no companyIndustry, currency, roundFlavor or signalConfidence column. Those four are folded into leadNotes rather than dropped.\n\n**jobOpeningTitle** has no funding equivalent, so it is synthesized, e.g. `Series C funding, Quality build`.\n**jobDescription** is set to whySignalMatters, which is the funding rationale the dashboard renders as context.\n\nThis workflow only reads Funding_Signal and appends to JOB's. It never touches the job chain in workflow 1.",
+        "height": 420,
+        "width": 700,
+        "color": 4
+      },
+      "id": "fd-note",
+      "name": "What This Does",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1760052950,
+          "mode": "list",
+          "cachedResultName": "Funding_Signal",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1760052950"
+        },
+        "options": {}
+      },
+      "id": "fd-read",
+      "name": "Get Funding Signals",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        160,
+        448
+      ],
+      "alwaysOutputData": true,
+      "retryOnFail": false,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Funding_Signal is the pilot queue. Release exactly one row per run.\n// Google Sheets can hand back a real boolean, the string 'FALSE', or an\n// empty cell depending on how the value was entered, so treat all three\n// as unpushed rather than testing for one shape.\nconst isUnpushed = (v) => {\n  const s = String(v === undefined || v === null ? '' : v).trim().toLowerCase();\n  return s === '' || s === 'false' || s === 'no' || s === '0';\n};\n\nconst pending = $input.all()\n  .map(i => i.json)\n  .filter(r => String(r.id || '').trim() && isUnpushed(r.addedToJobs));\n\n// Nothing left to push. Return no items so the rest of the chain is skipped\n// instead of appending a blank row to JOB's.\nif (pending.length === 0) return [];\n\n// Oldest announcement first. A June round loses relevance faster than an\n// August one, so it should not sit at the back of the queue.\npending.sort((a, b) => String(a.postedAt || '').localeCompare(String(b.postedAt || '')));\n\nreturn [{ json: pending[0] }];"
+      },
+      "id": "fd-pick",
+      "name": "Pick One Signal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        448
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// JOB's already carries signalType, fundingRound, fundingAmount and investors,\n// so most of this is a pass-through. Only four columns need real work.\nconst f = $input.first().json;\nconst s = (v) => (v === undefined || v === null) ? '' : String(v);\nconst today = new Date().toISOString().slice(0, 10);\n\nconst round = s(f.fundingRound).trim();\nconst roundLabel = round\n  ? round.replace(/\\b\\w/g, (c) => c.toUpperCase())\n  : 'Funding';\n\nconst amount = s(f.fundingAmount).trim();\nconst prettyAmount = amount && !isNaN(Number(amount))\n  ? Number(amount).toLocaleString('en-US')\n  : amount;\n\n// JOB's has no companyIndustry, currency, roundFlavor or signalConfidence\n// column. Fold them into leadNotes so the funding detail is not lost.\nconst notes = [\n  round ? 'Round: ' + roundLabel : '',\n  prettyAmount ? 'Amount: ' + prettyAmount + ' ' + (s(f.currency) || 'USD') : '',\n  s(f.roundFlavor) ? 'Flavor: ' + s(f.roundFlavor) : '',\n  s(f.companyIndustry) ? 'Industry: ' + s(f.companyIndustry) : '',\n  s(f.signalConfidence) ? 'Source confidence: ' + s(f.signalConfidence) : '',\n  'Released from Funding_Signal on ' + today\n].filter(Boolean).join(' | ');\n\nreturn [{ json: {\n  id: s(f.id),\n  signalType: s(f.signalType) || 'funding_round',\n  functionalArea: s(f.functionalArea),\n  dedupKey: s(f.dedupKey),\n  companyKey: s(f.companyKey),\n  contactRound: s(f.contactRound) || '1',\n  companyName: s(f.companyName),\n  country: s(f.country),\n  companyWebsite: s(f.companyWebsite),\n  companyLinkedinUrl: s(f.companyLinkedinUrl),\n  companyEmployeesCount: s(f.companyEmployeesCount),\n  companyDescription: s(f.companyDescription),\n  location: s(f.location),\n\n  // No job post exists behind a funding signal. Give the dashboard a\n  // readable label instead of leaving the column blank.\n  jobOpeningTitle: roundLabel + ' funding, ' + (s(f.functionalArea) || 'capability') + ' build',\n\n  link: s(f.link),\n  postedAt: s(f.postedAt),\n  personFullName: s(f.personFullName),\n  personJobTitle: s(f.personJobTitle),\n  personLinkedinUrl: s(f.personLinkedinUrl),\n  fundingRound: round,\n  fundingAmount: amount,\n  investors: s(f.investors),\n\n  // The JOB's header carries a trailing space. Writing 'LeadStatus' without\n  // it silently leaves the column empty.\n  'LeadStatus ': s(f.LeadStatus) || 'New',\n\n  leadNotes: '',\n  zerobounceStatus: '',\n  emailStatus: '',\n  icebreaker: s(f.icebreaker),\n  dmCategory: s(f.functionalArea),\n  confidence: s(f.confidence),\n  needsReview: s(f.needsReview),\n  alternativeBuyers: s(f.alternativeBuyers),\n  whyPersonSelected: s(f.whyPersonSelected),\n  whySignalMatters: s(f.whySignalMatters),\n  candidateCount: s(f.candidateCount),\n  signalStrength: s(f.signalStrength),\n  attempts: s(f.attempts) || '0',\n  lastAttemptAt: '',\n  addedToCampaign: 'FALSE',\n  createdAt: today,\n  leadStage: s(f.leadStage) || 'new',\n  email: s(f.email),\n  leadStageUpdatedAt: '',\n  triedCategories: '',\n\n  // The funding rationale is the context the dashboard renders where a job\n  // post would otherwise sit.\n  jobDescription: s(f.whySignalMatters)\n}}];"
+      },
+      "id": "fd-map",
+      "name": "Map Funding to JOBs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        448
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1344706833,
+          "mode": "list",
+          "cachedResultName": "JOB's",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1344706833"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "signalType",
+              "displayName": "signalType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "functionalArea",
+              "displayName": "functionalArea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dedupKey",
+              "displayName": "dedupKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyKey",
+              "displayName": "companyKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "contactRound",
+              "displayName": "contactRound",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyName",
+              "displayName": "companyName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "country",
+              "displayName": "country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyWebsite",
+              "displayName": "companyWebsite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyLinkedinUrl",
+              "displayName": "companyLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyEmployeesCount",
+              "displayName": "companyEmployeesCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "companyDescription",
+              "displayName": "companyDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "location",
+              "displayName": "location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "jobOpeningTitle",
+              "displayName": "jobOpeningTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "postedAt",
+              "displayName": "postedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personFullName",
+              "displayName": "personFullName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personJobTitle",
+              "displayName": "personJobTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "personLinkedinUrl",
+              "displayName": "personLinkedinUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fundingRound",
+              "displayName": "fundingRound",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fundingAmount",
+              "displayName": "fundingAmount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "investors",
+              "displayName": "investors",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "LeadStatus ",
+              "displayName": "LeadStatus ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "leadNotes",
+              "displayName": "leadNotes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "zerobounceStatus",
+              "displayName": "zerobounceStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "emailStatus",
+              "displayName": "emailStatus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "icebreaker",
+              "displayName": "icebreaker",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "dmCategory",
+              "displayName": "dmCategory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "confidence",
+              "displayName": "confidence",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "needsReview",
+              "displayName": "needsReview",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "alternativeBuyers",
+              "displayName": "alternativeBuyers",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "whyPersonSelected",
+              "displayName": "whyPersonSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "whySignalMatters",
+              "displayName": "whySignalMatters",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "candidateCount",
+              "displayName": "candidateCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "signalStrength",
+              "displayName": "signalStrength",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attempts",
+              "displayName": "attempts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lastAttemptAt",
+              "displayName": "lastAttemptAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "addedToCampaign",
+              "displayName": "addedToCampaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "createdAt",
+              "displayName": "createdAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "leadStage",
+              "displayName": "leadStage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "leadStageUpdatedAt",
+              "displayName": "leadStageUpdatedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "triedCategories",
+              "displayName": "triedCategories",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "jobDescription",
+              "displayName": "jobDescription",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "fd-append",
+      "name": "Append to JOBs",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        928,
+        448
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1760052950,
+          "mode": "list",
+          "cachedResultName": "Funding_Signal",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit#gid=1760052950"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Pick One Signal').item.json.id }}",
+            "addedToJobs": "TRUE"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "addedToJobs",
+              "displayName": "addedToJobs",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "fd-mark",
+      "name": "Mark addedToJobs TRUE",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1184,
+        448
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        448
+      ],
+      "id": "36575bc7-8a91-4b8d-8ed5-8f23d915d70c",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "connections": {
+    "Get Funding Signals": {
+      "main": [
+        [
+          {
+            "node": "Pick One Signal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pick One Signal": {
+      "main": [
+        [
+          {
+            "node": "Map Funding to JOBs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Map Funding to JOBs": {
+      "main": [
+        [
+          {
+            "node": "Append to JOBs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append to JOBs": {
+      "main": [
+        [
+          {
+            "node": "Mark addedToJobs TRUE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get Funding Signals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Karachi",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "vj6bvfwvpipwT7b7",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "staticData": {
+    "node:Daily 8am": {
+      "recurrenceRules": [
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null
+      ]
+    }
+  },
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "df5100ed-c205-4ebc-8c56-4729d6c369d9",
+  "activeVersionId": null,
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2026-08-20T06:42:37.871Z",
+      "createdAt": "2026-08-20T06:42:37.871Z",
+      "role": "workflow:owner",
+      "workflowId": "MSkbd9NapvZXHI7d",
+      "projectId": "SKYOo3a7MACwAQNE"
+    }
+  ],
+  "activeVersion": null,
+  "tags": []
+}
