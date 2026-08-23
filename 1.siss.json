@@ -1790,7 +1790,7 @@
           "mode": "id",
           "value": "hKByXkMQaC5Qt9UMN"
         },
-        "customBody": "={\n    \"count\": 50,\n    \"scrapeCompany\": true,\n    \"splitByLocation\": false,\n    \"urls\": [\n        \"{{ $json.Search_URL }}\"\n    ],\n    \"useIncognitoMode\": false\n}"
+        "customBody": "={\n    \"count\": 20,\n    \"scrapeCompany\": true,\n    \"splitByLocation\": false,\n    \"urls\": [\n        \"{{ $json.Search_URL }}\"\n    ],\n    \"useIncognitoMode\": false\n}"
       },
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
@@ -2426,7 +2426,7 @@
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "0c1d450d-17ec-4303-af93-e40738d5d9c2",
+  "versionId": "b9a73f5f-5e7a-4833-b10c-40c2cf5d6932",
   "meta": {
     "templateCredsSetupCompleted": true
   },
