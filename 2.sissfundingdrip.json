@@ -1,10 +1,5 @@
 {
-  "updatedAt": "2026-08-21T10:04:22.647Z",
-  "createdAt": "2026-08-20T06:42:37.867Z",
-  "id": "MSkbd9NapvZXHI7d",
   "name": "2. SISS Funding Drip",
-  "active": false,
-  "isArchived": false,
   "nodes": [
     {
       "parameters": {
@@ -729,21 +724,7 @@
       ]
     }
   },
-  "meta": null,
-  "nodeGroups": [],
   "pinData": {},
   "versionId": "df5100ed-c205-4ebc-8c56-4729d6c369d9",
-  "activeVersionId": null,
-  "triggerCount": 1,
-  "shared": [
-    {
-      "updatedAt": "2026-08-20T06:42:37.871Z",
-      "createdAt": "2026-08-20T06:42:37.871Z",
-      "role": "workflow:owner",
-      "workflowId": "MSkbd9NapvZXHI7d",
-      "projectId": "SKYOo3a7MACwAQNE"
-    }
-  ],
-  "activeVersion": null,
   "tags": []
 }
