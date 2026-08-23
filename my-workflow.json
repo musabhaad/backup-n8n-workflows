@@ -9,88 +9,39 @@
         0,
         0
       ],
-      "id": "06b78473-aa8d-4023-af73-40dfe2d398b6",
+      "id": "79f1a2ba-ff74-4b7b-85f9-b73bd63328e5",
       "name": "When clicking ‘Execute workflow’"
     },
     {
       "parameters": {
+        "method": "POST",
+        "url": "https://api.heygen.com/v2/video/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "sk_V2_hgu_k3fMjyJpgEq_Vlso2dq9WwThmSqA0jlYFsDw16L9cdv0"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"title\": \"Recruitment Outreach Test\",\n  \"dimension\": {\n    \"width\": 1280,\n    \"height\": 720\n  },\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"d004de3f058343c7afb4a3013c588616\",\n        \"avatar_style\": \"circle\",\n        \"scale\": 0.45,\n        \"offset\": {\n          \"x\": -0.32,\n          \"y\": -0.3\n        }\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"Hi there, I was looking over your profile and wanted to reach out regarding a new role.\",\n        \"voice_id\": \"6ea1e5283083457582adbe661323f9a1\",\n        \"speed\": 1\n      },\n      \"background\": {\n        \"type\": \"image\",\n        \"url\": \"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1280\"\n      }\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        144,
-        144
+        224,
+        0
       ],
-      "id": "364cfb1f-c662-4671-bf58-a13295558e75",
+      "id": "0ad5cbfa-e379-4b17-9f68-4aef3c90347a",
       "name": "HTTP Request"
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 2.3,
-      "position": [
-        368,
-        144
-      ],
-      "id": "00bee53e-3b31-4cab-96e4-5e753f835f4c",
-      "name": "Analyze image",
-      "credentials": {
-        "openAiApi": {
-          "id": "hd50HVuRCMdy8YcF",
-          "name": "OpenAI account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "path": "6ee23080-0e8d-4839-9237-1e29555954cc",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        672,
-        240
-      ],
-      "id": "ff7aef9f-e286-4e95-a190-4355966d76df",
-      "name": "Webhook",
-      "webhookId": "6ee23080-0e8d-4839-9237-1e29555954cc"
     }
   ],
   "connections": {
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Analyze image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Analyze image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Analyze image": {
+    "When clicking ‘Execute workflow’": {
       "main": [
         [
           {
@@ -109,9 +60,6 @@
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "8903fbc0-2c6e-4d51-9d49-0cd67fcd85f5",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "versionId": "0531cf18-4aa0-4705-9bcd-531b2be58ca1",
   "tags": []
 }
