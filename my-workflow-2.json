@@ -11,9 +11,60 @@
       ],
       "id": "06b78473-aa8d-4023-af73-40dfe2d398b6",
       "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        144,
+        144
+      ],
+      "id": "364cfb1f-c662-4671-bf58-a13295558e75",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        368,
+        144
+      ],
+      "id": "00bee53e-3b31-4cab-96e4-5e753f835f4c",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "hd50HVuRCMdy8YcF",
+          "name": "OpenAI account"
+        }
+      }
     }
   ],
-  "connections": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
@@ -21,6 +72,9 @@
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "3deef9d9-ab97-42d2-9a27-ec4acfd5e1e0",
+  "versionId": "303abf75-927e-4efe-8a60-8d1cc07a5c3e",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "tags": []
 }
