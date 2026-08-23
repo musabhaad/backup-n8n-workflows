@@ -2,36 +2,8 @@
   "name": "Backup workflow",
   "nodes": [
     {
-      "id": "a505fed0-86dd-48de-b7f7-855469f5725c",
-      "name": "Schedule Trigger",
       "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "triggerAtHour": 0
-            }
-          ]
-        }
-      },
-      "position": [
-        200,
-        300
-      ],
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2
-    },
-    {
-      "alwaysOutputData": true,
-      "credentials": {
-        "githubApi": {
-          "id": "jAkXUGjNwXiy6yCW",
-          "name": "GitHub account"
-        }
-      },
-      "id": "89bf3a2d-a72f-4e80-863b-ec6501d861a3",
-      "name": "List files from repo",
-      "parameters": {
-        "filePath": "",
+        "resource": "file",
         "operation": "list",
         "owner": {
           "__rl": true,
@@ -46,93 +18,97 @@
           "cachedResultUrl": "https://github.com/musabhaad/backup-n8n-workflows",
           "mode": "list",
           "value": "backup-n8n-workflows"
-        },
-        "resource": "file"
+        }
       },
+      "alwaysOutputData": true,
+      "id": "89bf3a2d-a72f-4e80-863b-ec6501d861a3",
+      "name": "List files from repo",
       "position": [
         400,
-        300
+        304
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
-      "webhookId": "80ed0cbe-23ce-4b3f-ac03-18cefcf2e878"
+      "webhookId": "80ed0cbe-23ce-4b3f-ac03-18cefcf2e878",
+      "credentials": {
+        "githubApi": {
+          "id": "jAkXUGjNwXiy6yCW",
+          "name": "GitHub account"
+        }
+      }
     },
     {
-      "id": "e8b19374-1294-4d83-8a02-5c3d4f8e9102",
-      "name": "Store repo files",
       "parameters": {
         "jsCode": "const files = $input.all().map(item => ({\n  name: item.json.name,\n  path: item.json.path,\n  sha: item.json.sha\n})).filter(f => f.name);\n\nreturn [{\n  json: {\n    existingFiles: files.map(f => f.name),\n    filesMap: files\n  }\n}];"
       },
+      "id": "e8b19374-1294-4d83-8a02-5c3d4f8e9102",
+      "name": "Store repo files",
       "position": [
-        600,
-        300
+        608,
+        304
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
     },
     {
-      "credentials": {
-        "n8nApi": {
-          "id": "zNzuQ3j6PAmGZZLG",
-          "name": "n8n account"
-        }
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
       },
       "id": "396bd8ca-be7d-4c7d-812d-558f8f032520",
       "name": "Retrieve all workflows",
-      "parameters": {
-        "filters": {},
-        "operation": "getAll",
-        "resource": "workflow",
-        "returnAll": true
-      },
       "position": [
         800,
-        300
+        304
       ],
       "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1
-    },
-    {
+      "typeVersion": 1,
       "credentials": {
         "n8nApi": {
           "id": "zNzuQ3j6PAmGZZLG",
           "name": "n8n account"
         }
-      },
-      "id": "7a3e5c91-2b4f-4d8e-9a1c-3e7f5b8a0d2f",
-      "name": "Get full workflow data",
+      }
+    },
+    {
       "parameters": {
         "operation": "get",
-        "resource": "workflow",
         "workflowId": {
           "__rl": true,
           "mode": "id",
           "value": "={{ $json.id }}"
-        }
+        },
+        "requestOptions": {}
       },
+      "id": "7a3e5c91-2b4f-4d8e-9a1c-3e7f5b8a0d2f",
+      "name": "Get full workflow data",
       "position": [
-        1000,
-        300
+        1008,
+        304
       ],
       "type": "n8n-nodes-base.n8n",
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "zNzuQ3j6PAmGZZLG",
+          "name": "n8n account"
+        }
+      }
     },
     {
-      "id": "46844715-154e-4b14-96e5-2faab51ac37b",
-      "name": "Prepare workflow files",
       "parameters": {
         "jsCode": "let existingFiles = [];\ntry {\n  const storeNode = $('Store repo files').first();\n  existingFiles = storeNode.json.existingFiles || [];\n} catch (e) {\n  try {\n    existingFiles = $('List files from repo').all().map(item => item.json.name).filter(Boolean);\n  } catch (err) {\n    existingFiles = [];\n  }\n}\n\nconst results = [];\nconst nowStr = $now.setZone('UTC').toFormat('yyyy-MM-dd/HH:mm');\n\nfor (const item of $input.all()) {\n  const wf = item.json;\n  if (!wf || !wf.name) continue;\n\n  const rawName = String(wf.name).trim();\n\n  const directName = `${rawName.replace(/[/\\\\?%*:|\"<>]/g, '_')}.json`;\n  const dashSlug = `${rawName.toLowerCase().replace(/\\s+/g, '-').replace(/[^a-z0-9-_.]/g, '')}.json`;\n  const compactName = `${rawName.toLowerCase().replace(/[^a-z0-9.]/g, '')}.json`;\n\n  let targetFileName = dashSlug;\n  let fileExists = false;\n\n  if (existingFiles.includes(directName)) {\n    targetFileName = directName;\n    fileExists = true;\n  } else if (existingFiles.includes(dashSlug)) {\n    targetFileName = dashSlug;\n    fileExists = true;\n  } else if (existingFiles.includes(compactName)) {\n    targetFileName = compactName;\n    fileExists = true;\n  } else {\n    const caseMatch = existingFiles.find(f => \n      f.toLowerCase() === directName.toLowerCase() || \n      f.toLowerCase() === dashSlug.toLowerCase() || \n      f.toLowerCase() === compactName.toLowerCase()\n    );\n    if (caseMatch) {\n      targetFileName = caseMatch;\n      fileExists = true;\n    } else {\n      targetFileName = dashSlug;\n      fileExists = false;\n    }\n  }\n\n  const exportData = {\n    name: wf.name,\n    nodes: wf.nodes || [],\n    connections: wf.connections || {},\n    settings: wf.settings || {},\n    staticData: wf.staticData || null,\n    pinData: wf.pinData || {},\n    versionId: wf.versionId || undefined,\n    meta: wf.meta || undefined,\n    tags: wf.tags || []\n  };\n\n  results.push({\n    json: {\n      id: wf.id,\n      workflowName: rawName,\n      fileName: targetFileName,\n      fileExists: fileExists,\n      commitMessage: `backup-${nowStr}`,\n      fileContent: JSON.stringify(exportData, null, 2)\n    }\n  });\n}\n\nreturn results;"
       },
+      "id": "46844715-154e-4b14-96e5-2faab51ac37b",
+      "name": "Prepare workflow files",
       "position": [
         1200,
-        300
+        304
       ],
       "type": "n8n-nodes-base.code",
       "typeVersion": 2
     },
     {
-      "id": "cad67c9f-8786-4cbf-b403-fba758216fe4",
-      "name": "Check if file exists",
       "parameters": {
         "conditions": {
           "combinator": "and",
@@ -157,26 +133,18 @@
         },
         "options": {}
       },
+      "id": "cad67c9f-8786-4cbf-b403-fba758216fe4",
+      "name": "Check if file exists",
       "position": [
-        1400,
-        300
+        1408,
+        304
       ],
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3
     },
     {
-      "credentials": {
-        "githubApi": {
-          "id": "jAkXUGjNwXiy6yCW",
-          "name": "GitHub account"
-        }
-      },
-      "id": "1982dd21-9835-4934-8cb2-cc556afaf63c",
-      "name": "Update file",
       "parameters": {
-        "commitMessage": "={{ $json.commitMessage }}",
-        "fileContent": "={{ $json.fileContent }}",
-        "filePath": "={{ $json.fileName }}",
+        "resource": "file",
         "operation": "edit",
         "owner": {
           "__rl": true,
@@ -192,30 +160,29 @@
           "mode": "list",
           "value": "backup-n8n-workflows"
         },
-        "resource": "file"
+        "filePath": "={{ $json.fileName }}",
+        "fileContent": "={{ $json.fileContent }}",
+        "commitMessage": "={{ $json.commitMessage }}"
       },
+      "id": "1982dd21-9835-4934-8cb2-cc556afaf63c",
+      "name": "Update file",
       "position": [
-        1640,
-        200
+        1648,
+        208
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
-      "webhookId": "d9612ee8-4493-49e5-ab8c-a01c8773d49b"
-    },
-    {
+      "webhookId": "d9612ee8-4493-49e5-ab8c-a01c8773d49b",
       "credentials": {
         "githubApi": {
           "id": "jAkXUGjNwXiy6yCW",
           "name": "GitHub account"
         }
-      },
-      "id": "6a6cd9a7-4323-4397-9c8a-2a3df967afd0",
-      "name": "Upload file",
+      }
+    },
+    {
       "parameters": {
-        "commitMessage": "={{ $json.commitMessage }}",
-        "fileContent": "={{ $json.fileContent }}",
-        "filePath": "={{ $json.fileName }}",
-        "operation": "create",
+        "resource": "file",
         "owner": {
           "__rl": true,
           "cachedResultName": "musabhaad",
@@ -230,63 +197,90 @@
           "mode": "list",
           "value": "backup-n8n-workflows"
         },
-        "resource": "file"
+        "filePath": "={{ $json.fileName }}",
+        "fileContent": "={{ $json.fileContent }}",
+        "commitMessage": "={{ $json.commitMessage }}"
       },
+      "id": "6a6cd9a7-4323-4397-9c8a-2a3df967afd0",
+      "name": "Upload file",
       "position": [
-        1640,
+        1648,
         400
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
-      "webhookId": "23177a2b-d240-4f4c-9ed8-13db41e25a94"
+      "webhookId": "23177a2b-d240-4f4c-9ed8-13db41e25a94",
+      "credentials": {
+        "githubApi": {
+          "id": "jAkXUGjNwXiy6yCW",
+          "name": "GitHub account"
+        }
+      }
     },
     {
-      "id": "2fc34caa-97d6-4efb-98f9-d404c7fdb46f",
-      "name": "Sticky Note1",
       "parameters": {
-        "color": 5,
         "content": "### 1. Trigger & GitHub State\nSchedule daily backup & list existing files from GitHub repo (aggregated to 1 item).",
         "height": 380,
-        "width": 520
+        "width": 520,
+        "color": 5
       },
+      "id": "2fc34caa-97d6-4efb-98f9-d404c7fdb46f",
+      "name": "Sticky Note1",
       "position": [
         160,
-        140
+        144
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
     },
     {
-      "id": "68bbef0b-d7de-4012-9253-f3ec2565219d",
-      "name": "Sticky Note2",
       "parameters": {
-        "color": 3,
         "content": "### 2. Fetch Full Workflow JSON\nRetrieve all workflows and their complete nodes + connections from n8n API.",
         "height": 380,
-        "width": 400
+        "width": 400,
+        "color": 3
       },
+      "id": "68bbef0b-d7de-4012-9253-f3ec2565219d",
+      "name": "Sticky Note2",
       "position": [
-        740,
-        140
+        752,
+        144
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
     },
     {
-      "id": "15a06af2-95ec-4065-a21a-8386a0c7274f",
-      "name": "Sticky Note3",
       "parameters": {
-        "color": 4,
         "content": "### 3. File Matching & Commit\nMatch against existing repo files to edit existing or upload new.",
         "height": 380,
-        "width": 680
+        "width": 680,
+        "color": 4
       },
+      "id": "15a06af2-95ec-4065-a21a-8386a0c7274f",
+      "name": "Sticky Note3",
       "position": [
-        1160,
-        140
+        1168,
+        144
       ],
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        304
+      ],
+      "id": "12b3e90f-34a2-4bc6-b0c2-91f1ea675d1b",
+      "name": "Schedule Trigger"
     }
   ],
   "connections": {
@@ -352,17 +346,6 @@
         ]
       ]
     },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "index": 0,
-            "node": "List files from repo",
-            "type": "main"
-          }
-        ]
-      ]
-    },
     "Store repo files": {
       "main": [
         [
@@ -370,6 +353,17 @@
             "index": 0,
             "node": "Retrieve all workflows",
             "type": "main"
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "List files from repo",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -394,7 +388,7 @@
     }
   },
   "pinData": {},
-  "versionId": "3d5934bc-3f74-4288-bf6c-9439cb339f07",
+  "versionId": "87904539-d305-4c0f-870f-552ac7776b32",
   "meta": {
     "templateCredsSetupCompleted": true
   },
