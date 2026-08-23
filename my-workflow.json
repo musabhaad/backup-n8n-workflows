@@ -9,8 +9,62 @@
         0,
         0
       ],
-      "id": "79f1a2ba-ff74-4b7b-85f9-b73bd63328e5",
+      "id": "06b78473-aa8d-4023-af73-40dfe2d398b6",
       "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        144,
+        144
+      ],
+      "id": "364cfb1f-c662-4671-bf58-a13295558e75",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        368,
+        144
+      ],
+      "id": "00bee53e-3b31-4cab-96e4-5e753f835f4c",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "hd50HVuRCMdy8YcF",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "6ee23080-0e8d-4839-9237-1e29555954cc",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        672,
+        240
+      ],
+      "id": "ff7aef9f-e286-4e95-a190-4355966d76df",
+      "name": "Webhook",
+      "webhookId": "6ee23080-0e8d-4839-9237-1e29555954cc"
     },
     {
       "parameters": {
@@ -33,15 +87,37 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        224,
-        0
+        928,
+        368
       ],
-      "id": "0ad5cbfa-e379-4b17-9f68-4aef3c90347a",
-      "name": "HTTP Request"
+      "id": "16ec747a-cc86-489b-b1ab-2f80c44e7067",
+      "name": "HTTP Request1"
     }
   ],
   "connections": {
-    "When clicking ‘Execute workflow’": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
       "main": [
         [
           {
@@ -60,6 +136,9 @@
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "0531cf18-4aa0-4705-9bcd-531b2be58ca1",
+  "versionId": "ea8f8be2-0a42-439c-8cdf-461a33f8df4e",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "tags": []
 }
