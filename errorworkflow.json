@@ -1,10 +1,5 @@
 {
-  "updatedAt": "2026-08-21T05:39:12.180Z",
-  "createdAt": "2026-08-21T05:33:10.874Z",
-  "id": "vj6bvfwvpipwT7b7",
   "name": "Error Workflow",
-  "active": false,
-  "isArchived": false,
   "nodes": [
     {
       "parameters": {},
@@ -63,23 +58,10 @@
     "availableInMCP": false
   },
   "staticData": null,
+  "pinData": {},
+  "versionId": "b5bc78cb-cd12-48ec-9750-779fcfb492f5",
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "nodeGroups": [],
-  "pinData": {},
-  "versionId": "b5bc78cb-cd12-48ec-9750-779fcfb492f5",
-  "activeVersionId": null,
-  "triggerCount": 0,
-  "shared": [
-    {
-      "updatedAt": "2026-08-21T05:33:10.875Z",
-      "createdAt": "2026-08-21T05:33:10.875Z",
-      "role": "workflow:owner",
-      "workflowId": "vj6bvfwvpipwT7b7",
-      "projectId": "SKYOo3a7MACwAQNE"
-    }
-  ],
-  "activeVersion": null,
   "tags": []
 }
