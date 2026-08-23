@@ -1,0 +1,108 @@
+{
+  "name": "SISS Priority Backfill",
+  "nodes": [
+    {
+      "id": "trig-1",
+      "name": "Run backfill",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "code-1",
+      "name": "Scored Rows",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// Backfill of the 22 existing JOB's rows with the deterministic priority\n// scoring that now lives in Parse AI Output of workflow \"1. SISS\".\n// Computed from a sheet snapshot taken 2026-08-22. Run once, then delete.\n//\n// Matching is on `id`, verified unique and non-blank across all 22 rows, so\n// this cannot hit the wrong row or depend on row order. Only id, priority and\n// priorityReason are in the payload, so no other column can be touched.\nconst rows = [\n  { id: '4436254514', priority: 'High', priorityReason: 'High - senior director level opening; late-stage or launch clock running; 89 employees, no in-house TA depth.' },\n  { id: '4456387084', priority: 'Low', priorityReason: 'Low - 115 employees, no in-house TA depth.' },\n  { id: '4443628509', priority: 'Medium', priorityReason: 'Medium - senior director level opening; late-stage or launch clock running; 580 employees.' },\n  { id: '4453524099', priority: 'Low', priorityReason: 'Low - 176 employees, no in-house TA depth.' },\n  { id: '4455488034', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 101 employees, no in-house TA depth.' },\n  { id: '4456334568', priority: 'High', priorityReason: 'High - the opening is a function-head role; late-stage or launch clock running; 15 employees, no in-house TA depth.' },\n  { id: '4456457218', priority: 'Medium', priorityReason: 'Medium - specialised therapeutic scope; 388 employees.' },\n  { id: '4437407369', priority: 'Low', priorityReason: 'Low - specialised therapeutic scope; late-stage or launch clock running; 918 employees, likely has in-house TA. Held back: contact does not own Regulatory Affairs.' },\n  { id: 'dd3eeb68-8c1d-4851-8293-65461ae20f09', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 42 employees, no in-house TA depth.' },\n  { id: '4456053664', priority: 'Low', priorityReason: 'Low - late-stage or launch clock running; 797 employees, likely has in-house TA.' },\n  { id: '4456749918', priority: 'Medium', priorityReason: 'Medium - specialised therapeutic scope; 79 employees, no in-house TA depth.' },\n  { id: '4456035228', priority: 'Medium', priorityReason: 'Medium - senior director level opening; 172 employees, no in-house TA depth.' },\n  { id: '4456780014', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 72 employees, no in-house TA depth.' },\n  { id: '4456742506', priority: 'High', priorityReason: 'High - senior director level opening; late-stage or launch clock running; 33 employees, no in-house TA depth.' },\n  { id: '4429589911', priority: 'Low', priorityReason: 'Low - 664 employees, likely has in-house TA.' },\n  { id: '4437066497', priority: 'Medium', priorityReason: 'Medium - the opening is a function-head role; scarce modality in scope; late-stage or launch clock running; 169 employees, no in-house TA depth. Held back: contact does not own Regulatory Affairs.' },\n  { id: '4440973082', priority: 'Medium', priorityReason: 'Medium - senior director level opening; 138 employees, no in-house TA depth.' },\n  { id: '4410260913', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 383 employees.' },\n  { id: '3ed6c3d9-1f71-4e14-8465-1f843b6fa69a', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 21 employees, no in-house TA depth.' },\n  { id: 'ff0513aa-de58-42ba-8707-4d2fb023dede', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 30 employees, no in-house TA depth.' },\n  { id: '4456291452', priority: 'Medium', priorityReason: 'Medium - late-stage or launch clock running; 77 employees, no in-house TA depth.' },\n  { id: '4454625251', priority: 'Low', priorityReason: 'Low - senior director level opening; 997 employees, likely has in-house TA.' }\n];\n\nreturn rows.map((r) => ({ json: r }));"
+      }
+    },
+    {
+      "id": "sheet-1",
+      "name": "Write priority",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1_KI5rgF7pweS-veuvKJ-Xt0E9VgrTtLHbuPBs1bfYOs/edit?gid=1344706833#gid=1344706833",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1344706833,
+          "mode": "list",
+          "cachedResultName": "JOB's"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FqUaNFxZiMgiZ0gS",
+          "name": "Google Sheets account"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    }
+  ],
+  "connections": {
+    "Run backfill": {
+      "main": [
+        [
+          {
+            "node": "Scored Rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scored Rows": {
+      "main": [
+        [
+          {
+            "node": "Write priority",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true
+  },
+  "staticData": null,
+  "pinData": {},
+  "versionId": "3df10846-2b8b-48ed-bfcb-bfac1b2f4071",
+  "tags": []
+}
