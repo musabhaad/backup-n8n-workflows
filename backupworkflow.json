@@ -14,7 +14,7 @@
         }
       },
       "position": [
-        240,
+        200,
         300
       ],
       "type": "n8n-nodes-base.scheduleTrigger",
@@ -50,12 +50,25 @@
         "resource": "file"
       },
       "position": [
-        460,
+        400,
         300
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
-      "webhookId": "ad709608-19cc-456c-8ac2-d373682a45bf"
+      "webhookId": "80ed0cbe-23ce-4b3f-ac03-18cefcf2e878"
+    },
+    {
+      "id": "e8b19374-1294-4d83-8a02-5c3d4f8e9102",
+      "name": "Store repo files",
+      "parameters": {
+        "jsCode": "const files = $input.all().map(item => ({\n  name: item.json.name,\n  path: item.json.path,\n  sha: item.json.sha\n})).filter(f => f.name);\n\nreturn [{\n  json: {\n    existingFiles: files.map(f => f.name),\n    filesMap: files\n  }\n}];"
+      },
+      "position": [
+        600,
+        300
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
     },
     {
       "credentials": {
@@ -73,7 +86,7 @@
         "returnAll": true
       },
       "position": [
-        680,
+        800,
         300
       ],
       "type": "n8n-nodes-base.n8n",
@@ -98,7 +111,7 @@
         }
       },
       "position": [
-        900,
+        1000,
         300
       ],
       "type": "n8n-nodes-base.n8n",
@@ -108,10 +121,10 @@
       "id": "46844715-154e-4b14-96e5-2faab51ac37b",
       "name": "Prepare workflow files",
       "parameters": {
-        "jsCode": "let existingFiles = [];\ntry {\n  existingFiles = $('List files from repo').all().map(item => item.json.name).filter(Boolean);\n} catch (e) {\n  existingFiles = [];\n}\n\nconst results = [];\nconst nowStr = $now.setZone('UTC').toFormat('yyyy-MM-dd/HH:mm');\n\nfor (const item of $input.all()) {\n  const wf = item.json;\n  if (!wf || !wf.name) continue;\n\n  const rawName = String(wf.name).trim();\n\n  const directName = `${rawName.replace(/[/\\\\?%*:|\"<>]/g, '_')}.json`;\n  const dashSlug = `${rawName.toLowerCase().replace(/\\s+/g, '-').replace(/[^a-z0-9-_.]/g, '')}.json`;\n  const compactName = `${rawName.toLowerCase().replace(/[^a-z0-9.]/g, '')}.json`;\n\n  let targetFileName = dashSlug;\n  let fileExists = false;\n\n  if (existingFiles.includes(directName)) {\n    targetFileName = directName;\n    fileExists = true;\n  } else if (existingFiles.includes(dashSlug)) {\n    targetFileName = dashSlug;\n    fileExists = true;\n  } else if (existingFiles.includes(compactName)) {\n    targetFileName = compactName;\n    fileExists = true;\n  } else {\n    const caseMatch = existingFiles.find(f => \n      f.toLowerCase() === directName.toLowerCase() || \n      f.toLowerCase() === dashSlug.toLowerCase() || \n      f.toLowerCase() === compactName.toLowerCase()\n    );\n    if (caseMatch) {\n      targetFileName = caseMatch;\n      fileExists = true;\n    } else {\n      targetFileName = dashSlug;\n      fileExists = false;\n    }\n  }\n\n  const exportData = {\n    name: wf.name,\n    nodes: wf.nodes || [],\n    connections: wf.connections || {},\n    settings: wf.settings || {},\n    staticData: wf.staticData || null,\n    pinData: wf.pinData || {},\n    versionId: wf.versionId || undefined,\n    meta: wf.meta || undefined,\n    tags: wf.tags || []\n  };\n\n  results.push({\n    json: {\n      id: wf.id,\n      workflowName: rawName,\n      fileName: targetFileName,\n      fileExists: fileExists,\n      commitMessage: `backup-${nowStr}`,\n      fileContent: JSON.stringify(exportData, null, 2)\n    }\n  });\n}\n\nreturn results;"
+        "jsCode": "let existingFiles = [];\ntry {\n  const storeNode = $('Store repo files').first();\n  existingFiles = storeNode.json.existingFiles || [];\n} catch (e) {\n  try {\n    existingFiles = $('List files from repo').all().map(item => item.json.name).filter(Boolean);\n  } catch (err) {\n    existingFiles = [];\n  }\n}\n\nconst results = [];\nconst nowStr = $now.setZone('UTC').toFormat('yyyy-MM-dd/HH:mm');\n\nfor (const item of $input.all()) {\n  const wf = item.json;\n  if (!wf || !wf.name) continue;\n\n  const rawName = String(wf.name).trim();\n\n  const directName = `${rawName.replace(/[/\\\\?%*:|\"<>]/g, '_')}.json`;\n  const dashSlug = `${rawName.toLowerCase().replace(/\\s+/g, '-').replace(/[^a-z0-9-_.]/g, '')}.json`;\n  const compactName = `${rawName.toLowerCase().replace(/[^a-z0-9.]/g, '')}.json`;\n\n  let targetFileName = dashSlug;\n  let fileExists = false;\n\n  if (existingFiles.includes(directName)) {\n    targetFileName = directName;\n    fileExists = true;\n  } else if (existingFiles.includes(dashSlug)) {\n    targetFileName = dashSlug;\n    fileExists = true;\n  } else if (existingFiles.includes(compactName)) {\n    targetFileName = compactName;\n    fileExists = true;\n  } else {\n    const caseMatch = existingFiles.find(f => \n      f.toLowerCase() === directName.toLowerCase() || \n      f.toLowerCase() === dashSlug.toLowerCase() || \n      f.toLowerCase() === compactName.toLowerCase()\n    );\n    if (caseMatch) {\n      targetFileName = caseMatch;\n      fileExists = true;\n    } else {\n      targetFileName = dashSlug;\n      fileExists = false;\n    }\n  }\n\n  const exportData = {\n    name: wf.name,\n    nodes: wf.nodes || [],\n    connections: wf.connections || {},\n    settings: wf.settings || {},\n    staticData: wf.staticData || null,\n    pinData: wf.pinData || {},\n    versionId: wf.versionId || undefined,\n    meta: wf.meta || undefined,\n    tags: wf.tags || []\n  };\n\n  results.push({\n    json: {\n      id: wf.id,\n      workflowName: rawName,\n      fileName: targetFileName,\n      fileExists: fileExists,\n      commitMessage: `backup-${nowStr}`,\n      fileContent: JSON.stringify(exportData, null, 2)\n    }\n  });\n}\n\nreturn results;"
       },
       "position": [
-        1120,
+        1200,
         300
       ],
       "type": "n8n-nodes-base.code",
@@ -145,7 +158,7 @@
         "options": {}
       },
       "position": [
-        1340,
+        1400,
         300
       ],
       "type": "n8n-nodes-base.if",
@@ -182,12 +195,12 @@
         "resource": "file"
       },
       "position": [
-        1580,
+        1640,
         200
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
-      "webhookId": "1011d042-3480-4ce2-bb3c-c1ca01b60caf"
+      "webhookId": "d9612ee8-4493-49e5-ab8c-a01c8773d49b"
     },
     {
       "credentials": {
@@ -220,24 +233,24 @@
         "resource": "file"
       },
       "position": [
-        1580,
+        1640,
         400
       ],
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
-      "webhookId": "34c83c93-26cc-4952-844d-d98e127b731c"
+      "webhookId": "23177a2b-d240-4f4c-9ed8-13db41e25a94"
     },
     {
       "id": "2fc34caa-97d6-4efb-98f9-d404c7fdb46f",
       "name": "Sticky Note1",
       "parameters": {
         "color": 5,
-        "content": "### 1. Trigger & GitHub State\nSchedule daily backup & list existing files from GitHub repo",
+        "content": "### 1. Trigger & GitHub State\nSchedule daily backup & list existing files from GitHub repo (aggregated to 1 item).",
         "height": 380,
-        "width": 380
+        "width": 520
       },
       "position": [
-        180,
+        160,
         140
       ],
       "type": "n8n-nodes-base.stickyNote",
@@ -248,12 +261,12 @@
       "name": "Sticky Note2",
       "parameters": {
         "color": 3,
-        "content": "### 2. Fetch Full Workflow JSON\nRetrieve all workflows and their complete nodes + connections from n8n API",
+        "content": "### 2. Fetch Full Workflow JSON\nRetrieve all workflows and their complete nodes + connections from n8n API.",
         "height": 380,
-        "width": 460
+        "width": 400
       },
       "position": [
-        620,
+        740,
         140
       ],
       "type": "n8n-nodes-base.stickyNote",
@@ -264,12 +277,12 @@
       "name": "Sticky Note3",
       "parameters": {
         "color": 4,
-        "content": "### 3. File Matching & Commit\nMatch against existing repo files to edit existing or upload new",
+        "content": "### 3. File Matching & Commit\nMatch against existing repo files to edit existing or upload new.",
         "height": 380,
         "width": 680
       },
       "position": [
-        1060,
+        1160,
         140
       ],
       "type": "n8n-nodes-base.stickyNote",
@@ -311,7 +324,7 @@
         [
           {
             "index": 0,
-            "node": "Retrieve all workflows",
+            "node": "Store repo files",
             "type": "main"
           }
         ]
@@ -349,6 +362,17 @@
           }
         ]
       ]
+    },
+    "Store repo files": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Retrieve all workflows",
+            "type": "main"
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -358,7 +382,7 @@
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "e5dc1bdc-f2be-4956-8235-5386ac2617a7",
+  "versionId": "3d5934bc-3f74-4288-bf6c-9439cb339f07",
   "meta": {
     "templateCredsSetupCompleted": true
   },
