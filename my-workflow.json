@@ -6,122 +6,187 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        0,
-        0
+        -96,
+        -16
       ],
-      "id": "06b78473-aa8d-4023-af73-40dfe2d398b6",
+      "id": "1bc364ef-f1bd-4c29-a7ce-d5eea68ac79f",
       "name": "When clicking ‘Execute workflow’"
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.5,
-      "position": [
-        144,
-        144
-      ],
-      "id": "364cfb1f-c662-4671-bf58-a13295558e75",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "mode": "list",
-          "value": ""
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 2.3,
-      "position": [
-        368,
-        144
-      ],
-      "id": "00bee53e-3b31-4cab-96e4-5e753f835f4c",
-      "name": "Analyze image",
-      "credentials": {
-        "openAiApi": {
-          "id": "hd50HVuRCMdy8YcF",
-          "name": "OpenAI account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "path": "6ee23080-0e8d-4839-9237-1e29555954cc",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        672,
-        240
-      ],
-      "id": "ff7aef9f-e286-4e95-a190-4355966d76df",
-      "name": "Webhook",
-      "webhookId": "6ee23080-0e8d-4839-9237-1e29555954cc"
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "https://api.heygen.com/v2/video/generate",
+        "url": "https://tavusapi.com/v2/videos",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
-              "name": "X-Api-Key",
-              "value": "sk_V2_hgu_k3fMjyJpgEq_Vlso2dq9WwThmSqA0jlYFsDw16L9cdv0"
+              "name": "x-api-key",
+              "value": "00413519f6964258b3d0eab50a981e99"
             }
           ]
         },
         "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "{\n  \"title\": \"Recruitment Outreach Test\",\n  \"dimension\": {\n    \"width\": 1280,\n    \"height\": 720\n  },\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"d004de3f058343c7afb4a3013c588616\",\n        \"avatar_style\": \"circle\",\n        \"scale\": 0.45,\n        \"offset\": {\n          \"x\": -0.32,\n          \"y\": -0.3\n        }\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"Hi there, I was looking over your profile and wanted to reach out regarding a new role.\",\n        \"voice_id\": \"6ea1e5283083457582adbe661323f9a1\",\n        \"speed\": 1\n      },\n      \"background\": {\n        \"type\": \"image\",\n        \"url\": \"https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1280\"\n      }\n    }\n  ]\n}",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "replica_id",
+              "value": "r72f7f7f7c8b"
+            },
+            {
+              "name": "video_name",
+              "value": "Recruitment Outreach Fixed"
+            },
+            {
+              "name": "script",
+              "value": "Hey Jason! Saw that Galvanize is expanding the Medical Affairs team right now. In specialized life sciences, the real challenge isn't just finding people... it's finding candidates who actually match your specific requirement stack. We map that scarcity before roles get urgent. Would love to compare notes if you have two minutes this week."
+            },
+            {
+              "name": "background_url",
+              "value": "https://i.ibb.co/ZRPJLv7Z/reid.png"
+            }
+          ]
+        },
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.5,
       "position": [
-        928,
-        368
+        128,
+        -16
       ],
-      "id": "16ec747a-cc86-489b-b1ab-2f80c44e7067",
+      "id": "605b409f-ba72-422e-bbd2-98058bb0fafa",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "=https://tavusapi.com/v2/videos/{{ $json.video_id }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "verbose",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "00413519f6964258b3d0eab50a981e99"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        560,
+        -16
+      ],
+      "id": "f327611e-37f9-4aa6-8161-1c9571ef2709",
       "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "000f500e-a367-4ac9-b7a9-f9911e8dc274",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "generating",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        880,
+        -16
+      ],
+      "id": "e1f4e8f3-b90a-4d61-bdcf-098047e91695",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        -16
+      ],
+      "id": "60bb9b7c-f0d9-4b26-bd33-1b9f11e815dc",
+      "name": "Wait",
+      "webhookId": "fe27350f-331d-4f6e-8c22-9edde3f91a43"
     }
   ],
   "connections": {
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Analyze image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Analyze image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Analyze image": {
+    "When clicking ‘Execute workflow’": {
       "main": [
         [
           {
             "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
             "type": "main",
             "index": 0
           }
@@ -136,9 +201,6 @@
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "ea8f8be2-0a42-439c-8cdf-461a33f8df4e",
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "versionId": "8f339c9b-1eae-446d-8f74-041139e4c1ed",
   "tags": []
 }
