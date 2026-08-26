@@ -198,10 +198,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        8672,
-        1168
+        10016,
+        2672
       ],
-      "id": "3610d65a-527c-45ff-a9d6-98f008779b0a",
+      "id": "f4aa2fd8-57a5-4b65-9acf-97e7ed2577f3",
       "name": "Edit Fields1"
     },
     {
@@ -211,10 +211,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8224,
-        1264
+        9568,
+        2768
       ],
-      "id": "3b67531b-0abd-4355-a303-86a3cf9694b1",
+      "id": "e99bf2ab-69e3-44cf-8314-4bfcd8322868",
       "name": "Code in JavaScript"
     },
     {
@@ -246,10 +246,10 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        7872,
-        1264
+        9216,
+        2768
       ],
-      "id": "de222c73-1482-4710-aa91-d5533795ad14",
+      "id": "7b1e52ae-f184-4f0e-b7b3-15dcc5915e66",
       "name": "Filter Job",
       "retryOnFail": true,
       "credentials": {
@@ -258,25 +258,6 @@
           "name": "OpenAI account"
         }
       }
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "triggerAtHour": 15
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        3216,
-        1552
-      ],
-      "id": "5f0a57da-53db-4ad5-bdff-795dbd424b45",
-      "name": "Schedule Trigger"
     },
     {
       "parameters": {
@@ -295,10 +276,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5296,
-        1792
+        6640,
+        3296
       ],
-      "id": "d0b2738a-814b-4bfe-b0a8-899e2faa3ca5",
+      "id": "cfcf47f4-43ad-4faa-8416-004c3036ff6f",
       "name": "ALL JOB URLs"
     },
     {
@@ -308,10 +289,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        5856,
-        1792
+        7200,
+        3296
       ],
-      "id": "b4a6f123-33d7-420a-92cb-2a938a15bd4c",
+      "id": "2607301d-0c0e-498f-9595-edc537c3fee7",
       "name": "Loop Over Items"
     },
     {
@@ -333,10 +314,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        5040,
-        1792
+        6384,
+        3296
       ],
-      "id": "881d38e2-3663-46e1-9e34-bbd01702aec7",
+      "id": "fdf6f41f-b9b3-4179-8ae1-b7ccd01a6f98",
       "name": "Get Job Urls",
       "retryOnFail": true,
       "maxTries": 5,
@@ -456,10 +437,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        7408,
-        1456
+        8752,
+        2960
       ],
-      "id": "1e32fff0-c6ae-405d-9f84-e9fbd5d522f9",
+      "id": "23062178-5e2a-4e6d-a909-cebdab7f04fc",
       "name": "Job OK?"
     },
     {
@@ -467,10 +448,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        7184,
-        1792
+        8528,
+        3296
       ],
-      "id": "c944ac1e-4a1d-4af8-9a0d-a2a2a235a820",
+      "id": "9f36ebc9-5bb8-400c-9478-6c0f3852c4b9",
       "name": "No Operation"
     },
     {
@@ -784,10 +765,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        11408,
-        1168
+        12752,
+        2672
       ],
-      "id": "7c56a2eb-afc4-4cd0-bf71-9ba072b36133",
+      "id": "e894e91f-98df-4162-8e6e-87a06c28c79c",
       "name": "Append row in sheet1",
       "retryOnFail": true,
       "maxTries": 5,
@@ -804,10 +785,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        11760,
-        1808
+        13104,
+        3312
       ],
-      "id": "ba99e949-d29f-408a-bb5e-04d48b63cbce",
+      "id": "953be6af-5ad5-4014-8660-a7e0f28de182",
       "name": "No Operation, do nothing"
     },
     {
@@ -817,10 +798,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        6944,
-        1328
+        8288,
+        2832
       ],
-      "id": "48d4d2b3-cfe6-4d14-83b4-d25d97c878bb",
+      "id": "bb28e069-096b-4610-91a0-ba6aacd20973",
       "name": "Add Keys"
     },
     {
@@ -830,10 +811,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        7168,
-        1328
+        8512,
+        2832
       ],
-      "id": "b645fef4-50f0-4bc4-aa04-f6f08b2ab860",
+      "id": "b32e3701-8be5-4a20-8ed5-9195d97d4734",
       "name": "Dedup New Companies"
     },
     {
@@ -843,10 +824,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8480,
-        1168
+        9824,
+        2672
       ],
-      "id": "6dfbca48-4e82-4a89-8b3f-e2abbcfa1283",
+      "id": "cd70d0b5-8488-462c-bd9e-4a8ce930f0ff",
       "name": "Consolidate Companies"
     },
     {
@@ -856,10 +837,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8448,
-        1456
+        9792,
+        2960
       ],
-      "id": "dc11c30d-5c00-4d72-b11b-6570edbf45aa",
+      "id": "cacb07f4-e89b-4bfa-9d11-e082c5851d64",
       "name": "Collect Rejected"
     },
     {
@@ -936,10 +917,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        8672,
-        1456
+        10016,
+        2960
       ],
-      "id": "88be0d06-b425-4d6b-9456-dc32323e3358",
+      "id": "965587e6-8a57-4e8b-910f-28643e8ebc77",
       "name": "Append Rejected",
       "retryOnFail": true,
       "maxTries": 5,
@@ -955,13 +936,13 @@
       "parameters": {
         "jsCode": "const rows=[];\nconst runId = $execution.id;\nconst nowIso = DateTime.now().setZone('America/New_York').toFormat('yyyy-MM-dd HH:mm:ss');\nconst _sd=$getWorkflowStaticData('global');\nif(_sd.runStats && !_sd.runStats.ruleReasons) _sd.runStats.ruleReasons={};\n\n// These lists must stay identical to the ones in the \"Job OK?\" IF node.\n// When they drift, a job dies at the IF but is logged here as 'unknown'.\nconst RECRUITER_NAME = ['recruiting','recruitment','recruiter','staffing',\n  'executive search','search group','search partners','search firm',\n  'search associates','search consultants',\n  'talent group','talent solutions','talent partners',\n  'headhunting','headhunter','placement','placements',\n  'workforce solutions','human capital',\n  'biospace','ladders','jobgether'];\nconst RECRUITER_IND = ['recruiting','recruitment','staffing'];\nconst BAD_TITLE = ['interim','freelance','contractor','pharmacovigilance','drug safety','medical writer'];\nconst OUTSOURCER = ['cdmo','contract development and manufacturing','we serve','our clients','outsourcing partner'];\n\nfor (const it of $input.all()) {\n  const j = it.json || {};\n  if (j._skip || j.companyName === '__skip__') continue;\n  const reasons = [];\n\n  const web = (j.companyWebsite || '').toString();\n  if (!web) reasons.push('no_website');\n  if (web.includes('careers.linkedin.com')) reasons.push('careers_linkedin');\n  if (!j.postedAt) reasons.push('no_postedAt');\n\n  const name = (j.companyName || '').toString().toLowerCase();\n  if (RECRUITER_NAME.some(kw => name.includes(kw))) reasons.push('recruiter_name');\n\n  const ind = (j.industries ?? '').toString().toLowerCase();\n  if (RECRUITER_IND.some(kw => ind.includes(kw))) reasons.push('recruiter_industry');\n\n  const title = (j.title ?? '').toString().toLowerCase();\n  if (BAD_TITLE.some(kw => title.includes(kw))) reasons.push('excluded_title');\n\n  const country = (j.companyAddress && j.companyAddress.addressCountry) || '';\n  if (country !== 'US') reasons.push(country ? 'country_not_US' : 'country_missing');\n\n  const slogan = (j.companySlogan ?? '').toString().toLowerCase();\n  if (OUTSOURCER.some(kw => slogan.includes(kw))) reasons.push('outsourcer_slogan');\n\n  const emp = Number(j.companyEmployeesCount ?? 0);\n  if (isNaN(emp)) reasons.push('headcount_not_numeric');\n  else if (emp > 1500) reasons.push('too_big_gte_1500');\n\n  if(_sd.runStats){ const primary=reasons[0]||'unknown'; _sd.runStats.ruleReasons[primary]=(_sd.runStats.ruleReasons[primary]||0)+1; }\n  rows.push({ json: {\n    timestamp: nowIso,\n    runId: runId,\n    dedupKey: j.dedupKey || '',\n    companyName: j.companyName || '',\n    country: j.country || '',\n    companyWebsite: web,\n    companyEmployeesCount: (j.companyEmployeesCount === undefined ? '' : j.companyEmployeesCount),\n    reason: reasons.join(',') || 'unknown'\n  }});\n}\nif(_sd.runStats) _sd.runStats.ruleFiltered += rows.length;\nreturn rows;\n"
       },
-      "id": "2cccc57b-32bc-4c26-8be2-5eeb9522f397",
+      "id": "4c80a8e7-ce22-4d53-9e99-0b8a1b7abe7e",
       "name": "Tag Filter Reason",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        7760,
-        1472
+        9104,
+        2976
       ]
     },
     {
@@ -1062,13 +1043,13 @@
         },
         "options": {}
       },
-      "id": "8f56b2f0-6919-4c6f-ada8-ae4605366d3a",
+      "id": "d83b3ce6-c92c-4fb7-a9ae-3ac48773e064",
       "name": "Append Filtered",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        8048,
-        1472
+        9392,
+        2976
       ],
       "retryOnFail": true,
       "maxTries": 5,
@@ -1084,26 +1065,26 @@
       "parameters": {
         "jsCode": "const sd=$getWorkflowStaticData('global');\nsd.runStats={scraped:0,duplicates:0,ruleFiltered:0,aiPassed:0,aiRejected:0,amfSent:0,aiParseErrors:0,ruleReasons:{}};\nsd.seenKeys={};\nsd.runStartedAt=DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss');\nreturn $input.all();"
       },
-      "id": "007bf7f1-1370-4441-acfa-10c0352c937d",
+      "id": "a590fc8b-f1b2-4996-8d71-6ff3a2193262",
       "name": "Init Run Stats",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5632,
-        1792
+        6976,
+        3296
       ]
     },
     {
       "parameters": {
         "jsCode": "const sd=$getWorkflowStaticData('global');\nif(!sd.runStats) return [];\nconst s=sd.runStats;\nconst row={ runId:$execution.id, startedAt:sd.runStartedAt||'', finishedAt:DateTime.now().setZone('Europe/Berlin').toFormat('yyyy-MM-dd HH:mm:ss'),\n  workflow:'WF1 SISS', scraped:s.scraped, ruleFiltered:s.ruleFiltered, duplicates:s.duplicates,\n  aiRejected:s.aiRejected, aiPassed:s.aiPassed, amfSent:s.amfSent,\n  callbacks:'', valid:'', invalid:'', found:'', sentSmartlead:'', notFound:'', pendingChecked:'', retried:'', expired:'' };\nrow._aiParseErrors = s.aiParseErrors||0;\nrow._toAI = (s.scraped||0)-(s.duplicates||0)-(s.ruleFiltered||0);   // job posts that reached the AI\nrow._companies = (s.aiPassed||0)+(s.aiRejected||0);                  // unique companies after dedup collapse\n// human-readable rule-filter breakdown (primary reason per job post -> sums to ruleFiltered)\nconst rr=s.ruleReasons||{};\nconst lbl={no_website:'no_website',careers_linkedin:'careers_linkedin',no_postedAt:'no_date',too_big_gte_2000:'too_big≥2000',recruiter_name:'recruiter',recruiter_industry:'recruiter',unknown:'other'};\nconst agg={}; for(const k of Object.keys(rr)){ const L=lbl[k]||k; agg[L]=(agg[L]||0)+rr[k]; }\nrow._ruleBreakdown = Object.keys(agg).sort((a,b)=>agg[b]-agg[a]).map(k=>k+' '+agg[k]).join(' · ') || '—';\ndelete sd.runStats; delete sd.runStartedAt;\nreturn [{json:row}];"
       },
-      "id": "e54b8338-ce95-4f5c-ac50-fc77546a900d",
+      "id": "e3898761-b7f3-4391-99d2-e5bc6055b485",
       "name": "Build Run Summary",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5648,
-        528
+        7360,
+        2352
       ],
       "disabled": true
     },
@@ -1305,13 +1286,13 @@
         },
         "options": {}
       },
-      "id": "ded737b0-aab7-4233-83c3-d50cd4cdc3cf",
+      "id": "73961d7b-a417-433e-a53f-185d2e35d936",
       "name": "Append Run Summary",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        5872,
-        624
+        7584,
+        2448
       ],
       "retryOnFail": true,
       "maxTries": 5,
@@ -1339,13 +1320,13 @@
         "content": "=📊 **SISS run** `{{ $json.runId }}`\n**Job posts:** {{ $json.scraped }} scraped → −{{ $json.duplicates }} already seen → −{{ $json.ruleFiltered }} rule-filtered → **{{ $json._toAI }} sent to AI**\n  ↳ filtered by: {{ $json._ruleBreakdown }}\n**Companies** (those {{ $json._toAI }} job posts dedupe to unique companies): **{{ $json._companies }}** → ✓{{ $json.aiPassed }} kept · ✗{{ $json.aiRejected }} rejected\n→ **{{ $json.amfSent }}** sent to Anymailfinder · AI-parse errors {{ $json._aiParseErrors }}\nFinished {{ $json.finishedAt }}{{ ($json._aiParseErrors>0) ? ('\\n⚠ '+$json._aiParseErrors+' AI JSON parse failures (jobs dropped — check Filter Job output)') : '' }}",
         "options": {}
       },
-      "id": "665c28c8-92e8-4ee1-b94c-be7eff25405c",
+      "id": "cd06fd78-1a40-4dfe-818d-20129b568b4a",
       "name": "Discord: run digest",
       "type": "n8n-nodes-base.discord",
       "typeVersion": 2,
       "position": [
-        5872,
-        432
+        7584,
+        2256
       ],
       "webhookId": "c9810029-f4ad-4854-9bf3-12f85cfa836f",
       "disabled": true
@@ -1366,13 +1347,13 @@
         },
         "options": {}
       },
-      "id": "085642a5-a0a3-409f-8263-f39acad29883",
+      "id": "2488d79b-1d0f-4bf2-a7ac-2adf0bd2cfe2",
       "name": "Get Suppression rows",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        4016,
-        1792
+        5360,
+        3296
       ],
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -1393,10 +1374,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        7648,
-        1264
+        8992,
+        2768
       ],
-      "id": "4f57bfc8-6639-4fb0-85e4-08028e1610aa",
+      "id": "6f94336e-39d3-406d-b8ef-20fc95e375e2",
       "name": "Sanitize AI Input"
     },
     {
@@ -1427,10 +1408,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        6720,
-        1456
+        8064,
+        2960
       ],
-      "id": "1a524f7a-e7c9-4902-8f13-d8fa48611830",
+      "id": "625f1825-d6a6-4180-bc77-46749b0283dd",
       "name": "Has Jobs?"
     },
     {
@@ -1438,10 +1419,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4848,
-        1792
+        6192,
+        3296
       ],
-      "id": "6ae4a805-70d2-4e6a-ad3e-fb01e53b29d8",
+      "id": "b51dfc07-3a7d-442a-920e-c5f7c3eba2d2",
       "name": "Wait",
       "webhookId": "9fe7f4f3-36cc-4115-803f-f2603a300b4b"
     },
@@ -1464,10 +1445,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        3552,
-        1792
+        4896,
+        3296
       ],
-      "id": "9286583d-33f1-4ed3-99b6-3372e273bef3",
+      "id": "3916e4c7-33a0-4fea-bcfd-adfa20b67f11",
       "name": "Get Jobs rows",
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -1500,10 +1481,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        4496,
-        1792
+        5840,
+        3296
       ],
-      "id": "981b4ea8-c4ee-4a5f-bda5-9ba6b1e7772c",
+      "id": "84c71848-7f82-45c6-985d-6de5b8759545",
       "name": "Get Rejected rows",
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -1522,10 +1503,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3776,
-        1792
+        5120,
+        3296
       ],
-      "id": "bac7dd34-51e7-4b71-aabf-96c01f3e75c3",
+      "id": "99d50ccc-66de-4d07-b34b-51d50a649570",
       "name": "Wait1",
       "webhookId": "fd51c8e2-67f3-49de-8a18-bffc380df19c"
     },
@@ -1534,10 +1515,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4240,
-        1792
+        5584,
+        3296
       ],
-      "id": "447c7a49-b88c-4541-a7e9-3c99cfdd1269",
+      "id": "baccfc35-11e0-4080-b855-ca35a2b4b2f0",
       "name": "Wait4",
       "webhookId": "c1d88da4-d0c1-435a-8f73-4dbf722928b2"
     },
@@ -1551,23 +1532,23 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        6960,
-        544
+        8304,
+        2048
       ],
-      "id": "336a9feb-100b-41fd-ae9c-f22089ed2bd6",
+      "id": "3a2a9cc0-6e47-4ad3-a98d-cb65e31037e9",
       "name": "Latest Changes Note"
     },
     {
       "parameters": {
         "jsCode": "const norm = (u) => (u || '').replace(/^=/, '').split('?')[0].replace(/\\/+$/, '').toLowerCase();\n\n// Same normaliser as Add Keys and Dedup New Companies, so a name those nodes\n// already treat as one company is treated as one company here too.\nfunction normComp(s) {\n  if (!s) return '';\n  let x = String(s).toLowerCase().trim().replace(/\\s+/g, ' ');\n  x = x.replace(/[.,/\\\\&'\"`\\-()]/g, ' ');\n  x = x.replace(/\\b(inc|incorporated|corp|corporation|llc|llp|ltd|limited|co|company|holdings|holding|group|the|gmbh|mbh|ug|ag|kg|ohg|se|ev|plc|bv|nv|sarl|sas|sa|srl|spa|oy|ab|as|aps|pte)\\b/g, ' ');\n  return x.replace(/\\s+/g, ' ').trim();\n}\n\nconst leadByUrl = {};\nfor (const lead of $('Edit Fields1').all()) {\n  const key = norm(lead.json.companyLinkedinUrl);\n  if (key) leadByUrl[key] = lead.json;\n}\n\nconst byCompany = {};\nfor (const item of $input.all()) {\n  const p = item.json;\n  if (!p.linkedinUrl) continue;\n\n  const q = (p._meta && p._meta.query) || {};\n  const key = norm(q.currentCompanies && q.currentCompanies[0]);\n  if (!key || !leadByUrl[key]) continue;\n\n  // The scraper sometimes returns a profile whose current employer is not the\n  // company we searched. Live case: a self-employed profile in India came back\n  // under GondolaBio and was the only HR result. Those poison the shortlist.\n  const pos = (p.currentPositions && p.currentPositions[0]) || {};\n  const claimed = normComp(pos.companyName);\n  const target = normComp(leadByUrl[key].companyName);\n  if (claimed && target && !claimed.includes(target) && !target.includes(claimed)) continue;\n\n  // The HR run is the only one carrying functionIds, so the echoed query tells\n  // us which pool a profile came from. No tagging nodes needed.\n  const pool = (q.functionIds && q.functionIds.length) ? 'hr' : 'functional';\n\n  if (!byCompany[key]) byCompany[key] = [];\n  byCompany[key].push({\n    pool: pool,\n    fullName: [p.firstName, p.lastName].filter(Boolean).join(' '),\n    title: pos.title || '',\n    linkedinUrl: p.linkedinUrl,\n    location: (p.location && p.location.linkedinText) || '',\n    summary: (p.summary || '').slice(0, 400),\n  });\n}\n\n// Emit one row per lead, INCLUDING companies where the search returned\n// nobody. A company with no candidates must still reach the dashboard\n// flagged, rather than silently disappearing from the run.\nreturn Object.keys(leadByUrl).map((key) => {\n  const all = byCompany[key] || [];\n\n  const seen = {};\n  const deduped = [];\n  for (const c of all) {\n    const k = c.pool + '|' + c.linkedinUrl;\n    if (seen[k]) continue;\n    seen[k] = 1;\n    deduped.push(c);\n  }\n\n  return {\n    json: Object.assign({}, leadByUrl[key], {\n      candidateCount: deduped.length,\n      candidates: deduped.filter((c) => c.pool === 'functional'),\n      hrCandidates: deduped.filter((c) => c.pool === 'hr'),\n    }),\n  };\n});"
       },
-      "id": "8eeef136-4c9b-4010-a246-0b1927fdcb35",
+      "id": "e84659c8-222b-40be-8d83-9cded7e9614f",
       "name": "Group by Company",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9872,
-        1168
+        11216,
+        2672
       ]
     },
     {
@@ -1592,13 +1573,13 @@
         "builtInTools": {},
         "options": {}
       },
-      "id": "ae3fa45f-7d27-4650-a160-a2a03389e36d",
+      "id": "0fdabdb7-5f9f-417f-a05f-f93bf41f91f9",
       "name": "Pick Decision Maker",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        10128,
-        1168
+        11472,
+        2672
       ],
       "credentials": {
         "openAiApi": {
@@ -1611,13 +1592,13 @@
       "parameters": {
         "jsCode": "const groups = $('Group by Company').all();\n\n// Walk the whole item and return the first string that looks like our AI JSON.\n// Shape-agnostic on purpose: avoids Array.isArray() failing on n8n proxies\n// and avoids guessing where the OpenAI node nested the content block.\nfunction findAiText(node, depth) {\n  if (node == null || depth > 8) return '';\n  if (typeof node === 'string') {\n    return node.indexOf('personFullName') !== -1 ? node : '';\n  }\n  if (typeof node === 'object') {\n    for (const key of Object.keys(node)) {\n      let child;\n      try { child = node[key]; } catch (e) { continue; }\n      const found = findAiText(child, depth + 1);\n      if (found) return found;\n    }\n  }\n  return '';\n}\n\n// ---------------------------------------------------------------------------\n// Deterministic priority scoring.\n//\n// Replaces the model's self-reported `confidence`, which was ungrounded. In\n// execution 6471 SpyGlass and Servier both cited Rule 2 in whyPersonSelected\n// and came back \"low\" and \"high\" respectively, because the Pick Decision Maker\n// prompt only defines confidence for Rule 1 and for two failure cases. Every\n// other row - the normal path - had no instruction at all, so the model\n// guessed. Same story on signalStrength: Filter Job graded Servier \"high\" on\n// \"indicating a significant capability build\" with nothing in the post behind\n// it.\n//\n// Nothing below calls a model. Every input is arithmetic or a substring test\n// against text already on the item, so this adds zero OpenAI cost. That is\n// also why the prompts were left alone rather than asked to quote evidence.\n// ---------------------------------------------------------------------------\n\nfunction rank(title) {\n  const t = String(title || '').toLowerCase();\n  if (/\\b(co[\\s-]?founder|founder|chief executive|ceo)\\b/.test(t)) return 8;\n  if (/\\bchief\\b/.test(t)) return 7;\n  if (/\\b(svp|evp|senior vice president|executive vice president)\\b/.test(t)) return 6;\n  if (/\\b(vp|vice president)\\b/.test(t)) return 5;\n  if (/\\bhead of\\b|\\bexec(utive)?\\.? director\\b/.test(t)) return 4;\n  // Associate Director must be tested before the bare Director rule, and\n  // \"Senior Medical Director\" must not fall through to it either - the words\n  // are not adjacent, so /senior director/ would miss it.\n  if (/\\bassoc(iate)?\\.? director\\b/.test(t)) return 1;\n  if (/\\b(senior|sr\\.?)\\b[^,]{0,25}\\bdirector\\b/.test(t)) return 3;\n  if (/\\bdirector\\b/.test(t)) return 2;\n  return 0;\n}\n\nconst FN_KEYS = {\n  'medical affairs': ['medical affairs', 'field medical', 'medical', 'msl'],\n  'clinical operations': ['clinical operation', 'clinical ops', 'clinical'],\n  'quality': ['quality', 'qa', 'gxp', 'gmp', 'gcp'],\n  'regulatory affairs': ['regulatory'],\n};\n\nfunction ownsFunction(title, area) {\n  const t = String(title || '').toLowerCase();\n  const a = String(area || '').toLowerCase().trim();\n  if (!t || !a) return false;\n  const keys = FN_KEYS[a] || [a];\n  for (const k of keys) { if (t.indexOf(k) !== -1) return true; }\n  return false;\n}\n\n// jobDescription is truncated to 1500 chars upstream in Edit Fields1, so a\n// milestone buried late in a long post will be missed. That direction of error\n// is deliberate: it under-rates rather than over-rates.\nconst RE_MILESTONE = /\\bphase\\s*(2|3|ii|iii)\\b|\\bpivotal\\b|\\b(ind|bla|nda|maa)\\b|\\blaunch\\b|\\bcommercial(ization|ise|ize)\\b|\\bfirst[\\s-]in[\\s-]human\\b/i;\nconst RE_BUILD = /\\bbuild(ing)?\\b|\\bscal(e|ing|able)\\b|\\bestablish(ing)?\\b|\\bstand(ing)?\\s+up\\b|\\bfrom\\s+the\\s+ground\\s+up\\b|\\bgrow(ing)?\\s+the\\s+team\\b/i;\nconst RE_REPORTS = /reports?\\s+(?:directly\\s+)?to\\s+(?:the\\s+)?([^.\\n;]{3,70})/i;\n\nfunction scoreLead(lead, ai) {\n  const desc = String(lead.jobDescription || '');\n  const opening = String(lead.jobOpeningTitle || '');\n  const pickTitle = String(ai.personJobTitle || '');\n  const area = lead.functionalArea || '';\n  const pool = Array.isArray(lead.candidates) ? lead.candidates.length : 0;\n\n  if (!ai.personFullName || !ai.personLinkedinUrl) {\n    return {\n      priority: 'Review',\n      priorityReason: 'Review - no contact found, nothing for Scott to action.',\n    };\n  }\n\n  const reasons = [];\n\n  // --- signal half, read straight from the posting -------------------------\n  let signal = 0;\n  const milestone = RE_MILESTONE.exec(desc);\n  if (milestone) {\n    signal += 3;\n    reasons.push('post names ' + milestone[0].trim());\n  } else if (RE_BUILD.test(desc)) {\n    signal += 2;\n    reasons.push('post describes a team build');\n  } else {\n    reasons.push('no milestone or build named in post');\n  }\n  // A senior opening IS the signal: the company is building or replacing the\n  // head of the function. Run 6478 scored Intellia Low on a VP of Quality\n  // opening at 502 employees, which is close to the strongest signal Scott\n  // gets, so VP and above now counts double.\n  if (rank(opening) >= 5) {\n    signal += 2;\n    reasons.push('the opening is a VP level function head');\n  } else if (rank(opening) >= 4) {\n    signal += 1;\n    reasons.push('the opening is itself a function-head role');\n  }\n\n  // --- contact half --------------------------------------------------------\n  let contact = 0;\n  const gap = rank(pickTitle) - rank(opening);\n  const reportsTo = RE_REPORTS.exec(desc);\n  const reportsHit = !!reportsTo\n    && rank(reportsTo[1]) > 0\n    && Math.abs(rank(reportsTo[1]) - rank(pickTitle)) <= 1\n    && ownsFunction(pickTitle, area);\n\n  if (reportsHit) {\n    contact += 3;\n    reasons.push('post names the reporting line and it matches this person');\n  } else if (gap >= 2) {\n    contact += 2;\n    reasons.push('sits ' + gap + ' rungs above the opening');\n  } else if (gap === 1) {\n    contact += 1;\n    reasons.push('sits 1 rung above the opening');\n  } else {\n    contact -= 2;\n    reasons.push('does NOT outrank the opening');\n  }\n\n  // When nobody in the pool owns the function, the function is vacant, which\n  // is exactly why the company is hiring. Not carrying the function word\n  // cannot count against a pick that was chosen as the reporting line.\n  const poolOwns = Array.isArray(lead.candidates)\n    && lead.candidates.some((c) => ownsFunction(c.title, area));\n\n  if (ownsFunction(pickTitle, area)) {\n    contact += 2;\n    reasons.push('owns ' + area);\n  } else if (!poolOwns) {\n    contact += 1;\n    reasons.push('no one owns ' + area + ' yet, this is the reporting line');\n  } else {\n    reasons.push('title does not name ' + area);\n  }\n\n  // A pool of one means nothing was actually compared. The pick may still be\n  // right, but the scraper filter decided it, not the judgement.\n  if (pool <= 1) {\n    contact -= 2;\n    reasons.push('only ' + pool + ' candidate returned, nothing was compared');\n  } else {\n    reasons.push(pool + ' candidates compared');\n  }\n\n  let priority;\n  if (signal >= 2 && contact >= 3) priority = 'High';\n  else if (signal + contact >= 3) priority = 'Medium';\n  else priority = 'Low';\n\n  return { priority: priority, priorityReason: priority + ' - ' + reasons.join('; ') + '.' };\n}\n\nreturn $input.all().map((item, i) => {\n  const idx = (item.pairedItem && typeof item.pairedItem.item === 'number')\n    ? item.pairedItem.item\n    : i;\n  const lead = (groups[idx] && groups[idx].json) || {};\n\n  const text = findAiText(item.json, 0);\n\n  let ai;\n  try {\n    const cleaned = text.replace(/^```(?:json)?/, '').replace(/```$/, '').trim();\n    const parsed = JSON.parse(cleaned);\n    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {\n      throw new Error('not an object');\n    }\n    ai = parsed;\n  } catch (e) {\n    ai = {\n      personFullName: '',\n      personJobTitle: '',\n      personLinkedinUrl: '',\n      whyPersonSelected: 'AI parse failed. keys=' + Object.keys(item.json).join(',') + ' textLen=' + String(text).length,\n      alternativeBuyers: '',\n      confidence: 'low',\n    };\n  }\n\n  // Must run before the candidates array is deleted below - pool depth is one\n  // of the scoring inputs.\n  const scored = scoreLead(lead, ai);\n\n  const out = Object.assign({}, lead, ai, scored);\n  delete out.candidates;\n  delete out.hrCandidates;\n  delete out['0'];\n  return { json: out };\n});"
       },
-      "id": "4c4c89ea-b95d-47a6-8759-e6de401e84cb",
+      "id": "9808deb3-6c66-4ed9-9174-23060db97cdd",
       "name": "Parse AI Output",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        10496,
-        1168
+        11840,
+        2672
       ]
     },
     {
@@ -1625,13 +1606,13 @@
         "mode": "runOnceForEachItem",
         "jsCode": "const url = ($json.companyLinkedinUrl || '').split('?')[0];\nconst size = Number($json.companyEmployeesCount) || 0;\n\n// No jobTitles filter. Tested live against the actor on Encoded Therapeutics\n// and Agenus: filtering on the function word returned 0 both times, while the\n// same call with no title filter returned 17 and 21. Neither company HAS a\n// Quality leader, which is exactly why they are hiring one, so the filter was\n// searching for the person the job post proves does not exist. A title filter\n// can only remove people, never add any, and a real VP of Quality is already\n// inside the VP+ pull because they are a VP.\n// functionIds and searchQuery were tested too. functionIds 22 returned 0,\n// searchQuery returned 5 people none of whom were in Quality. Both dead ends.\n\n// 220 Director, 300 VP, 310 CXO, 320 Owner or Partner.\n// Director is added only under 50 employees, where the top of the company is\n// often a Director. At Agenus, VP+ was 21 profiles on a single page, but VP+\n// plus Director was 44 across two pages, and maxItems does not paginate\n// (takePages is required). Adding 220 to a mid size company would silently\n// cut the pool at 25 and could drop the real owner.\nconst seniorityLevelIds = size < 50\n  ? ['220', '300', '310', '320']\n  : ['300', '310', '320'];\n\nconst payload = {\n  companies: [url],\n  profileScraperMode: 'Short ($4 per 1k)',\n  companyBatchMode: 'all_at_once',\n  maxItems: 25,\n  seniorityLevelIds\n};\n\nconst out = {};\nfor (const k of Object.keys($json)) { out[k] = $json[k]; }\nout.apifyInput = payload;\nreturn { json: out };"
       },
-      "id": "bd0f9437-619d-4980-a832-6901b2d35b43",
+      "id": "b030e984-8277-4320-90f4-be9163638692",
       "name": "Build Apify Payload",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8976,
-        1072
+        10320,
+        2576
       ]
     },
     {
@@ -1643,13 +1624,13 @@
         },
         "customBody": "={{ JSON.stringify($json.apifyInput) }}"
       },
-      "id": "61fa0917-f9b7-4c1d-b475-80272d0443cc",
+      "id": "60bf36df-21f3-4374-8cce-6adae6316977",
       "name": "Decision-maker",
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
       "position": [
-        9200,
-        1072
+        10544,
+        2576
       ],
       "credentials": {
         "apifyApi": {
@@ -1665,13 +1646,13 @@
         "limit": null,
         "options": {}
       },
-      "id": "8c3f2b4f-a1a5-49c1-a8b3-21338130df16",
+      "id": "44f55c11-4ad2-4e6f-9d4a-d24b5e5dc1ae",
       "name": "DM Dataset",
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
       "position": [
-        9472,
-        1072
+        10816,
+        2576
       ],
       "retryOnFail": true,
       "maxTries": 3,
@@ -1706,13 +1687,13 @@
         "builtInTools": {},
         "options": {}
       },
-      "id": "b4e2accc-99f1-4604-835e-e0b63575b41f",
+      "id": "30838602-a30a-4421-8f12-e72b31099b51",
       "name": "Write Icebreaker",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2.1,
       "position": [
-        10800,
-        1168
+        12144,
+        2672
       ],
       "credentials": {
         "openAiApi": {
@@ -1725,13 +1706,13 @@
       "parameters": {
         "jsCode": "const upstream = $('Parse AI Output').all();\n\n// Shape-agnostic walk: find the string carrying our JSON, wherever\n// the OpenAI node nested it.\nfunction findAiText(node, depth) {\n  if (node == null || depth > 8) return '';\n  if (typeof node === 'string') {\n    return node.indexOf('icebreaker') !== -1 ? node : '';\n  }\n  if (typeof node === 'object') {\n    for (const key of Object.keys(node)) {\n      let child;\n      try { child = node[key]; } catch (e) { continue; }\n      const found = findAiText(child, depth + 1);\n      if (found) return found;\n    }\n  }\n  return '';\n}\n\n// Blank-safe read: never emit undefined/null into the sheet.\nconst S = (v) => (v === undefined || v === null) ? '' : v;\n\n// Edit Fields1's $now.setZone().toFormat() yields \"Invalid DateTime\" on\n// this n8n version, so stamp the timestamps here instead.\nconst nowStamp = new Date().toISOString().slice(0, 19).replace('T', ' ');\nconst fixDate = (v) => (!v || v === 'Invalid DateTime') ? nowStamp : v;\n\nreturn $input.all().map((item, i) => {\n  const idx = (item.pairedItem && typeof item.pairedItem.item === 'number')\n    ? item.pairedItem.item\n    : i;\n  const lead = (upstream[idx] && upstream[idx].json) || {};\n  const text = findAiText(item.json, 0);\n\n  let ai;\n  try {\n    const cleaned = text.replace(/^```(?:json)?/, '').replace(/```$/, '').trim();\n    ai = JSON.parse(cleaned);\n  } catch (e) {\n    ai = { icebreaker: '', needsReview: true };\n  }\n\n  let icebreaker = ai.icebreaker || '';\n\n  // Deterministic backstop for the prompt fix in Write Icebreaker.\n  // In execution 174 the model returned the Quality template with its\n  // slots unfilled and it reached the sheet as [FIRST], [COMPANY], [ROLE].\n  // A prompt rule cannot guarantee this, so blank any message that still\n  // carries a placeholder and let needsReview flag the row.\n  if (/\\[(FIRST|COMPANY|ROLE|SIGNAL|AREA)\\]/.test(icebreaker)) icebreaker = '';\n\n  // Slot-collapse backstop. In execution 6471 Servier came out as \"building\n  // in Medical Affairs around medical affairs\": the AREA slot was filled with\n  // the functional area the template sentence already names. The bracket test\n  // above cannot see this, because the slot IS filled, just uselessly.\n  // Only the two connector phrases are checked so a legitimate repeat like\n  // \"hiring for a Director of Quality\" under the Quality template survives.\n  const fa = String(lead.functionalArea || '').toLowerCase().trim();\n  if (fa && icebreaker) {\n    const lc = icebreaker.toLowerCase();\n    if (lc.indexOf('around ' + fa) !== -1 || lc.indexOf('particularly ' + fa) !== -1) {\n      icebreaker = '';\n    }\n  }\n\n  const needsReview = (ai.needsReview === true) || !icebreaker;\n\n  // Emit every sheet column explicitly so auto-map never drops a field.\n  // Auto-map matches on header NAME, not position, so key order here is\n  // irrelevant. The sheet has two status columns, \"LeadStatus \" (trailing\n  // space) and \"LeadStatus\". Both are written until one is retired, because\n  // an unmatched key is dropped silently and the wrong guess leaves the\n  // dashboard's column permanently blank.\n  return { json: {\n    id: S(lead.id),\n    signalType: S(lead.signalType) || 'Job_Post',\n    LeadStatus: S(lead.LeadStatus) || 'New',\n    dedupKey: S(lead.dedupKey),\n    companyKey: S(lead.companyKey),\n    contactRound: lead.contactRound || 1,\n    companyName: S(lead.companyName),\n    country: S(lead.country),\n    companyWebsite: S(lead.companyWebsite),\n    companyLinkedinUrl: S(lead.companyLinkedinUrl),\n    companyEmployeesCount: S(lead.companyEmployeesCount),\n    companyDescription: S(lead.companyDescription),\n    location: S(lead.location),\n    jobOpeningTitle: S(lead.jobOpeningTitle),\n    link: S(lead.link),\n    postedAt: S(lead.postedAt),\n    personFullName: S(lead.personFullName),\n    personJobTitle: S(lead.personJobTitle),\n    personLinkedinUrl: S(lead.personLinkedinUrl),\n    fundingRound: '',\n    fundingAmount: '',\n    investors: '',\n    email: S(lead.email),\n    leadNotes: '',\n    zerobounceStatus: '',\n    emailStatus: S(lead.emailStatus) || 'pending',\n    icebreaker: icebreaker,\n    dmCategory: S(lead.dmCategory),\n    attempts: lead.attempts || 1,\n    lastAttemptAt: fixDate(lead.lastAttemptAt),\n    addedToCampaign: S(lead.addedToCampaign) || 'false',\n    createdAt: fixDate(lead.createdAt),\n    leadStage: S(lead.leadStage),\n    leadStageUpdatedAt: '',\n    triedCategories: '',\n    jobDescription: S(lead.jobDescription),\n    functionalArea: S(lead.functionalArea),\n    confidence: S(lead.confidence),\n    'LeadStatus ': S(lead.LeadStatus) || 'New',\n    needsReview: needsReview,\n    alternativeBuyers: S(lead.alternativeBuyers),\n    whySignalMatters: S(lead.whySignalMatters),\n    whyPersonSelected: S(lead.whyPersonSelected),\n    signalStrength: S(lead.signalStrength),\n    priority: S(lead.priority),\n    priorityReason: S(lead.priorityReason),\n    candidateCount: S(lead.candidateCount),\n  }};\n});"
       },
-      "id": "d18abdc7-7073-48e2-8cb3-8c7ac00a30b7",
+      "id": "6ee8b5fa-a6b3-47dc-acd6-e69d55df2330",
       "name": "Parse Icebreaker",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        11104,
-        1168
+        12448,
+        2672
       ]
     },
     {
@@ -1751,10 +1732,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6032,
-        1456
+        7376,
+        2960
       ],
-      "id": "e41ea713-5080-4a99-a048-e303d202ce3f",
+      "id": "ec92254a-d01f-40dd-b4f8-6eb03ca4e1b8",
       "name": "Edit Fields"
     },
     {
@@ -1767,10 +1748,10 @@
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
       "position": [
-        6368,
-        1456
+        7712,
+        2960
       ],
-      "id": "a7766266-d306-45a0-8c73-e31b73f6b47d",
+      "id": "51862479-bd00-41ae-a49d-d37a2da6b6d1",
       "name": "Get dataset items",
       "retryOnFail": true,
       "maxTries": 3,
@@ -1778,8 +1759,8 @@
       "alwaysOutputData": true,
       "credentials": {
         "apifyApi": {
-          "id": "SitzKECJj5V9CCes",
-          "name": "Victor"
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
         }
       }
     },
@@ -1790,23 +1771,23 @@
           "mode": "id",
           "value": "hKByXkMQaC5Qt9UMN"
         },
-        "customBody": "={\n    \"count\": 30,\n    \"scrapeCompany\": true,\n    \"splitByLocation\": false,\n    \"urls\": [\n        \"{{ $json.Search_URL }}\"\n    ],\n    \"useIncognitoMode\": false\n}"
+        "customBody": "={\n    \"count\": 20,\n    \"scrapeCompany\": true,\n    \"splitByLocation\": false,\n    \"urls\": [\n        \"{{ $json.Search_URL }}\"\n    ],\n    \"useIncognitoMode\": false\n}"
       },
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
       "position": [
-        6208,
-        1456
+        7552,
+        2960
       ],
-      "id": "84367213-0c57-4de5-9bbf-c4426a2cca3b",
+      "id": "29754d90-2fb9-41ba-8b98-802d85f77fe8",
       "name": "Run an Actor",
       "retryOnFail": true,
       "maxTries": 3,
       "waitBetweenTries": 3000,
       "credentials": {
         "apifyApi": {
-          "id": "SitzKECJj5V9CCes",
-          "name": "Victor"
+          "id": "EYnbJfhADvhHsC8g",
+          "name": "Apify account"
         }
       }
     },
@@ -1816,6 +1797,9 @@
           "interval": [
             {
               "triggerAtHour": 3
+            },
+            {
+              "triggerAtHour": 15
             }
           ]
         }
@@ -1823,10 +1807,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.3,
       "position": [
-        3200,
-        1984
+        4656,
+        3088
       ],
-      "id": "18711abf-c59f-484f-85f3-093e62a2f9e4",
+      "id": "5e6e4e62-b7f4-4729-a1a2-56ac496ce0bd",
       "name": "Schedule Trigger1"
     },
     {
@@ -1834,13 +1818,13 @@
         "mode": "runOnceForEachItem",
         "jsCode": "const url = ($json.companyLinkedinUrl || '').split('?')[0];\nconst size = Number($json.companyEmployeesCount) || 0;\n\n// LinkedIn function 12 = Human Resources. The actor ANDs its filters, so this\n// cannot ride along on the functional-owner call: adding functionIds there\n// would intersect with jobTitles and return nobody. It needs its own run.\n//\n// Recall, not precision. Pick Decision Maker does the filtering, so a wide\n// net here costs one extra profile and catches people a title filter misses.\n//\n// Seniority floor drops at small headcount. Celea at 30 employees carries a\n// Director of HR and nobody above her, so a VP floor would return zero rows.\nconst payload = {\n  companies: [url],\n  profileScraperMode: 'Short ($4 per 1k)',\n  companyBatchMode: 'all_at_once',\n  maxItems: 5,\n  functionIds: ['12'],\n  seniorityLevelIds: size < 150\n    ? ['320', '310', '300', '220', '210', '200']\n    : ['320', '310', '300', '220']\n};\n\nconst out = {};\nfor (const k of Object.keys($json)) { out[k] = $json[k]; }\nout.apifyInput = payload;\nreturn { json: out };"
       },
-      "id": "31723d81-f943-49c4-9574-70255bfc9958",
+      "id": "bc4f20dc-e15e-4570-83ac-b362721e7c48",
       "name": "Build HR Payload",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8976,
-        1296
+        10320,
+        2800
       ]
     },
     {
@@ -1852,13 +1836,13 @@
         },
         "customBody": "={{ JSON.stringify($json.apifyInput) }}"
       },
-      "id": "4ebdb3a4-f229-4a6f-9ec4-c68254f5b112",
+      "id": "7de7835c-61c2-4539-b40b-b9278455d6da",
       "name": "HR Scraper",
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
       "position": [
-        9200,
-        1296
+        10544,
+        2800
       ],
       "credentials": {
         "apifyApi": {
@@ -1874,13 +1858,13 @@
         "limit": null,
         "options": {}
       },
-      "id": "57cdb1b8-4cf6-4604-810c-3cf118c6e190",
+      "id": "08b02339-591d-45b4-b2ce-373bae8d9118",
       "name": "HR Dataset",
       "type": "@apify/n8n-nodes-apify.apify",
       "typeVersion": 1,
       "position": [
-        9472,
-        1296
+        10816,
+        2800
       ],
       "retryOnFail": true,
       "maxTries": 3,
@@ -1895,14 +1879,25 @@
     },
     {
       "parameters": {},
-      "id": "68fa09a9-007b-4211-bc78-27aad755029c",
+      "id": "81d78c45-37f7-46ac-b11a-16a235f3747c",
       "name": "Merge Pools",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        9680,
-        1168
+        11024,
+        2672
       ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        4592,
+        3296
+      ],
+      "id": "ab3a1fb8-5c1c-4554-a904-e2e2dbee9e75",
+      "name": "When clicking ‘Execute workflow’"
     }
   ],
   "connections": {
@@ -1927,17 +1922,6 @@
         [
           {
             "node": "Code in JavaScript",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "Get Jobs rows",
             "type": "main",
             "index": 0
           }
@@ -2413,6 +2397,17 @@
           }
         ]
       ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get Jobs rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -2424,9 +2419,272 @@
     "callerPolicy": "workflowsFromSameOwner",
     "timezone": "Asia/Karachi"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger1": {
+      "recurrenceRules": [
+        null,
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null,
+        null
+      ]
+    },
+    "global": {
+      "runStats": {
+        "scraped": 240,
+        "duplicates": 181,
+        "ruleFiltered": 55,
+        "aiPassed": 0,
+        "aiRejected": 0,
+        "amfSent": 0,
+        "aiParseErrors": 0,
+        "ruleReasons": {
+          "too_big_gte_1500": 30,
+          "country_not_US": 17,
+          "recruiter_name": 2,
+          "excluded_title": 1,
+          "country_missing": 3,
+          "outsourcer_slogan": 1,
+          "recruiter_industry": 1
+        }
+      },
+      "seenKeys": {
+        "argenx|united states": true,
+        "epm scientific|san diego, ca": true,
+        "hemab therapeutics|boston, ma": true,
+        "gilead sciences|parsippany, nj": true,
+        "gilead sciences|san francisco bay area": true,
+        "amgen|united states": true,
+        "biospace|san diego, ca": true,
+        "planet pharma|united states": true,
+        "clarity pharmaceuticals|united states": true,
+        "mount sinai health system|new york, ny": true,
+        "cvs health|hartford, ct": true,
+        "novartis|east hanover, nj": true,
+        "gsk|philadelphia, pa": true,
+        "sanofi|cambridge, ma": true,
+        "sanofi|morristown, nj": true,
+        "astrazeneca|gaithersburg, md": true,
+        "johnson johnson innovative medicine|raritan, nj": true,
+        "merck|north wales, pa": true,
+        "takeda|cambridge, ma": true,
+        "warman o brien|united states": true,
+        "merck|rahway, nj": true,
+        "bristol myers squibb|lawrence, nj": true,
+        "otsuka pharmaceutical companies u s|united states": true,
+        "arcutis biotherapeutics nasdaq: arqt|united states": true,
+        "abbvie|irvine, ca": true,
+        "damora therapeutics|chicago, il": true,
+        "jobgether|united states": true,
+        "johnson johnson|horsham, pa": true,
+        "abbott|madison, wi": true,
+        "xenon pharmaceuticals|boston, ma": true,
+        "genentech|south san francisco, ca": true,
+        "jlsa2 therapeutics|south san francisco, ca": true,
+        "bionova scientific|the woodlands, tx": true,
+        "foundation medicine|boston, ma": true,
+        "regeneron|east greenbush, ny": true,
+        "par health|hobart, ny": true,
+        "fagron|canton, ma": true,
+        "grifols|north carolina, united states": true,
+        "randstad usa|shirley, ny": true,
+        "us tech solutions|thousand oaks, ca": true,
+        "retro biosciences|redwood city, ca": true,
+        "bd|sparks, md": true,
+        "formfactor|beaverton, or": true,
+        "globus medical|king of prussia, pa": true,
+        "eisai us|nutley, nj": true,
+        "adm|kennesaw, ga": true,
+        "moderna|cambridge, ma": true,
+        "us pharmacopeia|rockville, md": true,
+        "zai lab|south san francisco, ca": true,
+        "smith+nephew|columbia, md": true,
+        "cardinal health|united states": true,
+        "stryker|cary, il": true,
+        "meet life sciences|united states": true,
+        "syneos health|marion county, in": true,
+        "mckesson|nashville, tn": true,
+        "quva|sugar land, tx": true,
+        "verto people|greater boston": true,
+        "syner g|united states": true
+      },
+      "runStartedAt": "2026-08-26 12:16:59",
+      "seenCompanies": {
+        "argenx": true,
+        "epm scientific": true,
+        "hemab therapeutics": true,
+        "gilead sciences": true,
+        "amgen": true,
+        "biospace": true,
+        "planet pharma": true,
+        "clarity pharmaceuticals": true,
+        "mount sinai health system": true,
+        "cvs health": true,
+        "novartis": true,
+        "gsk": true,
+        "sanofi": true,
+        "astrazeneca": true,
+        "johnson johnson innovative medicine": true,
+        "merck": true,
+        "takeda": true,
+        "warman o brien": true,
+        "bristol myers squibb": true,
+        "otsuka pharmaceutical companies u s": true,
+        "arcutis biotherapeutics nasdaq: arqt": true,
+        "abbvie": true,
+        "damora therapeutics": true,
+        "jobgether": true,
+        "johnson johnson": true,
+        "abbott": true,
+        "xenon pharmaceuticals": true,
+        "genentech": true,
+        "jlsa2 therapeutics": true,
+        "bionova scientific": true,
+        "foundation medicine": true,
+        "regeneron": true,
+        "par health": true,
+        "fagron": true,
+        "grifols": true,
+        "randstad usa": true,
+        "us tech solutions": true,
+        "retro biosciences": true,
+        "bd": true,
+        "formfactor": true,
+        "globus medical": true,
+        "eisai us": true,
+        "adm": true,
+        "moderna": true,
+        "us pharmacopeia": true,
+        "zai lab": true,
+        "smith+nephew": true,
+        "cardinal health": true,
+        "stryker": true,
+        "meet life sciences": true,
+        "syneos health": true,
+        "mckesson": true,
+        "quva": true,
+        "verto people": true,
+        "syner g": true
+      },
+      "seenDomains": {
+        "argenx.com": true,
+        "epmscientific.com": true,
+        "hemab.com": true,
+        "gilead.com": true,
+        "amgen.com": true,
+        "biospace.com": true,
+        "planet-pharma.com": true,
+        "claritypharmaceuticals.com": true,
+        "mountsinai.org": true,
+        "cvshealth.com": true,
+        "novartis.com": true,
+        "gsk.com": true,
+        "sanofi.com": true,
+        "astrazeneca.com": true,
+        "innovativemedicine.jnj.com": true,
+        "merck.us": true,
+        "takeda.com": true,
+        "warmanobrien.com": true,
+        "bms.com": true,
+        "otsuka-us.com": true,
+        "arcutis.com": true,
+        "abbvie.com": true,
+        "damoratx.com": true,
+        "jobgether.com": true,
+        "jnj.com": true,
+        "abbott.com": true,
+        "xenon-pharma.com": true,
+        "gene.com": true,
+        "jlsa2.com": true,
+        "bionovascientific.com": true,
+        "foundationmedicine.com": true,
+        "regeneron.com": true,
+        "parhealth.com": true,
+        "fagron.com": true,
+        "linktr.ee": true,
+        "randstadusa.com": true,
+        "ustechsolutions.com": true,
+        "retro.bio": true,
+        "bd.com": true,
+        "formfactor.com": true,
+        "globusmedical.com": true,
+        "us.eisai.com": true,
+        "adm.com": true,
+        "modernatx.com": true,
+        "usp.org": true,
+        "zailaboratory.com": true,
+        "smith-nephew.com": true,
+        "cardinalhealth.com": true,
+        "stryker.com": true,
+        "meetlifesciences.com": true,
+        "syneoshealth.com": true,
+        "mckesson.com": true,
+        "onequva.com": true,
+        "vertopeople.com": true,
+        "synergbiopharma.com": true
+      },
+      "seenLinkedin": {
+        "linkedin.com/company/argenx": true,
+        "linkedin.com/company/epm-scientific": true,
+        "linkedin.com/company/hemabaps": true,
+        "linkedin.com/company/gilead-sciences": true,
+        "linkedin.com/company/amgen": true,
+        "linkedin.com/company/biospaceinc": true,
+        "linkedin.com/company/planet-pharma": true,
+        "linkedin.com/company/clarity-pharmaceuticals": true,
+        "linkedin.com/company/mountsinainyc": true,
+        "linkedin.com/company/cvshealth": true,
+        "linkedin.com/company/novartis": true,
+        "linkedin.com/company/gsk": true,
+        "linkedin.com/company/sanofi": true,
+        "linkedin.com/company/astrazeneca": true,
+        "linkedin.com/company/jnjinnovativemedicine": true,
+        "linkedin.com/company/merck": true,
+        "linkedin.com/company/takeda-pharmaceuticals": true,
+        "linkedin.com/company/warman-o-brien-limited": true,
+        "linkedin.com/company/bristol-myers-squibb": true,
+        "linkedin.com/company/otsuka-pharmaceutical-companies": true,
+        "linkedin.com/company/arcutis-inc": true,
+        "linkedin.com/company/abbvie": true,
+        "linkedin.com/company/damora-therapeutics": true,
+        "linkedin.com/company/jobgether": true,
+        "linkedin.com/company/johnson-&-johnson": true,
+        "linkedin.com/company/abbott-": true,
+        "linkedin.com/company/xenonpharma": true,
+        "linkedin.com/company/genentech": true,
+        "linkedin.com/company/jlsa2-therapeutics-inc": true,
+        "linkedin.com/company/bionova-scientific": true,
+        "linkedin.com/company/foundation-medicine": true,
+        "linkedin.com/company/regeneron-pharmaceuticals": true,
+        "linkedin.com/company/par-health": true,
+        "linkedin.com/company/fagron": true,
+        "linkedin.com/company/grifols": true,
+        "linkedin.com/company/randstadusa": true,
+        "linkedin.com/company/us-tech-solutions": true,
+        "linkedin.com/company/retro-biosciences": true,
+        "linkedin.com/company/bd1": true,
+        "linkedin.com/company/formfactor": true,
+        "linkedin.com/company/globus-medical": true,
+        "linkedin.com/company/eisai": true,
+        "linkedin.com/company/adm": true,
+        "linkedin.com/company/modernatx": true,
+        "linkedin.com/company/uspharmacopeia": true,
+        "linkedin.com/company/zai-lab": true,
+        "linkedin.com/company/smith-nephew": true,
+        "linkedin.com/company/cardinal-health": true,
+        "linkedin.com/company/stryker": true,
+        "linkedin.com/company/meet": true,
+        "linkedin.com/company/syneos-health": true,
+        "linkedin.com/company/mckesson": true,
+        "linkedin.com/company/quvapharma-inc-": true,
+        "linkedin.com/company/vertopeople": true,
+        "linkedin.com/company/syner-g-biopharma-group": true
+      }
+    }
+  },
   "pinData": {},
-  "versionId": "4f2f9465-f0a1-40e2-b6fa-7bc38e96aff5",
+  "versionId": "2fe6dbbf-e925-4593-9777-97fda8029564",
   "meta": {
     "templateCredsSetupCompleted": true
   },
