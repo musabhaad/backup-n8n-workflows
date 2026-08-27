@@ -1,0 +1,206 @@
+{
+  "name": "Tavus",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -96,
+        -16
+      ],
+      "id": "1bc364ef-f1bd-4c29-a7ce-d5eea68ac79f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://tavusapi.com/v2/videos",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "00413519f6964258b3d0eab50a981e99"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "replica_id",
+              "value": "r72f7f7f7c8b"
+            },
+            {
+              "name": "video_name",
+              "value": "Outreach - Satya Fixed Scroll"
+            },
+            {
+              "name": "script",
+              "value": "Hey Satya! Was taking a look over your profile and what the team is building right now. In hyper-specialized technical markets, the bottleneck usually isn't finding talent... it's identifying candidates who actually fit your exact requirement stack before the search becomes critical. We map that scarcity ahead of time. Would love to share a quick benchmark teardown if you have two minutes this week."
+            },
+            {
+              "name": "background_url",
+              "value": "https://n8n-zd8n.srv1898856.hstgr.cloud/webhook/profile-view?img_url=https://i.ibb.co/d45WvMVK/satya.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        128,
+        -16
+      ],
+      "id": "605b409f-ba72-422e-bbd2-98058bb0fafa",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "=https://tavusapi.com/v2/videos/{{ $json.video_id }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "verbose",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "00413519f6964258b3d0eab50a981e99"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        560,
+        -16
+      ],
+      "id": "f327611e-37f9-4aa6-8161-1c9571ef2709",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "000f500e-a367-4ac9-b7a9-f9911e8dc274",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "generating",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        880,
+        -16
+      ],
+      "id": "e1f4e8f3-b90a-4d61-bdcf-098047e91695",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        -16
+      ],
+      "id": "60bb9b7c-f0d9-4b26-bd33-1b9f11e815dc",
+      "name": "Wait",
+      "webhookId": "fe27350f-331d-4f6e-8c22-9edde3f91a43"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "pinData": {},
+  "versionId": "951500c1-7d55-4aeb-8099-14b8dfe89e7d",
+  "tags": []
+}
