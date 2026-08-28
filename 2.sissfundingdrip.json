@@ -635,15 +635,24 @@
       }
     },
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 14,
+              "triggerAtMinute": 49
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
       "position": [
-        -80,
+        -32,
         448
       ],
-      "id": "36575bc7-8a91-4b8d-8ed5-8f23d915d70c",
-      "name": "When clicking ‘Execute workflow’"
+      "id": "96ed7323-239b-4d59-827a-4b6e6fe83be2",
+      "name": "Schedule Trigger"
     }
   ],
   "connections": {
@@ -691,7 +700,7 @@
         ]
       ]
     },
-    "When clicking ‘Execute workflow’": {
+    "Schedule Trigger": {
       "main": [
         [
           {
@@ -722,9 +731,17 @@
       "recurrenceRuleSignatures": [
         null
       ]
+    },
+    "node:Schedule Trigger": {
+      "recurrenceRules": [
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null
+      ]
     }
   },
   "pinData": {},
-  "versionId": "df5100ed-c205-4ebc-8c56-4729d6c369d9",
+  "versionId": "eb22a1f5-c25c-4de0-ab5f-a53b243777f7",
   "tags": []
 }
