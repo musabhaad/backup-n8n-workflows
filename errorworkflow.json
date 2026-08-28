@@ -25,8 +25,8 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.2,
       "position": [
-        224,
-        0
+        496,
+        -224
       ],
       "id": "667dda1d-bf96-41d2-be4f-1b446d0e9eee",
       "name": "Send a message",
@@ -37,6 +37,51 @@
           "name": "Gmail account"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "spreadsheet",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        96,
+        256
+      ],
+      "id": "0a0ab8fd-fcfe-4473-84fd-502f1867cb31",
+      "name": "Create spreadsheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Upxq2EJnIeH99SDb",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "musab@hiremomentum.tech",
+        "toEmail": "musabbhad@gmail.com",
+        "subject": "N8N - Error",
+        "emailFormat": "text",
+        "text": "=🚨 n8n error — {{ $json.workflow.name }}\nNode: `{{ $json.execution.lastNodeExecuted }}`\nError: {{ $json.execution.error.message }}\nMode: {{ $json.execution.mode }}\nExecution: {{ $json.execution.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "0ef6f760-1bd6-478d-867e-22f485e9621b",
+      "name": "Send an Email",
+      "webhookId": "9d1c4848-c58b-44dc-b7a2-0cf1edae6322",
+      "credentials": {
+        "smtp": {
+          "id": "WO0lcIss2tMPYwyM",
+          "name": "SMTP account"
+        }
+      }
     }
   ],
   "connections": {
@@ -44,7 +89,7 @@
       "main": [
         [
           {
-            "node": "Send a message",
+            "node": "Send an Email",
             "type": "main",
             "index": 0
           }
@@ -55,11 +100,14 @@
   "settings": {
     "executionOrder": "v1",
     "binaryMode": "separate",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "timezone": "Asia/Karachi",
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": null,
   "pinData": {},
-  "versionId": "b5bc78cb-cd12-48ec-9750-779fcfb492f5",
+  "versionId": "33e0efbc-4891-470e-b2a0-86d88e795381",
   "meta": {
     "templateCredsSetupCompleted": true
   },
