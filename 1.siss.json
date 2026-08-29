@@ -276,7 +276,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6640,
+        6560,
         3296
       ],
       "id": "cfcf47f4-43ad-4faa-8416-004c3036ff6f",
@@ -1796,11 +1796,12 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 22,
-              "triggerAtMinute": 2
+              "field": "cronExpression",
+              "expression": "0 0 * * *"
             },
             {
-              "triggerAtHour": 12
+              "field": "cronExpression",
+              "expression": "0 12 * * *"
             }
           ]
         }
@@ -1888,6 +1889,18 @@
         11024,
         2672
       ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        6800,
+        3296
+      ],
+      "id": "2558db3c-f6b1-4851-b85b-803457d9b807",
+      "name": "Limit",
+      "disabled": true
     }
   ],
   "connections": {
@@ -1922,7 +1935,7 @@
       "main": [
         [
           {
-            "node": "Init Run Stats",
+            "node": "Limit",
             "type": "main",
             "index": 0
           }
@@ -2387,6 +2400,17 @@
           }
         ]
       ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Init Run Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
@@ -2680,10 +2704,20 @@
         "linkedin.com/company/quidelortho": true,
         "linkedin.com/company/emd-serono-inc": true
       }
+    },
+    "node:Schedule Trigger1": {
+      "recurrenceRules": [
+        null,
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null,
+        null
+      ]
     }
   },
   "pinData": {},
-  "versionId": "444e6807-03e1-44c7-985d-6e831395addc",
+  "versionId": "0752451b-065b-4d8a-9958-ab781a0a92e1",
   "meta": {
     "templateCredsSetupCompleted": true
   },
