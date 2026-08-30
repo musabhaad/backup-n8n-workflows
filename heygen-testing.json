@@ -1,0 +1,181 @@
+{
+  "name": "Heygen Testing",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1f92a51d-47d4-4ce0-bc64-eaf017b618db",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://api.heygen.com/v1/video_status.get",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "video_id",
+              "value": "={{ $('musabhaad5').item.json.data.video_id }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "sk_V2_hgu_k6dLo2DyEId_NEgidO7dvbdzzILAWNG7YwcR1EAUDdl1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        704,
+        0
+      ],
+      "id": "1f48bcde-c379-4826-8734-12275bc135f1",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c408236b-68ab-408b-a707-c562abab2975",
+              "leftValue": "={{ $json.data.video_url }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        976,
+        0
+      ],
+      "id": "9ed97f2b-a3ac-4e79-ae24-a7fb62cc9389",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.heygen.com/v2/video/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "sk_V2_hgu_kTZqd9y2i8T_JAKlQJjM0cmWyFq0F9zohoc0jYdhJRn6"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"a30494122396480b91c5ffac6f50a10d\",\n        \"avatar_style\": \"circle\",\n        \"scale\": 0.38,\n        \"offset\": {\n          \"x\": 0.35,\n          \"y\": 0.30\n        }\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"Hey Satya! , At MBI Talent Group, we map candidate constraints using talent density and scarcity indicators... before a mandate is pushed fully into the market. Would love to compare perspectives if you have two minutes this week , Have a great day!\",\n        \"voice_id\": \"dd63cfbe61e44958ab6967bed18efc50\",\n        \"speed\": 1.00\n      },\n      \"background\": {\n        \"type\": \"image\",\n        \"url\": \"https://i.ibb.co/d45WvMVK/satya.png\"\n      }\n    }\n  ],\n  \"dimension\": {\n    \"width\": 1920,\n    \"height\": 1080\n  },\n  \"test\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        240,
+        -384
+      ],
+      "id": "19ffb520-fed2-4fce-a462-e1dc482a1c4b",
+      "name": "musabhaad02"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.heygen.com/v2/video/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "sk_V2_hgu_krZFAdJRijy_mEcKaQNQTwIn19uXqmsP2MLTBUv44XVj"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"0c42eeaf6592488cbd604fd919af598a\",\n        \"avatar_style\": \"circle\",\n        \"scale\": 0.45,\n        \"offset\": {\n          \"x\": 0.35,\n          \"y\": 0.30\n        }\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"Hey Satya! At MBI Talent Group, we map candidate constraints using talent density and scarcity indicators... before a mandate is pushed fully into the market. Would love to compare perspectives. Worth a quick look?\",\n        \"voice_id\": \"6665653ba1c44771879be4fe3a02413d\",\n        \"speed\": 1.00\n      },\n      \"background\": {\n        \"type\": \"image\",\n        \"url\": \"https://i.ibb.co/d45WvMVK/satya.png\"\n      }\n    }\n  ],\n  \"dimension\": {\n    \"width\": 1920,\n    \"height\": 1080\n  },\n  \"test\": false\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "7185ccb1-5864-4f34-a829-5817aa0c534d",
+      "name": "musabhaad5"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "musabhaad5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        []
+      ]
+    },
+    "musabhaad5": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "pinData": {},
+  "versionId": "3bcc6e46-ba27-4845-a8d5-ae0271ec7373",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
