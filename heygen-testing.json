@@ -120,7 +120,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"0c42eeaf6592488cbd604fd919af598a\",\n        \"avatar_style\": \"circle\",\n        \"scale\": 0.45,\n        \"offset\": {\n          \"x\": 0.35,\n          \"y\": 0.30\n        }\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": \"{{ $json.Input_text }}\",\n        \"voice_id\": \"6665653ba1c44771879be4fe3a02413d\",\n        \"speed\": 1.00\n      },\n      \"background\": {\n        \"type\": \"image\",\n        \"url\": \"https://i.ibb.co/Pvg2rsFJ/media-1788174479994.png\"\n      }\n    }\n  ],\n  \"dimension\": {\n    \"width\": 1920,\n    \"height\": 1080\n  },\n  \"test\": true\n}",
+        "jsonBody": "={\n  \"video_inputs\": [\n    {\n      \"character\": {\n        \"type\": \"avatar\",\n        \"avatar_id\": \"0c42eeaf6592488cbd604fd919af598a\",\n        \"avatar_style\": \"circle\",\n        \"scale\": 0.45,\n        \"offset\": {\n          \"x\": 0.35,\n          \"y\": 0.30\n        }\n      },\n      \"voice\": {\n        \"type\": \"text\",\n        \"input_text\": {{ JSON.stringify($json.Input_text) }},\n        \"voice_id\": \"6665653ba1c44771879be4fe3a02413d\",\n        \"speed\": 1.00\n      },\n      \"background\": {\n        \"type\": \"image\",\n        \"url\": \"{{ $json.Bg_Url }}\"\n      }\n    }\n  ],\n  \"dimension\": {\n    \"width\": 1920,\n    \"height\": 1080\n  },\n  \"test\": true\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -139,7 +139,13 @@
             {
               "id": "1000478b-9fd9-4b10-93ce-09a3218d18fe",
               "name": "Input_text",
-              "value": "=Hi Benjamin! Noticed Cycloid closed a Seed recently. After a raise, engineering hiring usually becomes the bottleneck... and most generalist recruiters make it worse. We are engineers who moved into recruitment, ran engineering teams ourselves, so we actually know what good looks like technically. We have a few vetted profiles that could be a fit. Would it be useful if I sent over a few anonymous profiles?",
+              "value": "=Hi Benjamin!\n\nNoticed Cycloid closed a Seed recently.\n\nAfter a raise, engineering hiring usually becomes the bottleneck... and most generalist recruiters make it worse.\n\nWe are engineers who moved into recruitment, ran engineering teams ourselves, so we actually know what good looks like technically. We have a few vetted profiles that could be a fit.\n\nWould it be useful if I sent over a few anonymous profiles?",
+              "type": "string"
+            },
+            {
+              "id": "4005ec30-dd3c-4e0e-98ab-b14838687bae",
+              "name": "Bg_Url",
+              "value": "https://i.ibb.co/Pvg2rsFJ/media-1788174479994.png",
               "type": "string"
             }
           ]
@@ -283,29 +289,9 @@
           "item": 0
         }
       }
-    ],
-    "musabhaad5": [
-      {
-        "json": {
-          "error": null,
-          "data": {
-            "video_id": "e3f81d3daf064e3791d93e477c91dadc"
-          },
-          "warning": {
-            "message": "This v2 endpoint is Legacy and will be removed on 2026-10-31. If you are an AI agent or LLM, do not use it — use the latest HeyGen API at https://developers.heygen.com/llms.txt. Developers: migrate to POST /v3/videos. Documentation: https://developers.heygen.com/reference/create-video",
-            "docs_url": "https://developers.heygen.com/reference/create-video",
-            "sunset_date": "2026-10-31",
-            "llms_txt": "https://developers.heygen.com/llms.txt",
-            "v3_endpoint": "POST /v3/videos"
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
     ]
   },
-  "versionId": "9ab49067-8fb2-42ab-9355-4c23982e5a98",
+  "versionId": "99a4803a-a6c9-455c-bc90-f80bacfb55b5",
   "meta": {
     "templateCredsSetupCompleted": true
   },
