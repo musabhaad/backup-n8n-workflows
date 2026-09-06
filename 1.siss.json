@@ -2404,32 +2404,34 @@
     "global": {
       "runStats": {
         "scraped": 240,
-        "duplicates": 231,
-        "ruleFiltered": 6,
+        "duplicates": 228,
+        "ruleFiltered": 11,
         "aiPassed": 0,
         "aiRejected": 0,
         "amfSent": 0,
         "aiParseErrors": 0,
         "ruleReasons": {
-          "recruiter_name": 1,
           "country_missing": 1,
-          "recruiter_industry": 1,
-          "no_website": 2,
-          "too_big_gte_1500": 1
+          "too_big_gte_1500": 8,
+          "no_website": 1,
+          "country_not_US": 1
         }
       },
       "seenKeys": {
-        "truenorth executive search|nashville, tn": true,
-        "alcanza clinical research|decatur, ga": true,
-        "davita kidney care|middletown, ct": true,
-        "arlo|new york, ny": true,
-        "stanford university|stanford, ca": true,
-        "talentmark|new york, united states": true,
-        "accuscan sciences|milpitas, ca": true,
-        "mep health|california, united states": true,
-        "charter research|orlando, fl": true
+        "sportatlas|san francisco bay area": true,
+        "beckman coulter diagnostics|downingtown, pa": true,
+        "oscar health|new york, ny": true,
+        "ut southwestern medical center|dallas, tx": true,
+        "novo nordisk|san francisco, ca": true,
+        "bd|sparks, md": true,
+        "bivacor|huntington beach, ca": true,
+        "elanco|kansas city, ks": true,
+        "elanco|indianapolis, in": true,
+        "mckesson|shepherdsville, ky": true,
+        "mckesson|mason, oh": true,
+        "united therapeutics|raleigh-durham-chapel hill area": true
       },
-      "runStartedAt": "2026-09-05 09:00:24",
+      "runStartedAt": "2026-09-06 09:00:22",
       "seenCompanies": {
         "gsk": true,
         "iqvia": true,
@@ -2765,7 +2767,17 @@
         "talentmark": true,
         "accuscan sciences": true,
         "mep health": true,
-        "charter research": true
+        "charter research": true,
+        "sportatlas": true,
+        "beckman coulter diagnostics": true,
+        "oscar health": true,
+        "ut southwestern medical center": true,
+        "novo nordisk": true,
+        "bd": true,
+        "bivacor": true,
+        "elanco": true,
+        "mckesson": true,
+        "united therapeutics": true
       },
       "seenDomains": {
         "gsk.com": true,
@@ -3087,7 +3099,16 @@
         "joinarlo.com": true,
         "talentmark.com": true,
         "accuragen.com": true,
-        "charterresearch.com": true
+        "charterresearch.com": true,
+        "sportatlasjobs.com": true,
+        "beckmancoulter.com": true,
+        "hioscar.com": true,
+        "novonordisk.com": true,
+        "bd.com": true,
+        "bivacor.com": true,
+        "elanco.com": true,
+        "mckesson.com": true,
+        "unither.com": true
       },
       "seenLinkedin": {
         "linkedin.com/company/gsk": true,
@@ -3418,7 +3439,16 @@
         "linkedin.com/company/talentmark": true,
         "linkedin.com/company/accuscansciences": true,
         "linkedin.com/company/medical-emergency-professionals": true,
-        "linkedin.com/company/charter-research": true
+        "linkedin.com/company/charter-research": true,
+        "linkedin.com/company/sport-atlas": true,
+        "linkedin.com/company/beckman-coulter": true,
+        "linkedin.com/company/oscar-health": true,
+        "linkedin.com/company/novo-nordisk": true,
+        "linkedin.com/company/bd1": true,
+        "linkedin.com/company/bivacor-pty-ltd": true,
+        "linkedin.com/company/elanco": true,
+        "linkedin.com/company/mckesson": true,
+        "linkedin.com/company/unitedtherapeutics": true
       }
     },
     "node:Schedule Trigger1": {
