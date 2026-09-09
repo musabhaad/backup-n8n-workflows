@@ -1797,12 +1797,8 @@
         "rule": {
           "interval": [
             {
-              "field": "cronExpression",
-              "expression": "0 0 * * *"
-            },
-            {
-              "field": "cronExpression",
-              "expression": "0 12 * * *"
+              "expression": "0 4 * * *",
+              "field": "cronExpression"
             }
           ]
         }
@@ -3688,17 +3684,15 @@
     },
     "node:Schedule Trigger1": {
       "recurrenceRules": [
-        null,
         null
       ],
       "recurrenceRuleSignatures": [
-        null,
         null
       ]
     }
   },
   "pinData": {},
-  "versionId": "f9d2d81a-9eb5-42ab-936c-874ac98746b0",
+  "versionId": "651c096b-6c1d-46af-81f4-5ca992d3164d",
   "meta": {
     "templateCredsSetupCompleted": true
   },
