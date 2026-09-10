@@ -206,6 +206,138 @@
       "id": "67f5b125-b29c-450b-9a2f-5e4b88aa55d3",
       "name": "Wait",
       "webhookId": "70c914dd-9ffc-4a73-932e-63edc26b2e78"
+    },
+    {
+      "parameters": {
+        "url": "https://api.heygen.com/v1/video_status.get",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "video_id",
+              "value": "=985aae9ed9694ed3a9c89c660d93c9ac"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "sk_V2_hgu_k6ToaDfQV6U_fSSYKLPu0aSEZiYbKPh6gfQZAZQbDA2j"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        784,
+        272
+      ],
+      "id": "e73c90a8-fa21-4780-b181-ddb38909822d",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1pCucHwBu5Q3noPWuer-A53rwg73cAgmU58eMZ6zSNao",
+          "mode": "list",
+          "cachedResultName": "SISS System Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pCucHwBu5Q3noPWuer-A53rwg73cAgmU58eMZ6zSNao/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pCucHwBu5Q3noPWuer-A53rwg73cAgmU58eMZ6zSNao/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "Hello"
+          ],
+          "schema": [
+            {
+              "id": "Hello",
+              "displayName": "Hello",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1488,
+        448
+      ],
+      "id": "e81955a8-5de3-4369-9fd8-ded59821c8be",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleApi": {
+          "id": "q3iMmhS8HekptsNq",
+          "name": "service account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "resource": "folder",
+        "name": "SISS_SCOTT",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "root",
+          "mode": "list",
+          "cachedResultName": "/ (Root folder)",
+          "cachedResultUrl": "https://drive.google.com/drive"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1264,
+        480
+      ],
+      "id": "00dd356d-290c-4941-901e-4a4c9a0239e3",
+      "name": "Create folder",
+      "credentials": {
+        "googleApi": {
+          "id": "q3iMmhS8HekptsNq",
+          "name": "service account"
+        }
+      }
     }
   ],
   "connections": {
@@ -291,7 +423,7 @@
       }
     ]
   },
-  "versionId": "99a4803a-a6c9-455c-bc90-f80bacfb55b5",
+  "versionId": "f2ce0c1e-6115-473b-ac6f-fb597584f363",
   "meta": {
     "templateCredsSetupCompleted": true
   },
